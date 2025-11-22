@@ -90,9 +90,11 @@ class MainActivity : AppCompatActivity() {
             //pay_
         })
 
-        val btnInventory_main = findViewById<Button>(R.id.btnTemplate_main)
+        val btnInventory_main = findViewById<Button>(R.id.btnInventory_main)
         btnInventory_main.setOnClickListener(View.OnClickListener{ view->
             //inv_
+            val intent = Intent(this, InventoryListActivity::class.java)
+            startActivity(intent)
         })
 
         val btnShipper_main = findViewById<Button>(R.id.btnTemplate_main)
