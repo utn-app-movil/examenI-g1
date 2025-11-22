@@ -12,17 +12,11 @@ import java.text.NumberFormat
 import java.util.Calendar
 import java.util.Locale // This is for giving format to dates and hours
 
-
 class mark_CampaignActivity : AppCompatActivity() {
-
-
     private val controller = mark_CampaignController()
-
     // Temporaly storage of the time values
     private var startDateTimestamp: Long = 0L
     private var endDateTimestamp: Long = 0L
-
-
     private lateinit var codeEditText: android.widget.EditText
     private lateinit var nameEditText: android.widget.EditText
     private lateinit var budgetEditText: android.widget.EditText
@@ -32,7 +26,6 @@ class mark_CampaignActivity : AppCompatActivity() {
     private lateinit var leaderEditText: android.widget.EditText
     private lateinit var provinceSpinner: android.widget.Spinner
     private lateinit var saveButton: android.widget.Button
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,7 +66,6 @@ class mark_CampaignActivity : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         provinceSpinner.adapter = adapter
     }
-
     private fun setupDatePickers() {
         startDateButton.setOnClickListener {
             showDatePicker(true)
@@ -99,7 +91,6 @@ class mark_CampaignActivity : AppCompatActivity() {
                 endDateButton.text = formattedDate
             }
         }
-
         DatePickerDialog(
             this,
             listener,
@@ -109,13 +100,11 @@ class mark_CampaignActivity : AppCompatActivity() {
         ).show()
         //
     }
-
     private fun setupSaveButton() {
         saveButton.setOnClickListener {
             saveCampaign()
         }
     }
-
     private fun saveCampaign() {
         val code = codeEditText.text.toString().trim()
         val name = nameEditText.text.toString().trim()
@@ -124,36 +113,35 @@ class mark_CampaignActivity : AppCompatActivity() {
         val leader = leaderEditText.text.toString().trim()
         val province = provinceSpinner.selectedItem.toString()
 
-        // 2. Validación de Campos Vacíos (Mejorada)
         if (code.isEmpty()) {
-            Toast.makeText(this, "Error: Campaign Code cannot be empty.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.mark_error_code_empty), Toast.LENGTH_LONG).show()
             return
         }
         if (name.isEmpty()) {
-            Toast.makeText(this, "Error: Campaign Name cannot be empty.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.mark_error_name_empty), Toast.LENGTH_LONG).show()
             return
         }
         if (budgetString.isEmpty()) {
-            Toast.makeText(this, "Error: Budget cannot be empty.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.mark_error_budget_empty), Toast.LENGTH_LONG).show()
             return
         }
         if (leader.isEmpty()) {
-            Toast.makeText(this, "Error: Campaign Leader cannot be empty.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.mark_error_leader_empty), Toast.LENGTH_LONG).show()
             return
         }
         if (startDateTimestamp == 0L) {
-            Toast.makeText(this, "Error: Start Date must be selected.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.mark_error_start_date_empty), Toast.LENGTH_LONG).show()
             return
         }
         if (endDateTimestamp == 0L) {
-            Toast.makeText(this, "Error: End Date must be selected.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.mark_error_end_date_empty), Toast.LENGTH_LONG).show()
             return
         }
 
 
         val budget = budgetString.toDoubleOrNull()
         if (budget == null) {
-            Toast.makeText(this, "Budget must be a valid number.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.mark_error_budget_empty), Toast.LENGTH_LONG).show()
             return
         }
 
@@ -181,7 +169,7 @@ class mark_CampaignActivity : AppCompatActivity() {
 
             finish()
         } else {
-            Toast.makeText(this, "Error saving campaign. Check budget (> 0) and dates (Start <= End).", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.mark_error_controller_failure), Toast.LENGTH_LONG).show()
         }
     }
     }

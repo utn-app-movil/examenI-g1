@@ -20,7 +20,7 @@ class mark_CampaignController {
 
     private fun validateBudget(budget: Double): Boolean {
 
-        return budget > 0.0
+        return budget > 1.0
     }
 
 
