@@ -1,0 +1,20 @@
+<resources>
+
+    <string name="med_nursing_control_title">Nursing Control</string>
+    <string name="med_nursing_control_hint_patient_name">Patient Name</string>
+    <string name="med_nursing_control_hint_blood_pressure">Blood Pressure (ej. 120/80)</string>
+    <string name="med_nursing_control_hint_weight">Weight (kg)</string>
+    <string name="med_nursing_control_hint_height">Height (cm)</string>
+    <string name="med_nursing_control_hint_oxygen">Oxygen Saturation (%)</string>
+    <string name="med_nursing_control_btn_save">Save Record</string>
+    <string name="med_nursing_control_msg_fields_required">Please complete all fields</string>
+    <string name="med_nursing_control_msg_invalid_bp">Invalid blood pressure. Use format: 120/80</string>
+    <string name="med_nursing_control_msg_saved">Record saved successfully</string>
+
+    <string name="med_nursing_control_label_patient">Patient:</string>
+    <string name="med_nursing_control_label_bp">BP:</string>
+    <string name="med_nursing_control_label_weight">Weight:</string>
+    <string name="med_nursing_control_label_height">Height:</string>
+    <string name="med_nursing_control_label_oxygen">Oxygen:</string>
+    <string name="med_nursing_control_label_date">Date:</string>
+</resources>

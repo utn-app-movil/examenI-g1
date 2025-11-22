@@ -27,6 +27,13 @@
 
         <!-- MainActivity with launcher -->
         <activity
+            android:name=".item_med_nursing_record"
+            android:exported="false" />
+        <activity
+            android:name=".controller.med_NursingControlActivity"
+            android:label="Nursing Control"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
 
