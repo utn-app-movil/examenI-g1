@@ -120,9 +120,9 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        val btnTraining_main = findViewById<Button>(R.id.btnTemplate_main)
+        val btnTraining_main = findViewById<Button>(R.id.btnTraining_main)
         btnTraining_main.setOnClickListener(View.OnClickListener{ view->
-            //train_
+            util.openActivity(this, TrainActivity:: class.java)
         })
 
         val btnNotification_main = findViewById<Button>(R.id.btnTemplate_main)
