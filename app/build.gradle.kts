@@ -48,6 +48,7 @@ dependencies {
     implementation(libs.androidx.recyclerview)
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.cardview:cardview:1.0.0")
+    implementation(libs.androidx.media3.common.ktx)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
