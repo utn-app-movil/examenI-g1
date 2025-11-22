@@ -10,9 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.movil.controller.med_NursingControlActivity
-import cr.ac.utn.movil.exchange.ExchangeActivity
-import cr.ac.utn.movil.ui.mark_CampaignActivity
+import cr.ac.utn.movil.activity.SinpeActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,10 +80,13 @@ class MainActivity : AppCompatActivity() {
             //bid_
         })
 
-        val btnSinpe_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnSinpe_main.setOnClickListener(View.OnClickListener{ view->
-            //sin_
-        })
+        val btnSinpe_main = findViewById<Button>(R.id.btnSinpe_main)
+
+        btnSinpe_main.setOnClickListener {
+            // Abre la actividad del formulario SINPE
+            val intent = Intent(this, SinpeActivity::class.java)
+            startActivity(intent)
+        }
 
         val btnPayroll_main = findViewById<Button>(R.id.btnTemplate_main)
         btnPayroll_main.setOnClickListener(View.OnClickListener{ view->

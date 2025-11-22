@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="#FAFAFA">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sin_label_origin_name"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"/>
+        <EditText
+            android:id="@+id/sinEtOriginName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:background="@android:drawable/editbox_background_normal"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sin_label_origin_phone"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"/>
+        <EditText
+            android:id="@+id/sinEtOriginPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:maxLength="8"
+            android:digits="0123456789"
+            android:background="@android:drawable/editbox_background_normal"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sin_label_destination_name"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"/>
+        <EditText
+            android:id="@+id/sinEtDestName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:background="@android:drawable/editbox_background_normal"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sin_label_destination_phone"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"/>
+        <EditText
+            android:id="@+id/sinEtDestPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:maxLength="8"
+            android:digits="0123456789"
+            android:background="@android:drawable/editbox_background_normal"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sin_label_amount"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"/>
+        <EditText
+            android:id="@+id/sinEtAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:background="@android:drawable/editbox_background_normal"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sin_label_description"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"/>
+
+        <EditText
+            android:id="@+id/sinEtDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@android:drawable/editbox_background_normal"
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:padding="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sin_label_datetime"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"/>
+        <EditText
+            android:id="@+id/sinEtDatetime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:clickable="true"
+            android:background="@android:drawable/editbox_background_normal"
+            android:padding="12dp"
+            android:layout_marginBottom="32dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <Button
+                android:id="@+id/sinBtnCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sin_btn_cancel"
+                android:layout_marginEnd="12dp"/>
+
+            <Button
+                android:id="@+id/sinBtnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sin_btn_save"
+                android:backgroundTint="#2E7D32"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Título de la actividad -->
+    <string name="sin_title">SINPE Transactions</string>
+
+    <!-- Etiquetas del formulario -->
+    <string name="sin_label_origin_name">Origin Full Name</string>
+    <string name="sin_label_origin_phone">Origin Phone (8 digits)</string>
+    <string name="sin_label_destination_name">Destination Full Name</string>
+    <string name="sin_label_destination_phone">Destination Phone (8 digits)</string>
+    <string name="sin_label_amount">Amount (₡)</string>
+    <string name="sin_label_description">Description</string>
+    <string name="sin_label_datetime">Date and Time</string>
+
+    <!-- Botones -->
+    <string name="sin_btn_save">Save SINPE</string>
+    <string name="sin_btn_cancel">Cancel</string>
+
+    <!-- Mensajes de error y éxito -->
+    <string name="sin_error_empty_fields">All fields are required</string>
+    <string name="sin_error_invalid_dest_phone">Phone must have exactly 8 digits</string>
+    <string name="sin_error_same_phone">Origin and destination phones cannot be the same</string>
+    <string name="sin_error_future_date">Date and time cannot be in the future</string>
+    <string name="sin_error_duplicate">A SINPE with this data already exists</string>
+    <string name="sin_success_saved">SINPE saved successfully</string>
+    <string name="sin_success_updated">SINPE updated successfully</string>
+</resources>
