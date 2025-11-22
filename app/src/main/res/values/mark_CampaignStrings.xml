@@ -1,0 +1,11 @@
+<resources>
+    <string name="mark_error_code_empty">Error: Campaign Code cannot be empty.</string>
+    <string name="mark_error_name_empty">Error: Campaign Name cannot be empty.</string>
+    <string name="mark_error_budget_empty">Error: Budget cannot be empty.</string>
+    <string name="mark_error_leader_empty">Error: Campaign Leader cannot be empty.</string>
+    <string name="mark_error_start_date_empty">Error: Start Date must be selected.</string>
+    <string name="mark_error_end_date_empty">Error: End Date must be selected.</string>
+    <string name="mark_error_budget_format">Budget must be a valid number.</string>
+    <string name="mark_error_controller_failure">Error saving campaign. Check budget, cannot be 0</string>
+    <string name="mark_success_message">Campaign saved: %1$s with Budget: %2$s</string>
+</resources>
