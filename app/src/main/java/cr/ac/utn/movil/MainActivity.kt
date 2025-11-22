@@ -1,5 +1,6 @@
 package cr.ac.utn.movil
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -71,8 +72,10 @@ class MainActivity : AppCompatActivity() {
             //recru_
         })
 
-        val btnBidding_main = findViewById<Button>(R.id.btnTemplate_main)
+        val btnBidding_main = findViewById<Button>(R.id.btnBidding_main)
         btnBidding_main.setOnClickListener(View.OnClickListener{ view->
+            val intent = Intent(this, bid_mainactivity::class.java)
+            startActivity(intent)
             //bid_
         })
 
