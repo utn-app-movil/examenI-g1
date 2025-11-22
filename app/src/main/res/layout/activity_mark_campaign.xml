@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ui.mark_CampaignActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        android:paddingTop="?attr/actionBarSize"> <TextView
+        android:id="@+id/mark_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="New Marketing Campaign"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="24dp" />
+
+        <EditText
+            android:id="@+id/mark_et_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Campaign Code"
+            android:inputType="text"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/mark_et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Campaign Name"
+            android:inputType="text"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/mark_et_budget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Budget (Must be > 0)"
+            android:inputType="numberDecimal"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4. Start Date:"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/mark_btn_start_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SELECT START DATE"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="5. End Date:"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/mark_btn_end_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SELECT END DATE"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="6. Channel (Digital, TV, Radio):"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/mark_sp_channel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/mark_channel_options"
+            android:minHeight="48dp"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/mark_et_leader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Campaign Leader"
+            android:inputType="textPersonName"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="8. Province:"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/mark_sp_province"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_marginBottom="24dp" />
+
+        <Button
+            android:id="@+id/mark_btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE CAMPAIGN" />
+
+    </LinearLayout>
+</ScrollView>
