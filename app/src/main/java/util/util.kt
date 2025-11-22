@@ -1,5 +1,6 @@
 package cr.ac.utn.movil.util
 
+
 import android.app.AlertDialog
 import cr.ac.utn.movil.R
 import android.content.Context
@@ -9,6 +10,7 @@ import java.time.LocalDate
 import java.util.Locale
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+
 
 const val EXTRA_ID = "cr.ac.utn.appmovil.Id"
 

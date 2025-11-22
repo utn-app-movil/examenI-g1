@@ -1,5 +1,7 @@
 package cr.ac.utn.movil
 
+
+import cr.ac.utn.movil.util.util
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -8,6 +10,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import android.content.Intent
+
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -138,6 +143,7 @@ class MainActivity : AppCompatActivity() {
 
         val btnVehicle_main = findViewById<Button>(R.id.btnTemplate_main)
         btnVehicle_main.setOnClickListener(View.OnClickListener{ view->
+            util.openActivity(this, DataRegisterActivity::class.java)
             //veh_
         })
 
@@ -160,5 +166,11 @@ class MainActivity : AppCompatActivity() {
         btnTemplate_main.setOnClickListener(View.OnClickListener{ view->
             Toast.makeText(this, R.string.TextTemplate, Toast.LENGTH_LONG).show()
         })
+
+        val btnDataRegister_main = findViewById<Button>(R.id.btnDataRegister_main)
+        btnDataRegister_main.setOnClickListener {
+            val intent = Intent(this, DataRegisterActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
