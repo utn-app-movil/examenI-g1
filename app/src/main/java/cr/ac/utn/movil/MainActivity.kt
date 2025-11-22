@@ -36,9 +36,9 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        val btnLicense_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnLicense_main.setOnClickListener(View.OnClickListener{ view->
-            //lic_
+        val btnLicense_main = findViewById<Button>(R.id.btnLicense_main)
+        btnLicense_main.setOnClickListener(View.OnClickListener { view ->
+            util.openActivity(this, Lic_ControlActivity::class.java)
         })
 
         val btnMedChecking_main = findViewById<Button>(R.id.btnMedChecking_main)
