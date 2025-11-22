@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import android.content.Intent
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -141,9 +142,11 @@ class MainActivity : AppCompatActivity() {
             //veh_
         })
 
-        val btnProduction_main = findViewById<Button>(R.id.btnTemplate_main)
+        val btnProduction_main = findViewById<Button>(R.id.btnProduction_main)
         btnProduction_main.setOnClickListener(View.OnClickListener{ view->
             //prod_
+            val intent = Intent(this, ProdProductionOrderActivity::class.java)
+            startActivity(intent)
         })
 
         val btnWater_main = findViewById<Button>(R.id.btnTemplate_main)
