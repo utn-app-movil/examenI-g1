@@ -19,6 +19,10 @@
             tools:ignore="Instantiatable">
         </activity>
 
+        <!-- add ExchangeActivity -->
+        <activity android:name=".exchange.ExchangeActivity" />
+
+        <!-- MainActivity with launcher -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -29,6 +33,37 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <!-- Water Quality Monitoring Activities -->
+        <activity
+            android:name=".WatMainActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".WatListActivity"
+            android:exported="false"
+            android:parentActivityName=".WatMainActivity" />
+
+        <activity
+            android:name=".ui.mark_CampaignActivity"
+            android:label="Campaign Registration"
+            android:exported="false" />
+
+        <activity
+            android:name=".InventoryListActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".InventoryDetailActivity"
+            android:exported="false" />
+
+        <activity android:name=".fli_FlightActivity" />
+        <activity android:name=".fli_FlightMenuActivity" />
+        <activity android:name=".fli_ViewFlightsActivity" />
+        <activity android:name=".fli_UpdateFlightActivity" />
+
     </application>
 
 </manifest>
