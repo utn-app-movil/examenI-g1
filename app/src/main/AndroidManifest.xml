@@ -14,7 +14,7 @@
 
 
         <activity
-            android:name=".DataRegisterActivity"
+            android:name=".vehActivity"
             android:exported="true"
             tools:ignore="Instantiatable">
         </activity>

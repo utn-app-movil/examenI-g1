@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 
-class DataRegisterActivity : AppCompatActivity() {
+class vehActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dataregister)
+        setContentView(R.layout.activity_veh)
 
         val editTextVehicleId: EditText = findViewById(R.id.editTextVehicleId)
         val editTextChargeDate: EditText = findViewById(R.id.editTextChargeDate)
