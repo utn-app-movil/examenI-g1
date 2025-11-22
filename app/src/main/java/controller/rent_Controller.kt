@@ -20,8 +20,8 @@ class rent_Controller {
     }
 
 
-    fun updateRental(id: String, rental: rent_Rentals) {
-        rental.ID = id
+    fun updateRental( rental: rent_Rentals) {
+
         MemoryDataManager.update(rental)
     }
 

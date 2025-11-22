@@ -172,7 +172,9 @@ class rent_Activity : AppCompatActivity() {
             vehicleType,
             plate,
             mileage,
-            license
+            license,
+            "",
+            "$name $lastName"
         )
     }
 

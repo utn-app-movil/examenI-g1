@@ -1,5 +1,6 @@
 package cr.ac.utn.movil
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -54,6 +55,11 @@ class MainActivity : AppCompatActivity() {
         val btnRent_main = findViewById<Button>(R.id.btnTemplate_main)
         btnRent_main.setOnClickListener(View.OnClickListener{ view->
             //rent_
+
+            btnRent_main.setOnClickListener {
+                val intent = Intent(this, rent_Activity::class.java)
+                startActivity(intent)
+            }
         })
 
         val btnEvents_main = findViewById<Button>(R.id.btnTemplate_main)
