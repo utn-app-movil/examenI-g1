@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
 
         val btnShipper_main = findViewById<Button>(R.id.btnTemplate_main)
         btnShipper_main.setOnClickListener(View.OnClickListener{ view->
-            //ship_
+
         })
 
         val btnLibrary_main = findViewById<Button>(R.id.btnTemplate_main)
