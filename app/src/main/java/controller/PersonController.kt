@@ -1,4 +1,4 @@
-package cr.ac.utn.movil.controller
+package controller
 
 class PersonController {
 

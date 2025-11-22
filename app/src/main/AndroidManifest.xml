@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExamenI">
 
+        <!-- add ExchangeActivity -->
+        <activity android:name=".exchange.ExchangeActivity" />
+
+        <!-- MainActivity with launcher -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -20,6 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
 
         <!-- Water Quality Monitoring Activities -->
         <activity

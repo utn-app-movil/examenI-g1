@@ -9,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import cr.ac.utn.movil.exchange.ExchangeActivity
 import cr.ac.utn.movil.ui.mark_CampaignActivity
 
 class MainActivity : AppCompatActivity() {
@@ -103,9 +104,14 @@ class MainActivity : AppCompatActivity() {
             //lib_
         })
 
-        val btnExchange_main = findViewById<Button>(R.id.btnTemplate_main)
+        //ExchangeActivity button
+        val btnExchange_main = findViewById<Button>(R.id.btnExchange_main)
         btnExchange_main.setOnClickListener(View.OnClickListener{ view->
-            //exch_
+            btnExchange_main.setOnClickListener {
+                val intent = Intent(this, ExchangeActivity::class.java)
+                startActivity(intent)
+            }
+
         })
 
         val btnTraining_main = findViewById<Button>(R.id.btnTemplate_main)
