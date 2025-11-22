@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -22,7 +23,7 @@ class ActivityVaccine : AppCompatActivity() {
     private lateinit var txtId: EditText
     private lateinit var txtName: EditText
     private lateinit var txtFirstName: EditText
-    private lateinit var txtType: EditText
+    private lateinit var txtType: TextView
     private lateinit var txtSite: EditText
     private lateinit var txtDate: EditText
     private lateinit var txtTime: EditText

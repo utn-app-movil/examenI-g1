@@ -1,5 +1,6 @@
 package cr.ac.utn.movil
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -26,9 +27,10 @@ class MainActivity : AppCompatActivity() {
             //app_
         })
 
-        val btnVaccine_main = findViewById<Button>(R.id.btnVaccine_main)
-        btnVaccine_main.setOnClickListener(View.OnClickListener{ view->
-            util.openActivity(this, ActivityVaccine::class.java)
+        val btnVaccine = findViewById<Button>(R.id.btnVaccine_main)
+        btnVaccine.setOnClickListener(View.OnClickListener{ view->
+            val intentActivity = Intent(this, ActivityVaccine::class.java)
+            startActivity(intentActivity)
         })
 
         val btnLicense_main = findViewById<Button>(R.id.btnTemplate_main)
