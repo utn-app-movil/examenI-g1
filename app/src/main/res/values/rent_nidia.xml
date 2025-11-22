@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="rent_nidia_title">Vehicle Rentals</string>
+    <string name="rent_nidia_name">Client Name</string>
+    <string name="rent_nidia_lastname">Last Name</string>
+    <string name="rent_nidia_vehicle_type">Vehicle Type</string>
+    <string name="rent_nidia_plate">License Plate</string>
+    <string name="rent_nidia_mileage">Mileage</string>
+    <string name="rent_nidia_driver_license">Driver License</string>
+    <string name="rent_nidia_save">Save</string>
+    <string name="rent_nidia_update">Update</string>
+    <string name="rent_nidia_delete">Delete</string>
+    <string name="rent_nidia_list_title">Rentals List</string>
+
+    <string-array name="rent_nidia_vehicle_types">
+        <item>Hatchback</item>
+        <item>Sedan</item>
+        <item>SUV</item>
+        <item>Minibus</item>
+    </string-array>
+</resources>
