@@ -21,6 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+        <!-- Recruitment screen -->
+        <activity android:name=".recru_Activity" android:exported="false" />
+
+    </application>
 </manifest>

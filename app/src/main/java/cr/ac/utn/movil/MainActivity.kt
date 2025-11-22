@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import cr.ac.utn.movil.util.util
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,9 +67,11 @@ class MainActivity : AppCompatActivity() {
             //pha_
         })
 
-        val btnRecruitering_main = findViewById<Button>(R.id.btnTemplate_main)
+        val btnRecruitering_main = findViewById<Button>(R.id.btnRecruitering_main)
         btnRecruitering_main.setOnClickListener(View.OnClickListener{ view->
             //recru_
+            util.openActivity(this,
+                recru_Activity::class.java)
         })
 
         val btnBidding_main = findViewById<Button>(R.id.btnTemplate_main)
