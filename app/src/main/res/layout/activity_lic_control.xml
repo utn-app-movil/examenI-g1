@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#FFFFFF">
+
+    <!-- TÍTULO -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lic_title"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="30dp" />
+
+    <!-- MEDICAL CODE -->
+    <EditText
+        android:id="@+id/LIC_ET_MEDICAL_CODE"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/lic_medical_code_hint"
+        android:inputType="textCapCharacters" />
+
+    <!-- LICENSE TYPE -->
+    <Spinner
+        android:id="@+id/LIC_SP_LICENSE_TYPE"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" />
+
+    <!-- CURRENT SCORE -->
+    <EditText
+        android:id="@+id/LIC_ET_CURRENT_SCORE"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/lic_current_score_hint"
+        android:inputType="number"
+        android:maxLength="3"
+        android:layout_marginTop="16dp" />
+
+    <!-- FECHA + BOTÓN CON TEXTO -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <EditText
+            android:id="@+id/LIC_ET_RENEWAL_DATE"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/lic_renewal_date_hint"
+            android:focusable="false" />
+
+        <Button
+            android:id="@+id/LIC_BTN_CALENDAR"
+            android:layout_width="85dp"
+            android:layout_height="50dp"
+            android:text="@string/lic_btn_calendar" />
+    </LinearLayout>
+
+    <!-- HORA + BOTÓN CON TEXTO -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <EditText
+            android:id="@+id/LIC_ET_RENEWAL_TIME"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/lic_renewal_time_hint"
+            android:focusable="false" />
+
+        <Button
+            android:id="@+id/LIC_BTN_CLOCK"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@string/lic_btn_clock" />
+    </LinearLayout>
+
+    <!-- BOTÓN RENOVAR -->
+    <Button
+        android:id="@+id/LIC_BTN_RENEW"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lic_btn_renew"
+        android:layout_marginTop="40dp" />
+
+    <!-- RESULTADO -->
+    <TextView
+        android:id="@+id/LIC_TV_RESULT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="18sp"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:textColor="#D32F2F" />
+
+</LinearLayout>

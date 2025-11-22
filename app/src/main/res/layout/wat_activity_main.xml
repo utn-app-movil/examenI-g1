@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/wat_tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/wat_app_title"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="20dp" />
+
+            <!-- NIS ID -->
+            <TextView
+                android:id="@+id/wat_tvNisId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/wat_nis_id"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/wat_etNisId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/wat_nis_id"
+                android:inputType="text"
+                android:layout_marginBottom="10dp" />
+
+            <!-- Measurement Date -->
+            <TextView
+                android:id="@+id/wat_tvDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/wat_measurement_date"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+
+                <EditText
+                    android:id="@+id/wat_etDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="dd/MM/yyyy"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:inputType="none" />
+
+                <Button
+                    android:id="@+id/wat_btnSelectDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📅" />
+            </LinearLayout>
+
+            <!-- pH Level -->
+            <TextView
+                android:id="@+id/wat_tvPhLevel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/wat_ph_level"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/wat_etPhLevel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/wat_ph_level"
+                android:inputType="numberDecimal"
+                android:layout_marginBottom="10dp" />
+
+            <!-- Turbidity -->
+            <TextView
+                android:id="@+id/wat_tvTurbidity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/wat_turbidity"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/wat_etTurbidity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/wat_turbidity"
+                android:inputType="numberDecimal"
+                android:layout_marginBottom="10dp" />
+
+            <!-- Contaminants -->
+            <TextView
+                android:id="@+id/wat_tvContaminants"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/wat_contaminants"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/wat_btnSelectContaminants"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/wat_msg_select_contaminants"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:id="@+id/wat_tvSelectedContaminants"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="12sp"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Owner Section -->
+            <TextView
+                android:id="@+id/wat_tvOwnerSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/wat_owner_section"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp" />
+
+            <!-- Owner Name -->
+            <TextView
+                android:id="@+id/wat_tvOwnerName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/wat_owner_name"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/wat_etOwnerName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/wat_owner_name"
+                android:inputType="textPersonName"
+                android:layout_marginBottom="10dp" />
+
+            <!-- Owner ID -->
+            <TextView
+                android:id="@+id/wat_tvOwnerId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/wat_owner_id"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/wat_etOwnerId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/wat_owner_id"
+                android:inputType="text"
+                android:layout_marginBottom="10dp" />
+
+            <!-- Owner Phone -->
+            <TextView
+                android:id="@+id/wat_tvOwnerPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/wat_owner_phone"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/wat_etOwnerPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/wat_owner_phone"
+                android:inputType="phone"
+                android:layout_marginBottom="10dp" />
+
+            <!-- Owner Address -->
+            <TextView
+                android:id="@+id/wat_tvOwnerAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/wat_owner_address"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/wat_etOwnerAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/wat_owner_address"
+                android:inputType="textMultiLine"
+                android:minLines="2"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Action Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/wat_btnSearch"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/wat_btn_search"
+                    android:layout_marginEnd="5dp" />
+
+                <Button
+                    android:id="@+id/wat_btnClear"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/wat_btn_clear"
+                    android:layout_marginStart="5dp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/wat_btnList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/wat_btn_list"
+                android:layout_marginTop="10dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
