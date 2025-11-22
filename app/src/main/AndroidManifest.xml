@@ -37,5 +37,12 @@
             android:label="Campaign Registration"
             android:exported="false" />
 
+
+
+    <activity android:name=".fli_FlightActivity" />
+    <activity android:name=".fli_FlightMenuActivity" />
+    <activity android:name=".fli_ViewFlightsActivity" />
+    <activity android:name=".fli_UpdateFlightActivity" />
+
     </application>
 </manifest>

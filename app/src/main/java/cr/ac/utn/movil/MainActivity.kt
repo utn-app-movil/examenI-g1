@@ -48,9 +48,10 @@ class MainActivity : AppCompatActivity() {
             //cli_
         })
 
-        val btnFlights_main = findViewById<Button>(R.id.btnTemplate_main)
+        val btnFlights_main = findViewById<Button>(R.id.btnFlights_main) // Corrected ID
         btnFlights_main.setOnClickListener(View.OnClickListener{ view->
-            //fli_
+            val intent = Intent(this, fli_FlightActivity::class.java)
+            startActivity(intent)
         })
 
         val btnRent_main = findViewById<Button>(R.id.btnTemplate_main)
