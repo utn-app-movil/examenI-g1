@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- FORM FIELDS -->
+    <string name="exch_name">Name</string>
+    <string name="exch_first_lastname">First last name</string>
+    <string name="exch_second_lastname">Second last name</string>
+    <string name="exch_phone">Phone</string>
+    <string name="exch_email">Email</string>
+    <string name="exch_address">Address</string>
+    <string name="exch_country">Country</string>
+    <string name="exch_date">Date</string>
+    <string name="exch_time">Time</string>
+    <string name="exch_amount">Amount to exchange</string>
+    <string name="exch_rate">Exchange rate</string>
+    <string name="exch_result">Amount to pay:</string>
+
+    <!-- BUTTONS -->
+    <string name="exch_calculate">Calculate</string>
+    <string name="exch_create">Create</string>
+    <string name="exch_update">Update</string>
+    <string name="exch_delete">Delete</string>
+
+    <!-- VALIDATION & ERROR MESSAGES -->
+    <string name="exch_error_fields">All fields are required</string>
+    <string name="exch_error_future_date">Date/time cannot be greater than current date</string>
+
+    <!-- NEW REQUIRED STRINGS -->
+    <string name="exch_type_dollar_to_crc">Dollar to Colon</string>
+    <string name="exch_type_crc_to_dollar">Colon to Dollar</string>
+
+    <string name="exch_msg_fill_fields">Please fill in all fields.</string>
+    <string name="exch_msg_invalid_date">The date and time cannot be in the future.</string>
+    <string name="exch_msg_duplicate">This record already exists.</string>
+    <string name="exch_msg_saved">Record saved successfully.</string>
+    <string name="exch_msg_not_found">Record not found.</string>
+    <string name="exch_msg_deleted">Record deleted successfully.</string>
+    <string name="exch_msg_required">This field is required.</string>
+
+    <!-- SPINNERS -->
+    <string-array name="exch_exchange_types">
+        <item>Dollar to Colon</item>
+        <item>Colon to Dollar</item>
+    </string-array>
+
+    <string-array name="exch_bank_list">
+        <item>BNCR</item>
+        <item>BAC</item>
+        <item>Scotiabank</item>
+        <item>Coocique</item>
+        <item>Davivienda</item>
+    </string-array>
+
+</resources>
