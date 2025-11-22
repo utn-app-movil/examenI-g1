@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Text for the button in the main screen -->
+    <string name="dash_main_button_text">Dashboard</string>
+
+    <!-- Hints for input fields -->
+    <string name="dash_name_hint">Person\'s Name</string>
+    <string name="dash_contributions_hint">Total Contributions</string>
+    <string name="dash_day_hint">Day</string>
+    <string name="dash_month_hint">Month</string>
+    <string name="dash_year_hint">Year</string>
+
+    <!-- Button labels -->
+    <string name="dash_add_button">Add</string>
+    <string name="dash_update_button">Update</string>
+    <string name="dash_delete_button">Delete</string>
+
+    <!-- Toast messages -->
+    <string name="dash_toast_fill_fields">Please fill all fields correctly.</string>
+    <string name="dash_toast_already_exists">This person already has a contribution for this month and year.</string>
+    <string name="dash_toast_added_success">Contribution added successfully.</string>
+    <string name="dash_toast_select_to_update">Please select a contribution to update.</string>
+    <string name="dash_toast_update_conflict">Another contribution for this person, month, and year already exists.</string>
+    <string name="dash_toast_updated_success">Contribution updated successfully.</string>
+    <string name="dash_toast_select_to_delete">Please select a contribution to delete.</string>
+    <string name="dash_toast_deleted_success">Contribution deleted successfully.</string>
+</resources>
