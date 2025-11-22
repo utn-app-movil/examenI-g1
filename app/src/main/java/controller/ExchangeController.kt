@@ -1,7 +1,7 @@
 package cr.ac.utn.movil.controller
 
 import cr.ac.utn.movil.identities.Exchange
-import data.MemoryDataManager
+import cr.ac.utn.movil.data.MemoryDataManager
 import java.time.LocalDateTime
 
 class ExchangeController {
