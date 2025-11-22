@@ -97,18 +97,22 @@ class recru_Activity : AppCompatActivity() {
     private fun searchById() {
         val id = etId.text.toString().trim()
         if (id.isEmpty()) {
-            Toast.makeText(this, "Please enter an ID to search", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.please_enter_id_search), Toast.LENGTH_SHORT).show()
             return
         }
         try {
             val registration = controller.getById(id)
             if (registration == null) {
-                Toast.makeText(this, "No registration found for ID: $id", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.no_registration_found, id), Toast.LENGTH_SHORT).show()
             } else {
                 loadRegistration(registration as recru_Roles)
             }
         } catch (e: Exception) {
-            Toast.makeText(this, "Error searching registration: ${e.message}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this,
+                getString(R.string.error_searching_registration, e.message ?: ""),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
@@ -132,7 +136,7 @@ class recru_Activity : AppCompatActivity() {
         selectedDate = registration.registrationDate
         tvSelectedDate.text = dateFormat.format(selectedDate!!)
 
-        Toast.makeText(this, "Registration loaded successfully", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.registration_loaded_successfully), Toast.LENGTH_SHORT).show()
     }
 
     private fun initializeViews() {
@@ -189,7 +193,7 @@ class recru_Activity : AppCompatActivity() {
         }
 
         AlertDialog.Builder(this)
-            .setTitle("Select Roles of Interest")
+            .setTitle(getString(R.string.select_roles_interest))
             .setMultiChoiceItems(availableRoles, checkedItems) { _, which, isChecked ->
                 if (isChecked) {
                     if (!selectedRoles.contains(availableRoles[which])) {
@@ -199,16 +203,16 @@ class recru_Activity : AppCompatActivity() {
                     selectedRoles.remove(availableRoles[which])
                 }
             }
-            .setPositiveButton("OK") { _, _ ->
+            .setPositiveButton(getString(R.string.ok)) { _, _ ->
                 updateSelectedRolesText()
             }
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton(getString(R.string.cancel), null)
             .show()
     }
 
     private fun updateSelectedRolesText() {
         tvSelectedRoles.text = if (selectedRoles.isEmpty()) {
-            "No roles selected"
+            getString(R.string.no_roles_selected)
         } else {
             selectedRoles.joinToString(", ")
         }
@@ -240,14 +244,14 @@ class recru_Activity : AppCompatActivity() {
             // Validate date is not in the past or future - must be today
             when {
                 selectedDate!!.before(today.time) -> {
-                    Toast.makeText(this, "Registration date cannot be in the past", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.registration_date_past), Toast.LENGTH_SHORT).show()
                     selectedDate = null
-                    tvSelectedDate.text = "No date selected"
+                    tvSelectedDate.text = getString(R.string.no_date_selected)
                 }
                 selectedDate!!.after(today.time) -> {
-                    Toast.makeText(this, "Registration date cannot be in the future", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.registration_date_future), Toast.LENGTH_SHORT).show()
                     selectedDate = null
-                    tvSelectedDate.text = "No date selected"
+                    tvSelectedDate.text = getString(R.string.no_date_selected)
                 }
                 else -> {
                     tvSelectedDate.text = dateFormat.format(selectedDate!!)
@@ -262,9 +266,11 @@ class recru_Activity : AppCompatActivity() {
             return
         }
 
+        val id = etId.text.toString().trim()
+
         // Create registration object
         val registration = recru_Roles(
-            id = etId.text.toString().trim(),
+            id = id,
             name = etName.text.toString().trim(),
             fLastName = etFirstLastName.text.toString().trim(),
             sLastName = etSecondLastName.text.toString().trim(),
@@ -282,48 +288,89 @@ class recru_Activity : AppCompatActivity() {
             registrationDate = selectedDate ?: Date()
         )
 
-        // Add registration
         try {
-            controller.addIdentifier(registration)
-            Toast.makeText(this, "Registration saved successfully", Toast.LENGTH_SHORT).show()
+            // Check if registration exists
+            val existingRegistration = controller.getById(id)
+
+            if (existingRegistration != null) {
+                // Update existing registration
+                controller.updateIdentifier(registration)
+                Toast.makeText(this, getString(R.string.registration_updated_successfully), Toast.LENGTH_SHORT).show()
+            } else {
+                // Add new registration
+                controller.addIdentifier(registration)
+                Toast.makeText(this, getString(R.string.registration_saved_successfully), Toast.LENGTH_SHORT).show()
+            }
+
             clearForm()
         } catch (e: Exception) {
-            Toast.makeText(this, "Failed to save registration. Check validations.", Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                this,
+                getString(R.string.error_saving, e.message ?: ""),
+                Toast.LENGTH_LONG
+            ).show()
         }
+    }
+
+    private fun deleteRegistration() {
+        val id = etId.text.toString().trim()
+        if (id.isEmpty()) {
+            Toast.makeText(this, getString(R.string.please_enter_id_delete), Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.confirm_delete))
+            .setMessage(getString(R.string.confirm_delete_message))
+            .setPositiveButton(getString(R.string.delete)) { _, _ ->
+                try {
+                    controller.removeIdentifier(id)
+                    Toast.makeText(this, getString(R.string.registration_deleted_successfully), Toast.LENGTH_SHORT).show()
+                    clearForm()
+                } catch (e: Exception) {
+                    Toast.makeText(
+                        this,
+                        getString(R.string.error_deleting, e.message ?: ""),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+            .setNegativeButton(getString(R.string.cancel), null)
+            .show()
     }
 
     private fun validateFields(): Boolean {
         if (etId.text.isNullOrBlank()) {
-            Toast.makeText(this, "ID is required", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.id_required), Toast.LENGTH_SHORT).show()
             etId.requestFocus()
             return false
         }
 
         if (etName.text.isNullOrBlank()) {
-            Toast.makeText(this, "Name is required", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.name_required), Toast.LENGTH_SHORT).show()
             etName.requestFocus()
             return false
         }
 
         if (etFirstLastName.text.isNullOrBlank()) {
-            Toast.makeText(this, "First last name is required", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.first_last_name_required), Toast.LENGTH_SHORT).show()
             etFirstLastName.requestFocus()
             return false
         }
 
         if (etCompany.text.isNullOrBlank()) {
-            Toast.makeText(this, "Company is required", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.company_required), Toast.LENGTH_SHORT).show()
             etCompany.requestFocus()
             return false
         }
 
         if (selectedRoles.isEmpty()) {
-            Toast.makeText(this, "Please select at least one role", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.select_at_least_one_role), Toast.LENGTH_SHORT).show()
             return false
         }
 
         if (selectedDate == null) {
-            Toast.makeText(this, "Please select a registration date", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.select_registration_date), Toast.LENGTH_SHORT).show()
             return false
         }
 
@@ -349,13 +396,13 @@ class recru_Activity : AppCompatActivity() {
         // Recruitment Information
         etCompany.text?.clear()
         selectedRoles.clear()
-        tvSelectedRoles.text = "No roles selected"
+        tvSelectedRoles.text = getString(R.string.no_roles_selected)
         etSalaryExpectation.text?.clear()
         etYearsOfExperience.text?.clear()
         selectedDate = null
-        tvSelectedDate.text = "No date selected"
+        tvSelectedDate.text = getString(R.string.no_date_selected)
 
-        Toast.makeText(this, "Form cleared", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.form_cleared), Toast.LENGTH_SHORT).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -367,15 +414,11 @@ class recru_Activity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.mnu_save -> {
                 clearForm()
-                Toast.makeText(this, "Ready to create new registration", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.ready_create_new_registration), Toast.LENGTH_SHORT).show()
                 true
             }
             R.id.mnu_delete -> {
-                Toast.makeText(this, "Delete feature - coming soon", Toast.LENGTH_SHORT).show()
-                true
-            }
-            R.id.mnu_cancel -> {
-                Toast.makeText(this, "Update feature - coming soon", Toast.LENGTH_SHORT).show()
+                deleteRegistration()
                 true
             }
             else -> super.onOptionsItemSelected(item)

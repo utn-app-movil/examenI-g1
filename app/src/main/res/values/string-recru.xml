@@ -1,2 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <!-- Recruitment Activity Strings -->
+    <string name="please_enter_id_search">Please enter an ID to search</string>
+    <string name="no_registration_found">No registration found for ID: %1$s</string>
+    <string name="error_searching_registration">Error searching registration: %1$s</string>
+    <string name="registration_loaded_successfully">Registration loaded successfully</string>
+    <string name="select_roles_interest">Select Roles of Interest</string>
+    <string name="no_roles_selected">No roles selected</string>
+    <string name="registration_date_past">Registration date cannot be in the past</string>
+    <string name="registration_date_future">Registration date cannot be in the future</string>
+    <string name="no_date_selected">No date selected</string>
+    <string name="registration_updated_successfully">Registration updated successfully</string>
+    <string name="registration_saved_successfully">Registration saved successfully</string>
+    <string name="error_saving">Error: %1$s</string>
+    <string name="please_enter_id_delete">Please enter an ID to delete</string>
+    <string name="confirm_delete">Confirm Delete</string>
+    <string name="confirm_delete_message">Are you sure you want to delete this registration?</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="registration_deleted_successfully">Registration deleted successfully</string>
+    <string name="error_deleting">Error: %1$s</string>
+    <string name="id_required">ID is required</string>
+    <string name="name_required">Name is required</string>
+    <string name="first_last_name_required">First last name is required</string>
+    <string name="company_required">Company is required</string>
+    <string name="select_at_least_one_role">Please select at least one role</string>
+    <string name="select_registration_date">Please select a registration date</string>
+    <string name="form_cleared">Form cleared</string>
+    <string name="ready_create_new_registration">Ready to create new registration</string>
+    <string name="ok">OK</string>
+
+    <!-- Controller Error Messages (from previous context) -->
+    <string name="ErrorMsgGetById">Error retrieving registration by ID</string>
+    <string name="MsgDataNoFound">Registration not found</string>
+    <string name="ErrorMsgRemove">Error deleting registration</string>
+    <string name="ErrorMsgUpdate">Error updating registration</string>
+
+    <!-- Activity Recru Layout Strings -->
+    <string name="personal_information">Personal Information</string>
+    <string name="search_id">Search ID</string>
+    <string name="id_hint">ID</string>
+    <string name="name_hint">Name</string>
+    <string name="first_last_name_hint">First Last Name</string>
+    <string name="second_last_name_hint">Second Last Name</string>
+    <string name="phone_hint">Phone</string>
+    <string name="email_hint">Email</string>
+    <string name="location">Location</string>
+    <string name="address_hint">Address</string>
+    <string name="country_hint">Country</string>
+    <string name="province_hint">Province</string>
+    <string name="canton_hint">Canton</string>
+    <string name="district_hint">District</string>
+    <string name="recruitment_information">Recruitment Information</string>
+    <string name="company_hint">Company</string>
+    <string name="select_roles_of_interest">Select Roles of Interest</string>
+    <string name="salary_expectation_hint">Salary Expectation</string>
+    <string name="years_of_experience_hint">Years of Experience</string>
+    <string name="select_registration_date_btn">Select Registration Date</string>
+    <string name="save">Save</string>
+    <string name="nodateselected">No date selected</string>
+
+</resources>
