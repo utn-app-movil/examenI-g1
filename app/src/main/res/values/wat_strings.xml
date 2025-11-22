@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Water Quality Monitoring Strings -->
+    <string name="wat_app_title">Water Quality Monitoring</string>
+    <string name="wat_nis_id">NIS ID:</string>
+    <string name="wat_measurement_date">Measurement Date:</string>
+    <string name="wat_ph_level">pH Level:</string>
+    <string name="wat_turbidity">Turbidity (NTU):</string>
+    <string name="wat_contaminants">Detected Contaminants:</string>
+    <string name="wat_owner_section">Property Owner Information</string>
+    <string name="wat_owner_name">Full Name:</string>
+    <string name="wat_owner_id">Identification Number:</string>
+    <string name="wat_owner_phone">Phone:</string>
+    <string name="wat_owner_address">Address:</string>
+
+    <!-- Buttons -->
+    <string name="wat_btn_search">Search</string>
+    <string name="wat_btn_clear">Clear</string>
+    <string name="wat_btn_list">View List</string>
+
+    <!-- Contaminants Options -->
+    <string name="wat_contaminant_bacteria">Bacteria</string>
+    <string name="wat_contaminant_heavy_metals">Heavy Metals</string>
+    <string name="wat_contaminant_pesticides">Pesticides</string>
+    <string name="wat_contaminant_nitrates">Nitrates</string>
+    <string name="wat_contaminant_phosphates">Phosphates</string>
+    <string name="wat_contaminant_chlorine">Chlorine</string>
+    <string name="wat_contaminant_lead">Lead</string>
+    <string name="wat_contaminant_arsenic">Arsenic</string>
+
+    <!-- Validation Messages -->
+    <string name="wat_error_empty_nis">NIS ID cannot be empty</string>
+    <string name="wat_error_empty_owner_name">Owner name cannot be empty</string>
+    <string name="wat_error_empty_owner_id">Owner identification cannot be empty</string>
+    <string name="wat_error_invalid_ph">pH level must be between 0 and 14</string>
+    <string name="wat_error_invalid_turbidity">Turbidity cannot be negative</string>
+    <string name="wat_error_invalid_date">Date cannot be greater than today</string>
+    <string name="wat_error_no_contaminants">Select at least one contaminant</string>
+    <string name="wat_msg_select_contaminants">Select Contaminants</string>
+
+    <!-- List Activity -->
+    <string name="wat_list_title">Water Quality Records</string>
+    <string name="wat_no_data">No records found</string>
+</resources>
