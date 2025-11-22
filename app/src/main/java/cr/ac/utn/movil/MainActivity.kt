@@ -10,7 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.movil.util.util
+import cr.ac.utn.movil.controller.med_NursingControlActivity
 import cr.ac.utn.movil.exchange.ExchangeActivity
 import cr.ac.utn.movil.ui.mark_CampaignActivity
 
@@ -41,10 +41,10 @@ class MainActivity : AppCompatActivity() {
             //lic_
         })
 
-        val btnMedChecking_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnMedChecking_main.setOnClickListener(View.OnClickListener{ view->
-            //med_
-        })
+        val btnMedChecking_main = findViewById<Button>(R.id.btnMedChecking_main)
+        btnMedChecking_main.setOnClickListener {
+            util.openActivity(this, med_NursingControlActivity::class.java)
+        }
 
         val btnClients_main = findViewById<Button>(R.id.btnTemplate_main)
         btnClients_main.setOnClickListener(View.OnClickListener{ view->
