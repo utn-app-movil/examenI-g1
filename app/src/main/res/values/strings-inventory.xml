@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Inventory Module Strings -->
+    <string name="inv_title">Inventory Management</string>
+    <string name="inv_add_entry">Add Product Entry</string>
+    <string name="inv_edit_entry">Edit Product Entry</string>
+    <string name="inv_list_title">Product Entries</string>
+
+    <!-- Form Labels -->
+    <string name="inv_label_person_id">Person ID</string>
+    <string name="inv_label_person_name">Person Name</string>
+    <string name="inv_label_person_email">Person Email</string>
+    <string name="inv_label_product_code">Product Code</string>
+    <string name="inv_label_product_name">Product Name</string>
+    <string name="inv_label_quantity">Quantity</string>
+    <string name="inv_label_entry_date">Entry Date</string>
+    <string name="inv_label_entry_time">Entry Time</string>
+    <string name="inv_label_supplier">Supplier</string>
+    <string name="inv_label_unit_cost">Unit Cost ($)</string>
+
+    <!-- Hints -->
+    <string name="inv_hint_person_id">Enter person ID</string>
+    <string name="inv_hint_person_name">Enter person name</string>
+    <string name="inv_hint_person_email">Enter email address</string>
+    <string name="inv_hint_product_code">Enter product code</string>
+    <string name="inv_hint_product_name">Enter product name</string>
+    <string name="inv_hint_quantity">Enter quantity</string>
+    <string name="inv_hint_unit_cost">Enter cost per unit</string>
+    <string name="inv_hint_select_supplier">Select a supplier</string>
+
+    <!-- Buttons -->
+    <string name="inv_btn_select_date">Select Date</string>
+    <string name="inv_btn_select_time">Select Time</string>
+
+    <!-- Validation Messages -->
+    <string name="inv_error_empty_person_id">Person ID is required</string>
+    <string name="inv_error_empty_person_name">Person name is required</string>
+    <string name="inv_error_invalid_email">Invalid email format</string>
+    <string name="inv_error_empty_product_code">Product code is required</string>
+    <string name="inv_error_empty_product_name">Product name is required</string>
+    <string name="inv_error_invalid_quantity">Quantity must be greater than 0</string>
+    <string name="inv_error_empty_date">Entry date is required</string>
+    <string name="inv_error_empty_time">Entry time is required</string>
+    <string name="inv_error_future_datetime">Date and time cannot be in the future</string>
+    <string name="inv_error_empty_supplier">Supplier is required</string>
+    <string name="inv_error_invalid_cost">Unit cost must be greater than 0</string>
+
+    <!-- Success Messages -->
+    <string name="inv_success_saved">Inventory entry saved successfully</string>
+    <string name="inv_success_updated">Inventory entry updated successfully</string>
+    <string name="inv_success_deleted">Inventory entry deleted successfully</string>
+
+    <!-- List Items -->
+    <string name="inv_list_empty">No inventory entries found</string>
+    <string name="inv_list_product">Product: %1$s</string>
+    <string name="inv_list_quantity">Qty: %1$d</string>
+    <string name="inv_list_cost">Unit Cost: $%1$.2f</string>
+    <string name="inv_list_total">Total: $%1$.2f</string>
+    <string name="inv_list_date">Date: %1$s</string>
+    <string name="inv_list_supplier">Supplier: %1$s</string>
+    <string name="inv_list_person">By: %1$s</string>
+
+    <!-- Suppliers List -->
+    <string-array name="inv_suppliers_array">
+        <item>Global Supplies Inc.</item>
+        <item>TechDistributors LLC</item>
+        <item>Premium Products Co.</item>
+        <item>Quality Wholesale</item>
+        <item>Express Logistics</item>
+        <item>Direct Import Solutions</item>
+    </string-array>
+</resources>
