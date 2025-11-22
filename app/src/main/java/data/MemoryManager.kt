@@ -1,4 +1,4 @@
-package cr.ac.utn.movil.data
+package data
 
 import cr.ac.utn.movil.interfaces.IDataManager
 import cr.ac.utn.movil.identities.Identifier

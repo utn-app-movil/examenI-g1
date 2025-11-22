@@ -1,5 +1,6 @@
 package cr.ac.utn.movil
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -8,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import cr.ac.utn.movil.exchange.ExchangeActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -101,9 +103,14 @@ class MainActivity : AppCompatActivity() {
             //lib_
         })
 
-        val btnExchange_main = findViewById<Button>(R.id.btnTemplate_main)
+        //ExchangeActivity button
+        val btnExchange_main = findViewById<Button>(R.id.btnExchange_main)
         btnExchange_main.setOnClickListener(View.OnClickListener{ view->
-            //exch_
+            btnExchange_main.setOnClickListener {
+                val intent = Intent(this, ExchangeActivity::class.java)
+                startActivity(intent)
+            }
+
         })
 
         val btnTraining_main = findViewById<Button>(R.id.btnTemplate_main)
