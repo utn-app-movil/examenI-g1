@@ -1,19 +1,17 @@
 package identities
 
+import cr.ac.utn.movil.identities.Identifier
 import java.time.LocalDate
 import java.time.LocalTime
 
-class Vaccine {
+class Vaccine() : Identifier() {
 
-    private var id: String=""
-    private var name: String=""
-    private var firstName: String=""
-    private var vaccineType: String=""
-    private var site: String=""
-    private lateinit var date: LocalDate
-    private lateinit var time: LocalTime
-
-    constructor()
+    var Name: String = ""
+    var FirstName: String = ""
+    var VaccineType: String = ""
+    var Site: String = ""
+    var Date: LocalDate = LocalDate.now()
+    var Time: LocalTime = LocalTime.now()
 
     constructor(
         id: String,
@@ -23,41 +21,21 @@ class Vaccine {
         site: String,
         date: LocalDate,
         time: LocalTime
-    ) {
-        this.id = id
-        this.name = name
-        this.firstName = firstName
-        this.vaccineType = vaccineType
-        this.site = site
-        this.date = date
-        this.time = time
+    ) : this() {
+        this.ID = id
+        this.Name = name
+        this.FirstName = firstName
+        this.VaccineType = vaccineType
+        this.Site = site
+        this.Date = date
+        this.Time = time
     }
 
-    var ID: String
-        get() = id
-        set(value) { id = value }
+    // Obligatorio por Identifier
+    override val FullName: String
+        get() = "$Name $FirstName"
 
-    var Name: String
-        get() = name
-        set(value) { name = value }
-
-    var FirstName: String
-        get() = firstName
-        set(value) { firstName = value }
-
-    var VaccineType: String
-        get() = vaccineType
-        set(value) { vaccineType = value }
-
-    var Site: String
-        get() = site
-        set(value) { site = value }
-
-    var Date: LocalDate
-        get() = date
-        set(value) { date = value }
-
-    var Time: LocalTime
-        get() = time
-        set(value) { time = value }
+    // Obligatorio por Identifier
+    override val FullDescription: String
+        get() = "Vacuna: $VaccineType - Paciente: $Name $FirstName - Sitio: $Site"
 }

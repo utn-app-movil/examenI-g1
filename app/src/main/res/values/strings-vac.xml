@@ -1,2 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+
+<resources>
+
+    <string name="ErrorMessageAdd_vac">Error while adding.</string>
+    <string name="ErrorMessageUpdate_vac">Error while updating.</string>
+    <string name="ErrorMessageGetById_vac">Error while retrieving record.</string>
+    <string name="ErrorMessageRemove_vac">Error while removing.</string>
+    <string name="MsgDataNoFound_vac">Record not found.</string>
+
+    <string name="MsgMissingInfo_vac">Please complete all fields.</string>
+    <string name="MsgDuplicateInfo_vac">A record with this ID already exists.</string>
+    <string name="MsgSaveSuccess_vac">Record saved successfully.</string>
+    <string name="MsgDeleteSucess_vac">Record deleted successfully.</string>
+
+
+</resources>
