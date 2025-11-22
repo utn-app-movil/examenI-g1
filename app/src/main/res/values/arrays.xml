@@ -1,0 +1,8 @@
+<resources>
+    <string-array name="mark_channel_options">
+        <item>Digital</item>
+        <item>TV</item>
+        <item>Radio</item>
+    </string-array>
+
+</resources>

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import cr.ac.utn.movil.exchange.ExchangeActivity
+import cr.ac.utn.movil.ui.mark_CampaignActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -133,9 +134,11 @@ class MainActivity : AppCompatActivity() {
             //payen_
         })
 
-        val btnMarketing_main = findViewById<Button>(R.id.btnTemplate_main)
+
+        val btnMarketing_main = findViewById<Button>(R.id.btnMarketing_main)
         btnMarketing_main.setOnClickListener(View.OnClickListener{ view->
-            //mark_
+            val intent = Intent(this, mark_CampaignActivity::class.java)
+            startActivity(intent)
         })
 
         val btnEnsurance_main = findViewById<Button>(R.id.btnTemplate_main)
@@ -152,10 +155,11 @@ class MainActivity : AppCompatActivity() {
         btnProduction_main.setOnClickListener(View.OnClickListener{ view->
             //prod_
         })
-
-        val btnWater_main = findViewById<Button>(R.id.btnTemplate_main)
+        val btnWater_main = findViewById<Button>(R.id.btnWater_main)
         btnWater_main.setOnClickListener(View.OnClickListener{ view->
             //wat_
+            val intent = Intent(this, WatMainActivity::class.java)
+            startActivity(intent)
         })
 
         val btnRecycling_main = findViewById<Button>(R.id.btnTemplate_main)

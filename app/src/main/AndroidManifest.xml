@@ -25,6 +25,22 @@
             </intent-filter>
         </activity>
 
-    </application>
 
+        <!-- Water Quality Monitoring Activities -->
+        <activity
+            android:name=".WatMainActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".WatListActivity"
+            android:exported="false"
+            android:parentActivityName=".WatMainActivity" />
+
+        <activity
+            android:name=".ui.mark_CampaignActivity"
+            android:label="Campaign Registration"
+            android:exported="false" />
+
+    </application>
 </manifest>
