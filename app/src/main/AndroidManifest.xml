@@ -11,6 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExamenI">
+
+        <activity
+            android:name=".ProdProductionOrderActivity"
+            android:exported="false" />
       
         <activity
             android:name=".Lic_ControlActivity"
@@ -38,7 +42,7 @@
             android:name=".controller.med_NursingControlActivity"
             android:label="Nursing Control"
             android:exported="false" />
-      
+  
         <activity
             android:name=".MainActivity"
             android:exported="true">

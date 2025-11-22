@@ -157,9 +157,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         })
 
-        val btnProduction_main = findViewById<Button>(R.id.btnTemplate_main)
+        val btnProduction_main = findViewById<Button>(R.id.btnProduction_main)
         btnProduction_main.setOnClickListener(View.OnClickListener{ view->
             //prod_
+            val intent = Intent(this, ProdProductionOrderActivity::class.java)
+            startActivity(intent)
         })
         val btnWater_main = findViewById<Button>(R.id.btnWater_main)
         btnWater_main.setOnClickListener(View.OnClickListener{ view->
