@@ -8,6 +8,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.media3.common.util.Util
+import cr.ac.utn.movil.util.util
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         val btnVaccine_main = findViewById<Button>(R.id.btnTemplate_main)
         btnVaccine_main.setOnClickListener(View.OnClickListener{ view->
-            //vac_
+            util.openActivity(this, Activity_Vaccine::class.java)
 
         })
 
