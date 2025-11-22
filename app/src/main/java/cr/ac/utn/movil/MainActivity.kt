@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import cr.ac.utn.movil.activity.SinpeActivity
+import cr.ac.utn.movil.controller.med_NursingControlActivity
+import cr.ac.utn.movil.exchange.ExchangeActivity
+import cr.ac.utn.movil.ui.mark_CampaignActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
