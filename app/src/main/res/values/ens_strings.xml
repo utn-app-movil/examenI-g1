@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Main Activity -->
+    <string name="main_title">Corporate Insurance</string>
+    <string name="main_subtitle">Policy Management</string>
+    <string name="active_policies">Active Policies</string>
+    <string name="empty_policy_list">No insurance policies registered\n\nTap the + button to add one</string>
+
+    <!-- Add / Edit Policy -->
+    <string name="title_add_policy">Register New Policy</string>
+    <string name="title_edit_policy">Edit Policy</string>
+
+    <!-- Form Hints -->
+    <string name="hint_policy_number">Policy Number</string>
+    <string name="hint_company">Insurance Company</string>
+    <string name="hint_coverage_type">Coverage Type</string>
+    <string name="hint_start_date">Start Date (MM/dd/yyyy)</string>
+    <string name="hint_expiration_date">Expiration Date (MM/dd/yyyy)</string>
+    <string name="hint_premium">Annual Premium</string>
+
+    <!-- Buttons -->
+    <string name="btn_register_policy">Register Policy</string>
+    <string name="btn_update_policy">Update Policy</string>
+
+    <!-- Messages -->
+    <string name="success_policy_saved">Policy registered successfully</string>
+    <string name="success_policy_updated">Policy updated successfully</string>
+    <string name="error_policy_exists">This policy number already exists</string>
+    <string name="error_expiration_before_start">Expiration date must be after start date</string>
+    <string name="error_fill_all_fields">Please complete all required fields</string>
+    <string name="error_invalid_premium">Enter a valid premium amount</string>
+    <string name="error_select_company">Please select an insurance company</string>
+    <string name="error_select_type">Please select a coverage type</string>
+
+    <!-- Default spinner options -->
+    <string name="select_company_default">Select insurance company...</string>
+    <string name="select_type_default">Select coverage type...</string>
+
+    <!-- Insurance Companies -->
+    <string name="company_ins">National Insurance (INS)</string>
+    <string name="company_mapfre">Mapfre</string>
+    <string name="company_magisterio">Seguros del Magisterio</string>
+    <string name="company_panamerican">Pan American Life</string>
+    <string name="company_assa">Assa Compañía de Seguros</string>
+    <string name="company_qualitas">Qualitas</string>
+    <string name="company_sura">SURA</string>
+
+    <!-- Coverage Types -->
+    <string name="type_vehicle">Vehicle</string>
+    <string name="type_fire">Fire &amp; Allied Lines</string>
+    <string name="type_liability">Liability</string>
+    <string name="type_grouplife">Group Life</string>
+    <string name="type_health">Health</string>
+    <string name="type_surety">Surety Bonds</string>
+    <string name="type_marine">Marine / Transport</string>
+    <string name="type_engineering">Engineering</string>
+</resources>
