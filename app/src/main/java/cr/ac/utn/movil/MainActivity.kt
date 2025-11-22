@@ -1,5 +1,6 @@
 package cr.ac.utn.movil
 
+import cr.ac.utn.movil.util.util
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -149,9 +150,10 @@ class MainActivity : AppCompatActivity() {
             //ens_
         })
 
-        val btnVehicle_main = findViewById<Button>(R.id.btnTemplate_main)
+        val btnVehicle_main = findViewById<Button>(R.id.btnVehicle_main)
         btnVehicle_main.setOnClickListener(View.OnClickListener{ view->
-            //veh_
+            val intent = Intent(this, vehActivity::class.java)
+            startActivity(intent)
         })
 
         val btnProduction_main = findViewById<Button>(R.id.btnTemplate_main)
@@ -169,10 +171,10 @@ class MainActivity : AppCompatActivity() {
         btnRecycling_main.setOnClickListener(View.OnClickListener{ view->
             //recy_
         })
-
         val btnTemplate_main = findViewById<Button>(R.id.btnTemplate_main)
         btnTemplate_main.setOnClickListener(View.OnClickListener{ view->
             Toast.makeText(this, R.string.TextTemplate, Toast.LENGTH_LONG).show()
         })
+
     }
 }

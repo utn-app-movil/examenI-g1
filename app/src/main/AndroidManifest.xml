@@ -12,6 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExamenI">
 
+
+        <activity
+            android:name=".vehActivity"
+            android:exported="true"
+            tools:ignore="Instantiatable">
+        </activity>
+
         <!-- add ExchangeActivity -->
         <activity android:name=".exchange.ExchangeActivity" />
 
@@ -19,6 +26,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
