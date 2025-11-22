@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             //app_
         })
 
-        val btnVaccine_main = findViewById<Button>(R.id.btnTemplate_main)
+        val btnVaccine_main = findViewById<Button>(R.id.btnVaccine_main)
         btnVaccine_main.setOnClickListener(View.OnClickListener{ view->
             util.openActivity(this, ActivityVaccine::class.java)
         })
