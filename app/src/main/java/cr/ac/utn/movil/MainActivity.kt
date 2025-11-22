@@ -10,6 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import cr.ac.utn.movil.util.util
 import cr.ac.utn.movil.exchange.ExchangeActivity
 import cr.ac.utn.movil.ui.mark_CampaignActivity
 
@@ -118,9 +119,9 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        val btnTraining_main = findViewById<Button>(R.id.btnTemplate_main)
+        val btnTraining_main = findViewById<Button>(R.id.btnTraining_main)
         btnTraining_main.setOnClickListener(View.OnClickListener{ view->
-            //train_
+            util.openActivity(this, TrainActivity:: class.java)
         })
 
         val btnNotification_main = findViewById<Button>(R.id.btnTemplate_main)
