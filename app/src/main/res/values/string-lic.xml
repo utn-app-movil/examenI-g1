@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="lic_title">License Renewal</string>
+    <string name="lic_medical_code_hint">Medical Report Code</string>
+    <string name="lic_current_score_hint">Current Score (0-100)</string>
+    <string name="lic_renewal_date_hint">Renewal Date (YYYY-MM-DD)</string>
+    <string name="lic_renewal_time_hint">Renewal Time (HH:mm)</string>
+    <string name="lic_btn_renew">RENEW LICENSE</string>
+    <string name="lic_btn_calendar">Calendar</string>
+    <string name="lic_btn_clock">Clock</string>
+    <string name="lic_error_required">All fields are required</string>
+    <string name="lic_error_invalid_score">Invalid score</string>
+    <string name="lic_error_low_score">RENEWAL DENIED\nScore too low: %1$d (minimum 65)</string>
+    <string name="lic_error_future_date">Date and time cannot be in the future</string>
+    <string name="lic_success">
+        RENEWAL SUCCESSFUL!\n\nType: %1$s\nMedical Code: %2$s\nScore: %3$d\nDate/Time: %4$s
+    </string>
+
+    <string-array name="lic_license_types">
+        <item>A1</item>
+        <item>A2</item>
+        <item>A3</item>
+        <item>B1</item>
+        <item>B2</item>
+        <item>B3</item>
+        <item>B4</item>
+        <item>C1</item>
+        <item>C2</item>
+        <item>D1</item>
+        <item>D2</item>
+        <item>D3</item>
+        <item>E1</item>
+        <item>E2</item>
+    </string-array>
+
+    <string name="mnu_save">Save</string>
+    <string name="mnu_delete">Delete</string>
+    <string name="mnu_cancel">Cancel</string>
+</resources>

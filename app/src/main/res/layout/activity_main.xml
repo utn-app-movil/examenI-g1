@@ -265,6 +265,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/TextTemplate" />
                 </TableRow>
+
             </TableLayout>
         </LinearLayout>
     </ScrollView>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="TextTrainId">ID capacitacion</string>
+    <string name="TextUserId">ID usuario</string>
+    <string name="TextUserName">Nombre de usuario</string>
+    <string name="TextUserFLastName">Primer apellido</string>
+    <string name="TextUserSLastName">Segundo apellido</string>
+    <string name="TextTrainList">Lista de capacitaciones</string>
+    <string name="MsgMissingData">Falta de datos</string>
+
+
+
+</resources>
