@@ -34,7 +34,7 @@ Implementation of a complete CRUD system for inventory management as part of the
 - Read: All inventory entries are displayed in a scrollable RecyclerView list
 - Update: Users can tap any list item to open the edit form with pre-populated data
 - Delete: Delete option available in the menu with confirmation dialog
-- 
+  
 ## Modified Files
 
 ### New Files Created
