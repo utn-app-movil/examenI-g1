@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import android.content.Intent
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -86,9 +87,11 @@ class MainActivity : AppCompatActivity() {
             //pay_
         })
 
-        val btnInventory_main = findViewById<Button>(R.id.btnTemplate_main)
+        val btnInventory_main = findViewById<Button>(R.id.btnInventory_main)
         btnInventory_main.setOnClickListener(View.OnClickListener{ view->
             //inv_
+            val intent = Intent(this, InventoryListActivity::class.java)
+            startActivity(intent)
         })
 
         val btnShipper_main = findViewById<Button>(R.id.btnTemplate_main)
