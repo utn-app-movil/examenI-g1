@@ -185,4 +185,3 @@ class mark_CampaignActivity : AppCompatActivity() {
         }
     }
     }
-}
