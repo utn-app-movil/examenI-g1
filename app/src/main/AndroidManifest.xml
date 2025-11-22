@@ -10,8 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ExamenI"
-        tools:targetApi="31">
+        android:theme="@style/Theme.ExamenI">
 
         <activity
             android:name=".MainActivity"
@@ -21,6 +20,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Water Quality Monitoring Activities -->
+        <activity
+            android:name=".WatMainActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".WatListActivity"
+            android:exported="false"
+            android:parentActivityName=".WatMainActivity" />
 
         <activity
             android:name=".ui.mark_CampaignActivity"

@@ -149,10 +149,11 @@ class MainActivity : AppCompatActivity() {
         btnProduction_main.setOnClickListener(View.OnClickListener{ view->
             //prod_
         })
-
-        val btnWater_main = findViewById<Button>(R.id.btnTemplate_main)
+        val btnWater_main = findViewById<Button>(R.id.btnWater_main)
         btnWater_main.setOnClickListener(View.OnClickListener{ view->
             //wat_
+            val intent = Intent(this, WatMainActivity::class.java)
+            startActivity(intent)
         })
 
         val btnRecycling_main = findViewById<Button>(R.id.btnTemplate_main)
