@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import cr.ac.utn.movil.util.util
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,9 +32,9 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        val btnLicense_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnLicense_main.setOnClickListener(View.OnClickListener{ view->
-            //lic_
+        val btnLicense_main = findViewById<Button>(R.id.btnLicense_main)
+        btnLicense_main.setOnClickListener(View.OnClickListener { view ->
+            util.openActivity(this, Lic_ControlActivity::class.java)
         })
 
         val btnMedChecking_main = findViewById<Button>(R.id.btnTemplate_main)
