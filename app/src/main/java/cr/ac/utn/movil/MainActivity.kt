@@ -1,6 +1,7 @@
 package cr.ac.utn.movil
 
 import android.os.Bundle
+import android.content.Intent
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -61,10 +62,12 @@ class MainActivity : AppCompatActivity() {
             //eve_
         })
 
-        val btnPharmacy_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnPharmacy_main.setOnClickListener(View.OnClickListener{ view->
-            //pha_
-        })
+        val btnPharmacy_main = findViewById<Button>(R.id.btnPharmacy_main)
+        btnPharmacy_main.setOnClickListener {
+            val intent = Intent(this, PhaPharmacyActivity::class.java)
+            startActivity(intent)
+        }
+
 
         val btnRecruitering_main = findViewById<Button>(R.id.btnTemplate_main)
         btnRecruitering_main.setOnClickListener(View.OnClickListener{ view->
