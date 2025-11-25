@@ -77,8 +77,10 @@ class MainActivity : AppCompatActivity() {
                 recru_Activity::class.java)
         })
 
-        val btnBidding_main = findViewById<Button>(R.id.btnTemplate_main)
+        val btnBidding_main = findViewById<Button>(R.id.btnBidding_main)
         btnBidding_main.setOnClickListener(View.OnClickListener{ view->
+            val intent = Intent(this, bid_mainactivity::class.java)
+            startActivity(intent)
             //bid_
         })
 

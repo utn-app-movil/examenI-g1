@@ -61,6 +61,10 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".bid_mainactivity"
+            android:exported="false" />
+
         <!-- Water Quality Monitoring Activities -->
         <activity
             android:name=".WatMainActivity"
