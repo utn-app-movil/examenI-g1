@@ -22,11 +22,11 @@
         <activity
             android:name=".ProdProductionOrderActivity"
             android:exported="false" />
-      
+
         <activity
             android:name=".Lic_ControlActivity"
             android:exported="false" />
-      
+
         <activity
             android:name=".activity.SinpeActivity"
             android:exported="false" />
@@ -44,12 +44,13 @@ t
         <activity
             android:name=".item_med_nursing_record"
             android:exported="false" />
-      
+
         <activity
             android:name=".controller.med_NursingControlActivity"
             android:label="Nursing Control"
             android:exported="false" />
-  
+
+
         <activity
             android:name=".ActivityVaccine"
             android:exported="false" />
@@ -97,6 +98,14 @@ t
         <activity android:name=".fli_FlightMenuActivity" />
         <activity android:name=".fli_ViewFlightsActivity" />
         <activity android:name=".fli_UpdateFlightActivity" />
+
+        <activity
+            android:name=".PayenActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
 
         <!-- Recruitment screen -->
         <activity android:name=".recru_Activity" android:exported="false" />

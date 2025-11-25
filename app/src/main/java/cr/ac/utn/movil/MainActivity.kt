@@ -139,9 +139,10 @@ class MainActivity : AppCompatActivity() {
             //dash_
         })
 
-        val btnPaymentEnsurance_main = findViewById<Button>(R.id.btnTemplate_main)
+        val btnPaymentEnsurance_main = findViewById<Button>(R.id.btnPaymentEnsurance_main)
         btnPaymentEnsurance_main.setOnClickListener(View.OnClickListener{ view->
-            //payen_
+            util.openActivity(this,
+                PayenActivity::class.java)
         })
 
 

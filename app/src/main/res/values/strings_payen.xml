@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="lbTitle">Payment Insurance</string>
+    <string name="lbIdPerson">Person ID</string>
+    <string name="lbNamePerson">Person Name</string>
+    <string name="lbEmailPerson">Person Email</string>
+    <string name="lbSpeciality">Speciality</string>
+    <string name="lbAppointmentDate">Appointment date</string>
+    <string name="lbRequestDate">Request date</string>
+    <string name="lbDateCost">Date cost</string>
+    <string name="lbMedsCost">Meds cost</string>
+    <string name="lbMeds">Person ID</string>
+
+</resources>
