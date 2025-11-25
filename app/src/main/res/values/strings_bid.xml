@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auction_title">Auction Bids</string>
+    <string name="auction_hint_name">Bidder\'s Name</string>
+    <string name="auction_hint_flastname">Bidder\'s Last Name</string>
+    <string name="auction_hint_article_code">Article Code</string>
+    <string name="auction_hint_article_desc">Article Description</string>
+    <string name="auction_hint_bid_amount">Bid Amount</string>
+    <string name="auction_button_add">Add Bid</string>
+</resources>

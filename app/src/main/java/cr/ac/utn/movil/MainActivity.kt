@@ -31,10 +31,10 @@ class MainActivity : AppCompatActivity() {
             //app_
         })
 
-        val btnVaccine_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnVaccine_main.setOnClickListener(View.OnClickListener{ view->
-            //vac_
-
+        val btnVaccine = findViewById<Button>(R.id.btnVaccine_main)
+        btnVaccine.setOnClickListener(View.OnClickListener{ view->
+            val intentActivity = Intent(this, ActivityVaccine::class.java)
+            startActivity(intentActivity)
         })
 
         val btnLicense_main = findViewById<Button>(R.id.btnLicense_main)
@@ -75,13 +75,17 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        val btnRecruitering_main = findViewById<Button>(R.id.btnTemplate_main)
+        val btnRecruitering_main = findViewById<Button>(R.id.btnRecruitering_main)
         btnRecruitering_main.setOnClickListener(View.OnClickListener{ view->
             //recru_
+            util.openActivity(this,
+                recru_Activity::class.java)
         })
 
-        val btnBidding_main = findViewById<Button>(R.id.btnTemplate_main)
+        val btnBidding_main = findViewById<Button>(R.id.btnBidding_main)
         btnBidding_main.setOnClickListener(View.OnClickListener{ view->
+            val intent = Intent(this, bid_mainactivity::class.java)
+            startActivity(intent)
             //bid_
         })
 
@@ -107,7 +111,7 @@ class MainActivity : AppCompatActivity() {
 
         val btnShipper_main = findViewById<Button>(R.id.btnTemplate_main)
         btnShipper_main.setOnClickListener(View.OnClickListener{ view->
-            //ship_
+
         })
 
         val btnLibrary_main = findViewById<Button>(R.id.btnTemplate_main)
@@ -130,9 +134,9 @@ class MainActivity : AppCompatActivity() {
             util.openActivity(this, TrainActivity:: class.java)
         })
 
-        val btnNotification_main = findViewById<Button>(R.id.btnTemplate_main)
+        val btnNotification_main = findViewById<Button>(R.id.btnNotification_main)
         btnNotification_main.setOnClickListener(View.OnClickListener{ view->
-            //notif_
+            util.openActivity(this, NotificationActivity::class.java)
         })
 
         val btnDashboard_main = findViewById<Button>(R.id.btnTemplate_main)
@@ -140,9 +144,10 @@ class MainActivity : AppCompatActivity() {
             //dash_
         })
 
-        val btnPaymentEnsurance_main = findViewById<Button>(R.id.btnTemplate_main)
+        val btnPaymentEnsurance_main = findViewById<Button>(R.id.btnPaymentEnsurance_main)
         btnPaymentEnsurance_main.setOnClickListener(View.OnClickListener{ view->
-            //payen_
+            util.openActivity(this,
+                PayenActivity::class.java)
         })
 
 
