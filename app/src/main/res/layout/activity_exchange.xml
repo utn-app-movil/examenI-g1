@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:paddingBottom="120dp">
+
+    <LinearLayout
+        android:id="@+id/exch_mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- PERSON DATA -->
+        <EditText
+            android:id="@+id/exch_txtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/exch_name"
+            android:inputType="textPersonName"/>
+
+        <EditText
+            android:id="@+id/exch_txtFirstLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/exch_first_lastname"
+            android:inputType="textPersonName"/>
+
+        <EditText
+            android:id="@+id/exch_txtSecondLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/exch_second_lastname"
+            android:inputType="textPersonName"/>
+
+        <EditText
+            android:id="@+id/exch_txtPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/exch_phone"
+            android:inputType="phone"/>
+
+        <EditText
+            android:id="@+id/exch_txtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/exch_email"
+            android:inputType="textEmailAddress"/>
+
+        <EditText
+            android:id="@+id/exch_txtAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/exch_address"
+            android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/exch_txtCountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/exch_country"
+            android:inputType="text"/>
+
+        <!-- DATE & TIME -->
+        <EditText
+            android:id="@+id/exch_txtDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/exch_date"
+            android:focusable="false"
+            android:clickable="true"
+            android:inputType="none" />
+
+        <EditText
+            android:id="@+id/exch_txtTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/exch_time"
+            android:focusable="false"
+            android:clickable="true"
+            android:inputType="none" />
+
+        <!-- EXCHANGE INFO -->
+        <EditText
+            android:id="@+id/exch_txtAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/exch_amount"
+            android:inputType="numberDecimal"/>
+
+        <EditText
+            android:id="@+id/exch_txtRate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/exch_rate"
+            android:inputType="numberDecimal"/>
+
+        <Spinner
+            android:id="@+id/exch_spType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:id="@+id/exch_spBank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/exch_lblResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingTop="10dp"
+            android:text="@string/exch_result" />
+
+        <Button
+            android:id="@+id/exch_btnCalculate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/exch_calculate"
+            android:layout_marginTop="4dp" />
+
+        <!-- CRUD BUTTONS -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <Button
+                android:id="@+id/exch_btnCreate"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/exch_create"/>
+
+            <Button
+                android:id="@+id/exch_btnUpdate"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/exch_update"/>
+
+            <Button
+                android:id="@+id/exch_btnDelete"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/exch_delete"/>
+        </LinearLayout>
+
+        <!-- LISTVIEW -->
+        <ListView
+            android:id="@+id/exch_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"/>
+    </LinearLayout>
+
+</ScrollView>
