@@ -1,13 +1,12 @@
 package cr.ac.utn.movil
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.widget.*
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import cr.ac.utn.movil.controllers.InsurancePolicyController_ens
 import cr.ac.utn.movil.entities.InsurancePolicy
@@ -16,67 +15,61 @@ import java.util.*
 
 class MainActivity_ens : AppCompatActivity() {
 
-    private lateinit var listViewPolicies: ListView
-    private lateinit var tvEmpty: TextView
-    private lateinit var adapter: PolicyAdapter
-    private lateinit var controller: InsurancePolicyController_ens
+    private lateinit var listViewPolicies_ens: ListView
+    private lateinit var tvEmpty_ens: TextView
+    private lateinit var adapter_ens: PolicyAdapter_ens
+    private lateinit var controller_ens: InsurancePolicyController_ens
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main_ens)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main_ens)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        val btnBackMain_ens = findViewById<ImageView>(R.id.btnBackMain_ens)
+        btnBackMain_ens.setOnClickListener { finish() }
 
-        listViewPolicies = findViewById(R.id.listViewPolicies)
-        tvEmpty = findViewById(R.id.tvEmpty)
+        listViewPolicies_ens = findViewById(R.id.listViewPolicies_ens)
+        tvEmpty_ens = findViewById(R.id.tvEmpty_ens)
 
-        controller = InsurancePolicyController_ens(this)
+        controller_ens = InsurancePolicyController_ens(this)
+        adapter_ens = PolicyAdapter_ens(this, mutableListOf())
+        listViewPolicies_ens.adapter = adapter_ens
 
-        adapter = PolicyAdapter(this, mutableListOf())
-        listViewPolicies.adapter = adapter
-
-        listViewPolicies.setOnItemClickListener { _, _, position, _ ->
-            val policy = adapter.getItem(position)
-            val intent = Intent(this@MainActivity_ens, RegisterActivity_ens::class.java)
-            intent.putExtra("POLICY_NUMBER", policy?.policyNumber)
+        listViewPolicies_ens.setOnItemClickListener { _, _, position, _ ->
+            val policy = adapter_ens.getItem(position)
+            val intent = Intent(this, RegisterActivity_ens::class.java)
+            intent.putExtra("POLICY_NUMBER", policy?.policyNumber_ens)
             startActivity(intent)
         }
 
-        val fabAdd = findViewById<FloatingActionButton>(R.id.fabAdd)
-        fabAdd.setOnClickListener(View.OnClickListener { view ->
+        val fabAdd_ens = findViewById<FloatingActionButton>(R.id.fabAdd_ens)
+        fabAdd_ens.setOnClickListener {
             startActivity(Intent(this, RegisterActivity_ens::class.java))
-        })
+        }
 
-        refreshList()
+        refreshList_ens()
     }
 
     override fun onResume() {
         super.onResume()
-        refreshList()
+        refreshList_ens()
     }
 
-    private fun refreshList() {
-        val policies = controller.getAllPolicies()
-        adapter.clear()
-        adapter.addAll(policies)
-        adapter.notifyDataSetChanged()
-
-        tvEmpty.visibility = if (policies.isEmpty()) View.VISIBLE else View.GONE
+    private fun refreshList_ens() {
+        val policies = controller_ens.getAllPolicies_ens()
+        adapter_ens.clear()
+        adapter_ens.addAll(policies)
+        adapter_ens.notifyDataSetChanged()
+        tvEmpty_ens.visibility = if (policies.isEmpty()) View.VISIBLE else View.GONE
     }
 
-    private class PolicyAdapter(
-        context: android.content.Context,
+    private inner class PolicyAdapter_ens(
+        context: Context,
         policies: MutableList<InsurancePolicy>
     ) : ArrayAdapter<InsurancePolicy>(context, android.R.layout.simple_list_item_2, android.R.id.text1, policies) {
 
         private val dateFormat = SimpleDateFormat("MM/dd/yyyy", Locale.US)
 
-        override fun getView(position: Int, convertView: android.view.View?, parent: android.view.ViewGroup): android.view.View {
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
             val view = super.getView(position, convertView, parent)
             val policy = getItem(position)
 
@@ -84,8 +77,8 @@ class MainActivity_ens : AppCompatActivity() {
             val text2 = view.findViewById<TextView>(android.R.id.text2)
 
             policy?.let {
-                text1.text = "${it.policyNumber} - ${it.company}"
-                text2.text = "${it.insuranceType} | $${it.premium} | Exp: ${dateFormat.format(it.expirationDate)}"
+                text1.text = "${it.policyNumber_ens} - ${it.company_ens}"
+                text2.text = "${it.insuranceType_ens} | $${it.premium_ens} | Exp: ${dateFormat.format(it.expirationDate_ens)}"
             }
 
             return view

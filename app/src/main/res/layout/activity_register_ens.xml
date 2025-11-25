@@ -1,192 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/register_ens"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F7F9FC"
-    android:fitsSystemWindows="true">
+    android:background="#F5F7FB"
+    android:padding="12dp">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#003087">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="48dp"
-            android:paddingBottom="32dp">
+            android:layout_height="70dp"
+            android:background="#003F8A"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
 
             <TextView
-                android:id="@+id/tvTitle"
+                android:id="@+id/tvHeader_ens"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="Register New Policy"
+                android:text="@string/main_subtitle_ens"
                 android:textColor="#FFFFFF"
-                android:textSize="26sp" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </LinearLayout>
-    </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/register_ens"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="32dp">
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="4dp"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardForm"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="-30dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvTitle_ens"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_add_policy_ens"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#005BBB"
+                    android:padding="12dp"
+                    android:background="#EEF3FF" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="28dp">
+                    android:padding="16dp">
 
-                    <!-- Todos tus campos exactamente iguales -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    <EditText
+                        android:id="@+id/etPolicyNumber_ens"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp"
-                        app:hintTextColor="#003087"
-                        app:startIconDrawable="@android:drawable/ic_menu_manage"
-                        app:startIconTint="#003087">
+                        android:hint="@string/hint_policy_number_ens"
+                        android:inputType="textCapCharacters"
+                        android:layout_marginBottom="16dp" />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etPolicyNumber"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Policy Number"
-                            android:inputType="textCapCharacters" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    <Spinner
+                        android:id="@+id/spinnerCompany_ens"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp"
-                        app:startIconDrawable="@android:drawable/ic_menu_info_details"
-                        app:startIconTint="#003087">
+                        android:layout_marginBottom="16dp" />
 
-                        <AutoCompleteTextView
-                            android:id="@+id/spinnerCompany"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Insurance Company"
-                            android:inputType="none" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    <Spinner
+                        android:id="@+id/spinnerType_ens"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp"
-                        app:startIconDrawable="@android:drawable/ic_menu_gallery"
-                        app:startIconTint="#003087">
+                        android:layout_marginBottom="16dp" />
 
-                        <AutoCompleteTextView
-                            android:id="@+id/spinnerType"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Coverage Type"
-                            android:inputType="none" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    <EditText
+                        android:id="@+id/etStartDate_ens"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp"
-                        app:endIconMode="clear_text"
-                        app:startIconDrawable="@android:drawable/ic_menu_today"
-                        app:startIconTint="#003087">
+                        android:hint="@string/hint_start_date_ens"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:layout_marginBottom="16dp" />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etStartDate"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:clickable="true"
-                            android:cursorVisible="false"
-                            android:focusable="false"
-                            android:hint="Start Date (MM/dd/yyyy)"
-                            android:inputType="none" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    <EditText
+                        android:id="@+id/etExpirationDate_ens"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp"
-                        app:endIconMode="clear_text"
-                        app:startIconDrawable="@android:drawable/ic_menu_day"
-                        app:startIconTint="#003087">
+                        android:hint="@string/hint_expiration_date_ens"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:layout_marginBottom="16dp" />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etExpirationDate"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:clickable="true"
-                            android:cursorVisible="false"
-                            android:focusable="false"
-                            android:hint="Expiration Date (MM/dd/yyyy)"
-                            android:inputType="none" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    <EditText
+                        android:id="@+id/etPremium_ens"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="32dp"
-                        app:prefixText="$ "
-                        app:startIconDrawable="@android:drawable/ic_menu_send"
-                        app:startIconTint="#003087">
+                        android:hint="@string/hint_premium_ens"
+                        android:inputType="numberDecimal"
+                        android:layout_marginBottom="24dp" />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etPremium"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Annual Premium"
-                            android:inputType="numberDecimal" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnSave"
+                    <Button
+                        android:id="@+id/btnSave_ens"
                         android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:backgroundTint="#003087"
-                        android:text="Register Policy"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_register_policy_ens"
+                        android:textAllCaps="false"
+                        android:background="#005BBB"
                         android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:cornerRadius="12dp"
-                        app:icon="@android:drawable/ic_menu_save"
-                        app:iconGravity="textStart"
-                        app:iconPadding="12dp"
-                        app:iconTint="#FFFFFF" />
+                        android:layout_marginBottom="12dp" />
 
+                    <Button
+                        android:id="@+id/btnView_ens"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="View policy"
+                        android:textAllCaps="false"
+                        android:background="#003F8A"
+                        android:textColor="#FFFFFF"
+                        android:visibility="gone"
+                        android:layout_marginBottom="12dp" />
+
+                    <Button
+                        android:id="@+id/btnDelete_ens"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Delete policy"
+                        android:textAllCaps="false"
+                        android:background="#B00020"
+                        android:textColor="#FFFFFF"
+                        android:visibility="gone" />
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</ScrollView>

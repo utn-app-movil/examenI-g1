@@ -1,65 +1,69 @@
 package cr.ac.utn.movil.controllers
 
 import android.content.Context
+import cr.ac.utn.movil.R
 import cr.ac.utn.movil.data.MemoryDataManager
 import cr.ac.utn.movil.entities.InsurancePolicy
-import cr.ac.utn.movil.R
 
-class InsurancePolicyController_ens(context: Context) {
+class InsurancePolicyController_ens(private val context_ens: Context) {
 
-    private val dataManager = MemoryDataManager
-    private val ctx = context.applicationContext
+    private val dataManager_ens = MemoryDataManager
+    private val ctx_ens = context_ens.applicationContext
 
-    private val companies = listOf(
-        ctx.getString(R.string.select_company_default),
-        ctx.getString(R.string.company_ins),
-        ctx.getString(R.string.company_mapfre),
-        ctx.getString(R.string.company_magisterio),
-        ctx.getString(R.string.company_panamerican),
-        ctx.getString(R.string.company_assa),
-        ctx.getString(R.string.company_qualitas),
-        ctx.getString(R.string.company_sura)
+    fun getCompaniesList_ens() = listOf(
+        ctx_ens.getString(R.string.select_company_default_ens),
+        ctx_ens.getString(R.string.company_ins_ens),
+        ctx_ens.getString(R.string.company_mapfre_ens),
+        ctx_ens.getString(R.string.company_magisterio_ens),
+        ctx_ens.getString(R.string.company_panamerican_ens),
+        ctx_ens.getString(R.string.company_assa_ens),
+        ctx_ens.getString(R.string.company_qualitas_ens),
+        ctx_ens.getString(R.string.company_sura_ens)
     )
 
-    private val coverageTypes = listOf(
-        ctx.getString(R.string.select_type_default),
-        ctx.getString(R.string.type_vehicle),
-        ctx.getString(R.string.type_fire),
-        ctx.getString(R.string.type_liability),
-        ctx.getString(R.string.type_grouplife),
-        ctx.getString(R.string.type_health),
-        ctx.getString(R.string.type_surety),
-        ctx.getString(R.string.type_marine),
-        ctx.getString(R.string.type_engineering)
+    fun getCoverageTypesList_ens() = listOf(
+        ctx_ens.getString(R.string.select_type_default_ens),
+        ctx_ens.getString(R.string.type_vehicle_ens),
+        ctx_ens.getString(R.string.type_fire_ens),
+        ctx_ens.getString(R.string.type_liability_ens),
+        ctx_ens.getString(R.string.type_grouplife_ens),
+        ctx_ens.getString(R.string.type_health_ens),
+        ctx_ens.getString(R.string.type_surety_ens),
+        ctx_ens.getString(R.string.type_marine_ens),
+        ctx_ens.getString(R.string.type_engineering_ens)
     )
 
-    fun getCompaniesList() = companies
-    fun getCoverageTypesList() = coverageTypes
+    fun addPolicy_ens(policy: InsurancePolicy): Result<String> {
+        if (dataManager_ens.getById(policy.policyNumber_ens) != null)
+            return Result.failure(Exception(ctx_ens.getString(R.string.error_policy_exists_ens)))
 
-    fun addPolicy(policy: InsurancePolicy): Result<String> {
-        if (dataManager.getById(policy.policyNumber) != null)
-            return Result.failure(Exception(ctx.getString(R.string.error_policy_exists)))
-        if (!policy.expirationDate.after(policy.startDate))
-            return Result.failure(Exception(ctx.getString(R.string.error_expiration_before_start)))
-        if (policy.premium <= 0)
-            return Result.failure(Exception(ctx.getString(R.string.error_invalid_premium)))
+        if (!policy.expirationDate_ens.after(policy.startDate_ens))
+            return Result.failure(Exception(ctx_ens.getString(R.string.error_expiration_before_start_ens)))
 
-        dataManager.add(policy)
-        return Result.success(ctx.getString(R.string.success_policy_saved))
+        if (policy.premium_ens <= 0)
+            return Result.failure(Exception(ctx_ens.getString(R.string.error_invalid_premium_ens)))
+
+        dataManager_ens.add(policy)
+        return Result.success(ctx_ens.getString(R.string.success_policy_saved_ens))
     }
 
-    fun updatePolicy(policy: InsurancePolicy): Result<String> {
-        val existing = dataManager.getById(policy.policyNumber)
-        if (existing != null && existing !== policy)
-            return Result.failure(Exception(ctx.getString(R.string.error_policy_exists)))
-        if (!policy.expirationDate.after(policy.startDate))
-            return Result.failure(Exception(ctx.getString(R.string.error_expiration_before_start)))
+    fun updatePolicy_ens(policy: InsurancePolicy): Result<String> {
+        val existing = dataManager_ens.getById(policy.policyNumber_ens)
+            ?: return Result.failure(Exception("Policy not found"))
 
-        dataManager.update(policy)
-        return Result.success(ctx.getString(R.string.success_policy_updated))
+        if (!policy.expirationDate_ens.after(policy.startDate_ens))
+            return Result.failure(Exception(ctx_ens.getString(R.string.error_expiration_before_start_ens)))
+
+        dataManager_ens.update(policy)
+        return Result.success(ctx_ens.getString(R.string.success_policy_updated_ens))
     }
 
-    fun deletePolicy(policyNumber: String) = dataManager.remove(policyNumber)
-    fun getAllPolicies() = dataManager.getAll().filterIsInstance<InsurancePolicy>()
-    fun getPolicyByNumber(number: String) = dataManager.getById(number) as? InsurancePolicy
+    fun deletePolicy_ens(policyNumber: String) =
+        dataManager_ens.remove(policyNumber)
+
+    fun getAllPolicies_ens() =
+        dataManager_ens.getAll().filterIsInstance<InsurancePolicy>()
+
+    fun getPolicyByNumber_ens(number: String) =
+        dataManager_ens.getById(number) as? InsurancePolicy
 }
