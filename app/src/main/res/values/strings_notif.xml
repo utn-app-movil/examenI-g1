@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Tittle_notif">NOTIFICATION CENTER</string>
+    <string name="SenderName_notif">Sender Name</string>
+    <string name="SenderFLName_notif">Sender first last name</string>
+    <string name="emailTittle_notif">Email tittle</string>
+    <string name="scheduledSendDate_notif">Scheduled date of email</string>
+    <string name="CC_notif">CC</string>
+    <string name="CCO_notif">CCO</string>
+</resources>

@@ -11,7 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExamenI">
-
+        <activity
+            android:name=".NotificationActivity"
+            android:exported="false" />
+      
+        <activity
+            android:name=".ContainerActivity_ship"
+            android:exported="false" />
+      
         <activity
             android:name=".ProdProductionOrderActivity"
             android:exported="false" />
@@ -23,8 +30,7 @@
         <activity
             android:name=".activity.SinpeActivity"
             android:exported="false" />
-
-
+t
         <activity
             android:name=".vehActivity"
             android:exported="true"
@@ -46,6 +52,10 @@
 
 
         <activity
+            android:name=".ActivityVaccine"
+            android:exported="false" />
+        <activity
+
             android:name=".MainActivity"
             android:exported="true">
 
@@ -56,6 +66,9 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".bid_mainactivity"
+            android:exported="false" />
 
         <!-- Water Quality Monitoring Activities -->
         <activity
@@ -86,16 +99,16 @@
         <activity android:name=".fli_ViewFlightsActivity" />
         <activity android:name=".fli_UpdateFlightActivity" />
 
-
         <activity
             android:name=".PayenActivity"
             android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"
-                />
+                android:value=".MainActivity"/>
         </activity>
 
-    </application>
+        <!-- Recruitment screen -->
+        <activity android:name=".recru_Activity" android:exported="false" />
 
+    </application>
 </manifest>
