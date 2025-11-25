@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pha_scroll_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/pha_layout_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/pha_txt_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pha_title"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:paddingBottom="8dp" />
+
+        <!-- Patient ID -->
+        <TextView
+            android:id="@+id/pha_lbl_patient_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pha_label_patient_id" />
+
+        <EditText
+            android:id="@+id/pha_edt_patient_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="@string/pha_hint_patient_id" />
+
+        <!-- Patient name -->
+        <TextView
+            android:id="@+id/pha_lbl_patient_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pha_label_patient_name"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/pha_edt_patient_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="@string/pha_hint_patient_name" />
+
+        <!-- Medicines multi-selection -->
+        <TextView
+            android:id="@+id/pha_lbl_medicines"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pha_label_medicines"
+            android:layout_marginTop="8dp" />
+
+        <ListView
+            android:id="@+id/pha_lst_medicines"
+            android:layout_width="match_parent"
+            android:layout_height="177dp"
+            android:choiceMode="multipleChoice"
+            android:dividerHeight="1dp" />
+
+        <!-- Total amount -->
+        <TextView
+            android:id="@+id/pha_lbl_total_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pha_label_total_amount"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/pha_edt_total_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="@string/pha_hint_total_amount" />
+
+        <!-- Purchase date & time -->
+        <TextView
+            android:id="@+id/pha_lbl_purchase_datetime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pha_label_purchase_datetime"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:id="@+id/pha_edt_purchase_datetime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:clickable="true"
+            android:hint="@string/pha_hint_select_datetime" />
+
+        <!-- Buttons -->
+        <LinearLayout
+            android:id="@+id/pha_layout_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="12dp">
+
+            <Button
+                android:id="@+id/pha_btn_save"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/pha_button_save" />
+
+            <Button
+                android:id="@+id/pha_btn_update"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/pha_button_update"
+                android:layout_marginStart="4dp" />
+
+            <Button
+                android:id="@+id/pha_btn_delete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/pha_button_delete"
+                android:layout_marginStart="4dp" />
+
+            <Button
+                android:id="@+id/pha_btn_clear"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/pha_button_clear"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+
+        <!-- List of stored purchases -->
+        <TextView
+            android:id="@+id/pha_lbl_list_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pha_list_title"
+            android:layout_marginTop="12dp" />
+
+        <ListView
+            android:id="@+id/pha_lst_purchases"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:dividerHeight="1dp" />
+
+    </LinearLayout>
+</ScrollView>

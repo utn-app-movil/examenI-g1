@@ -14,11 +14,11 @@
         <activity
             android:name=".NotificationActivity"
             android:exported="false" />
-      
+
         <activity
             android:name=".ContainerActivity_ship"
             android:exported="false" />
-      
+
         <activity
             android:name=".ProdProductionOrderActivity"
             android:exported="false" />
@@ -50,12 +50,15 @@ t
             android:label="Nursing Control"
             android:exported="false" />
 
+        <activity
+            android:name=".PhaPharmacyActivity"
+            android:exported="false" />
 
         <activity
             android:name=".ActivityVaccine"
             android:exported="false" />
-        <activity
 
+        <activity
             android:name=".MainActivity"
             android:exported="true">
 

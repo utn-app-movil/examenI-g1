@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import cr.ac.utn.movil.activity.SinpeActivity
+import cr.ac.utn.movil.controller.med_NursingControlActivity
+import cr.ac.utn.movil.exchange.ExchangeActivity
+import cr.ac.utn.movil.ui.mark_CampaignActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,10 +68,12 @@ class MainActivity : AppCompatActivity() {
             //eve_
         })
 
-        val btnPharmacy_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnPharmacy_main.setOnClickListener(View.OnClickListener{ view->
-            //pha_
-        })
+        val btnPharmacy_main = findViewById<Button>(R.id.btnPharmacy_main)
+        btnPharmacy_main.setOnClickListener {
+            val intent = Intent(this, PhaPharmacyActivity::class.java)
+            startActivity(intent)
+        }
+
 
         val btnRecruitering_main = findViewById<Button>(R.id.btnRecruitering_main)
         btnRecruitering_main.setOnClickListener(View.OnClickListener{ view->
