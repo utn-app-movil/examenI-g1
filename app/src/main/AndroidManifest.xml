@@ -12,8 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExamenI">
         <activity
+            android:name=".NotificationActivity"
+            android:exported="false" />
+      
+        <activity
             android:name=".ContainerActivity_ship"
             android:exported="false" />
+      
         <activity
             android:name=".ProdProductionOrderActivity"
             android:exported="false" />
@@ -25,8 +30,7 @@
         <activity
             android:name=".activity.SinpeActivity"
             android:exported="false" />
-
-
+t
         <activity
             android:name=".vehActivity"
             android:exported="true"
