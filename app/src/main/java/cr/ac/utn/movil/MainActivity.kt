@@ -28,10 +28,10 @@ class MainActivity : AppCompatActivity() {
             //app_
         })
 
-        val btnVaccine_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnVaccine_main.setOnClickListener(View.OnClickListener{ view->
-            //vac_
-
+        val btnVaccine = findViewById<Button>(R.id.btnVaccine_main)
+        btnVaccine.setOnClickListener(View.OnClickListener{ view->
+            val intentActivity = Intent(this, ActivityVaccine::class.java)
+            startActivity(intentActivity)
         })
 
         val btnLicense_main = findViewById<Button>(R.id.btnLicense_main)
