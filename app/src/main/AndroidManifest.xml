@@ -13,14 +13,76 @@
         android:theme="@style/Theme.ExamenI">
 
         <activity
+            android:name=".ProdProductionOrderActivity"
+            android:exported="false" />
+      
+        <activity
+            android:name=".Lic_ControlActivity"
+            android:exported="false" />
+      
+        <activity
+            android:name=".activity.SinpeActivity"
+            android:exported="false" />
+
+
+        <activity
+            android:name=".vehActivity"
+            android:exported="true"
+            tools:ignore="Instantiatable">
+        </activity>
+
+        <!-- add ExchangeActivity -->
+        <activity android:name=".exchange.ExchangeActivity" />
+
+        <!-- MainActivity with launcher -->
+        <activity
+            android:name=".item_med_nursing_record"
+            android:exported="false" />
+      
+        <activity
+            android:name=".controller.med_NursingControlActivity"
+            android:label="Nursing Control"
+            android:exported="false" />
+  
+        <activity
             android:name=".MainActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Water Quality Monitoring Activities -->
+        <activity
+            android:name=".WatMainActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".WatListActivity"
+            android:exported="false"
+            android:parentActivityName=".WatMainActivity" />
+
+        <activity
+            android:name=".ui.mark_CampaignActivity"
+            android:label="Campaign Registration"
+            android:exported="false" />
+
+        <activity
+            android:name=".InventoryListActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".InventoryDetailActivity"
+            android:exported="false" />
+
+        <activity android:name=".fli_FlightActivity" />
+        <activity android:name=".fli_FlightMenuActivity" />
+        <activity android:name=".fli_ViewFlightsActivity" />
+        <activity android:name=".fli_UpdateFlightActivity" />
 
         <!-- Recruitment screen -->
         <activity android:name=".recru_Activity" android:exported="false" />
