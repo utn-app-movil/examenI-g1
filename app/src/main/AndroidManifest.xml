@@ -55,7 +55,6 @@
             </intent-filter>
         </activity>
 
-
         <!-- Water Quality Monitoring Activities -->
         <activity
             android:name=".WatMainActivity"
@@ -85,6 +84,8 @@
         <activity android:name=".fli_ViewFlightsActivity" />
         <activity android:name=".fli_UpdateFlightActivity" />
 
-    </application>
+        <!-- Recruitment screen -->
+        <activity android:name=".recru_Activity" android:exported="false" />
 
+    </application>
 </manifest>

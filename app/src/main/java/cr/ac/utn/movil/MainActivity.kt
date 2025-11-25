@@ -70,9 +70,11 @@ class MainActivity : AppCompatActivity() {
             //pha_
         })
 
-        val btnRecruitering_main = findViewById<Button>(R.id.btnTemplate_main)
+        val btnRecruitering_main = findViewById<Button>(R.id.btnRecruitering_main)
         btnRecruitering_main.setOnClickListener(View.OnClickListener{ view->
             //recru_
+            util.openActivity(this,
+                recru_Activity::class.java)
         })
 
         val btnBidding_main = findViewById<Button>(R.id.btnTemplate_main)
