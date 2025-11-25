@@ -1,0 +1,69 @@
+<resources>
+    <!-- General -->
+    <string name="prod_screen_title">Production orders</string>
+    <string name="prod_menu_add">Add order</string>
+    <string name="prod_menu_list">Orders list</string>
+
+    <!-- Labels -->
+    <string name="prod_label_order_number">Order number</string>
+    <string name="prod_label_products">Products</string>
+    <string name="prod_label_quantity">Quantity</string>
+    <string name="prod_label_start_date">Start date</string>
+    <string name="prod_label_end_date">End date</string>
+    <string name="prod_label_company">Company</string>
+    <string name="prod_label_selected_products">Selected products</string>
+
+    <!-- Inputs hints -->
+    <string name="prod_hint_order_number">Enter order number</string>
+    <string name="prod_hint_quantity">Enter quantity</string>
+    <string name="prod_hint_start_date">Select start date</string>
+    <string name="prod_hint_end_date">Select end date</string>
+    <string name="prod_hint_company">Select company</string>
+
+    <!-- Buttons -->
+    <string name="prod_btn_save">Save</string>
+    <string name="prod_btn_update">Update</string>
+    <string name="prod_btn_delete">Delete</string>
+    <string name="prod_btn_clear">Clear</string>
+    <string name="prod_btn_select_products">Select products</string>
+
+    <!-- Validation messages -->
+    <string name="prod_error_order_number_required">Order number is required</string>
+    <string name="prod_error_quantity_required">Quantity is required</string>
+    <string name="prod_error_quantity_invalid">Quantity must be greater than zero</string>
+    <string name="prod_error_start_date_required">Start date is required</string>
+    <string name="prod_error_end_date_required">End date is required</string>
+    <string name="prod_error_end_date_invalid">End date must be after start date</string>
+    <string name="prod_error_company_required">Company is required</string>
+    <string name="prod_error_products_required">At least one product must be selected</string>
+
+    <!-- Messages -->
+    <string name="prod_msg_order_saved">Order saved successfully</string>
+    <string name="prod_msg_order_updated">Order updated successfully</string>
+    <string name="prod_msg_order_deleted">Order deleted successfully</string>
+    <string name="prod_msg_confirm_delete">Do you want to delete this order?</string>
+
+    <!-- List data -->
+    <string name="prod_product_table">Table</string>
+    <string name="prod_product_chair">Chair</string>
+    <string name="prod_product_desk">Desk</string>
+    <string name="prod_product_shelf">Shelf</string>
+
+    <string name="prod_company_1">Company A</string>
+    <string name="prod_company_2">Company B</string>
+    <string name="prod_company_3">Company C</string>
+
+    <!-- Arrays for spinners / multiselect -->
+    <string-array name="prod_products_array">
+        <item>@string/prod_product_table</item>
+        <item>@string/prod_product_chair</item>
+        <item>@string/prod_product_desk</item>
+        <item>@string/prod_product_shelf</item>
+    </string-array>
+
+    <string-array name="prod_companies_array">
+        <item>@string/prod_company_1</item>
+        <item>@string/prod_company_2</item>
+        <item>@string/prod_company_3</item>
+    </string-array>
+</resources>

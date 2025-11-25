@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/prod_background">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/prod_tv_title"
+            android:text="Production orders"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#212121"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/prod_tv_subtitle"
+            android:text="Register and manage production orders"
+            android:textSize="14sp"
+            android:textColor="#757575"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="20dp" />
+
+        <LinearLayout
+            android:id="@+id/prod_card_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:orientation="vertical"
+            android:background="@drawable/prod_card_background"
+            android:elevation="6dp">
+
+            <TextView
+                android:text="Order number"
+                android:textStyle="bold"
+                android:textColor="#424242"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/prod_et_order_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="Enter order number"
+                android:layout_marginBottom="12dp"/>
+
+            <TextView
+                android:text="Products"
+                android:textStyle="bold"
+                android:textColor="#424242"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/prod_btn_select_products"
+                android:text="SELECT PRODUCTS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/prod_button_secondary"
+                android:textColor="#424242"
+                android:layout_marginTop="4dp"/>
+
+            <TextView
+                android:id="@+id/prod_tv_selected_products"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#616161"
+                android:textSize="13sp"
+                android:layout_marginBottom="12dp"/>
+
+            <TextView
+                android:text="Quantity"
+                android:textStyle="bold"
+                android:textColor="#424242"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/prod_et_quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter quantity"
+                android:inputType="number"
+                android:layout_marginBottom="12dp"/>
+
+            <TextView
+                android:text="Start date"
+                android:textStyle="bold"
+                android:textColor="#424242"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/prod_et_start_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Select start date"
+                android:focusable="false"
+                android:clickable="true"
+                android:layout_marginBottom="12dp"/>
+
+            <TextView
+                android:text="End date"
+                android:textStyle="bold"
+                android:textColor="#424242"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/prod_et_end_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Select end date"
+                android:focusable="false"
+                android:clickable="true"
+                android:layout_marginBottom="12dp"/>
+
+            <TextView
+                android:text="Company"
+                android:textStyle="bold"
+                android:textColor="#424242"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Spinner
+                android:id="@+id/prod_sp_company"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="10dp">
+
+                <Button
+                    android:id="@+id/prod_btn_load"
+                    android:text="LOAD"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/prod_button_secondary"
+                    android:textColor="#424242"/>
+
+                <Button
+                    android:id="@+id/prod_btn_save"
+                    android:text="SAVE"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/prod_button_primary"
+                    android:textColor="@android:color/white"/>
+
+                <Button
+                    android:id="@+id/prod_btn_update"
+                    android:text="UPDATE"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/prod_button_secondary"
+                    android:textColor="#424242"/>
+
+                <Button
+                    android:id="@+id/prod_btn_delete"
+                    android:text="DELETE"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/prod_button_secondary"
+                    android:textColor="#424242"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/prod_btn_clear"
+                android:text="CLEAR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/prod_button_secondary"
+                android:textColor="#424242"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
