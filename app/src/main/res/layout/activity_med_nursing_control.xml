@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <EditText
+            android:id="@+id/med_et_patient_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/med_nursing_control_hint_patient_name" />
+
+        <EditText
+            android:id="@+id/med_et_blood_pressure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/med_nursing_control_hint_blood_pressure" />
+
+        <EditText
+            android:id="@+id/med_et_weight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/med_nursing_control_hint_weight"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/med_et_height"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/med_nursing_control_hint_height"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/med_et_oxygen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/med_nursing_control_hint_oxygen"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/med_btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/med_nursing_control_btn_save" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/med_rv_records"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp" />
+
+    </LinearLayout>
+</ScrollView>
