@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- TITLE -->
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingBottom="20dp"
+            android:text="Vaccination Control"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#000000" />
+
+        <!-- SEARCH BUTTON ABOVE ID -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="right">
+
+            <ImageButton
+                android:id="@+id/btnVaccineSearch_vac"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:padding="8dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Search"
+                android:src="@android:drawable/ic_menu_search" />
+        </LinearLayout>
+
+        <!-- PATIENT ID -->
+        <EditText
+            android:id="@+id/txtId_vac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Patient ID"
+            android:inputType="number"
+            android:layout_marginTop="4dp" />
+
+        <!-- PATIENT NAME -->
+        <EditText
+            android:id="@+id/txtName_vac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Name"
+            android:inputType="textPersonName" />
+
+        <!-- PATIENT FIRST NAME -->
+        <EditText
+            android:id="@+id/txtFirstName_vac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="First Name"
+            android:inputType="textPersonName" />
+
+        <!-- VACCINE TYPE (as dropdown look) -->
+        <TextView
+            android:id="@+id/txtVaccineType_vac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:padding="12dp"
+            android:hint="Select Vaccine Type"
+            android:background="@android:drawable/editbox_background"
+            android:drawableRight="@android:drawable/arrow_down_float"
+            android:drawablePadding="16dp" />
+
+        <!-- VACCINATION SITE -->
+        <EditText
+            android:id="@+id/txtSite_vac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Vaccination Site"
+            android:inputType="text" />
+
+        <!-- DATE -->
+        <EditText
+            android:id="@+id/txtDate_vac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Date (YYYY-MM-DD)"
+            android:focusable="false"
+            android:inputType="date" />
+
+        <!-- TIME -->
+        <EditText
+            android:id="@+id/txtTime_vac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Time (HH:MM)"
+            android:focusable="false"
+            android:inputType="time" />
+
+        <!-- SAVE BUTTON (optional) -->
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Save Vaccination Record" />
+
+    </LinearLayout>
+</ScrollView>

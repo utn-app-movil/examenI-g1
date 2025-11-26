@@ -11,6 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExamenI">
+        <activity
+            android:name=".NotificationActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ContainerActivity_ship"
+            android:exported="false" />
 
         <!-- add ExchangeActivity -->
         <activity android:name=".exchange.ExchangeActivity" />
@@ -25,6 +32,9 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".bid_mainactivity"
+            android:exported="false" />
 
         <!-- Water Quality Monitoring Activities -->
         <activity
