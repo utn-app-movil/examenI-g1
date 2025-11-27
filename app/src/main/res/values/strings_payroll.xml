@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Hints -->
+    <string name="pay_hint_name">First name</string>
+    <string name="pay_hint_first_last_name">First last name</string>
+    <string name="pay_hint_second_last_name">Second last name</string>
+    <string name="pay_hint_phone">Phone number</string>
+    <string name="pay_hint_email">Email</string>
+    <string name="pay_hint_address">Address</string>
+    <string name="pay_hint_country">Country</string>
+    <string name="pay_hint_employee_number">Employee number</string>
+    <string name="pay_hint_position">Job position</string>
+    <string name="pay_hint_salary">Salary</string>
+    <string name="pay_hint_iban">IBAN account</string>
+
+    <!-- Labels -->
+    <string name="pay_label_month">Payment month</string>
+    <string name="pay_label_bank">Bank</string>
+
+    <!-- Buttons -->
+    <string name="pay_btn_add">ADD</string>
+    <string name="pay_btn_update">UPDATE</string>
+    <string name="pay_btn_delete">DELETE</string>
+    <string name="pay_btn_clear">CLEAR</string>
+
+    <!-- Errors -->
+    <string name="pay_error_empty_fields">All fields are required.</string>
+    <string name="pay_error_invalid_phone">Phone number is not valid.</string>
+    <string name="pay_error_invalid_salary">Salary must be greater than zero.</string>
+    <string name="pay_error_invalid_iban">IBAN is not valid. Use CR followed by 20 digits.</string>
+    <string name="pay_error_invalid_month">Payment month cannot be later than the current month.</string>
+
+    <!-- Arrays -->
+    <string-array name="pay_months_array">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+
+    <string-array name="pay_banks_array">
+        <item>BNCR</item>
+        <item>BCR</item>
+        <item>Scotiabank</item>
+        <item>Davivienda</item>
+    </string-array>
+</resources>

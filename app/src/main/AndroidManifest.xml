@@ -19,6 +19,7 @@
             android:name=".ContainerActivity_ship"
             android:exported="false" />
 
+
         <activity
             android:name=".ProdProductionOrderActivity"
             android:exported="false" />
@@ -30,7 +31,7 @@
         <activity
             android:name=".activity.SinpeActivity"
             android:exported="false" />
-t
+
         <activity
             android:name=".vehActivity"
             android:exported="true"
@@ -112,6 +113,10 @@ t
 
         <!-- Recruitment screen -->
         <activity android:name=".recru_Activity" android:exported="false" />
+        
+        <activity
+            android:name=".PayPayrollActivity"
+            android:exported="false" />
 
     </application>
 </manifest>
