@@ -3,7 +3,7 @@ package cr.ac.utn.movil.identities
 abstract class Identifier {
     private var _id: String =""
 
-    open var ID: String
+    var ID: String
         get() = this._id
         set(value) {this._id = value}
 

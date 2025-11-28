@@ -13,9 +13,9 @@ data class InsurancePolicy(
     var premium_ens: Double = 0.0
 ) : Identifier() {
 
-    override var ID: String
-        get() = policyNumber_ens
-        set(value) { policyNumber_ens = value }
+    init {
+        ID = policyNumber_ens
+    }
 
     override val FullDescription: String
         get() = "$company_ens - $insuranceType_ens ($${String.format("%,.2f", premium_ens)})"
