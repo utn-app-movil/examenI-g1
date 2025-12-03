@@ -97,10 +97,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val btnPayroll_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnPayroll_main.setOnClickListener(View.OnClickListener{ view->
-            //pay_
-        })
+        val btnPayroll_main = findViewById<Button>(R.id.btnPayroll_main)
+        btnPayroll_main.setOnClickListener {
+            val intent = Intent(this, PayPayrollActivity::class.java)
+            startActivity(intent)
+        }
 
         val btnInventory_main = findViewById<Button>(R.id.btnInventory_main)
         btnInventory_main.setOnClickListener(View.OnClickListener{ view->
