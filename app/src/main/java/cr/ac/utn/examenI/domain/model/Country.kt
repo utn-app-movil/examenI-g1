@@ -1,4 +1,4 @@
-package cr.ac.utn.movil.domain.model
+package cr.ac.utn.examenI.domain.model
 
 enum class Country(
     val displayName: String,

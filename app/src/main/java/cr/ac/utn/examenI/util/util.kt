@@ -1,4 +1,4 @@
-package cr.ac.utn.movil.util
+package cr.ac.utn.examenI.util
 
 import android.app.AlertDialog
 import android.content.Context

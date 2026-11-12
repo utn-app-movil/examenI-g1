@@ -1,7 +1,7 @@
-package cr.ac.utn.movil.cr.ac.utn.movil.data.memory
+package cr.ac.utn.movil.cr.ac.utn.examenI.data.memory
 
-import cr.ac.utn.movil.cr.ac.utn.movil.domain.repository.IRepository
-import cr.ac.utn.movil.cr.ac.utn.movil.domain.model.Identifier
+import cr.ac.utn.movil.cr.ac.utn.examenI.domain.model.Identifier
+import cr.ac.utn.movil.cr.ac.utn.examenI.domain.repository.IRepository
 
 class MemoryDataManager: IRepository {
     private val objList = mutableListOf<Identifier>()

@@ -1,8 +1,6 @@
-package cr.ac.utn.movil.cr.ac.utn.movil.domain.model
+package cr.ac.utn.examenI.domain.model
 
-import cr.ac.utn.movil.cr.ac.utn.movil.domain.model.Identifier
-import cr.ac.utn.movil.domain.model.Country
-import java.time.LocalDate
+import cr.ac.utn.examenI.domain.model.Country
 
 data class Person(
     override val id: String,

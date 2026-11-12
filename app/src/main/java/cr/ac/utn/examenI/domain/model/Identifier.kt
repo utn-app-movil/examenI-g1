@@ -1,4 +1,4 @@
-package cr.ac.utn.movil.cr.ac.utn.movil.domain.model
+package cr.ac.utn.examenI.domain.model
 
 abstract class Identifier (
     open val id: String
