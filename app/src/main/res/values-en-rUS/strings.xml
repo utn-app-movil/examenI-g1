@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Examen 1</string>
+    <string name="TextSave">Save</string>
+    <string name="TextDelete">Delete</string>
+    <string name="TextCancel">Cancel</string>
+    <string name="TextSaveSuccess">Information was saved successfully</string>
+    <string name="TextDeleteSuccess">Information was deleted successfully</string>
+    <string name="TextDuplicateData">The information is already stored.</string>
+    <string name="TextSaveError">Error to save the information.</string>
+    <string name="TextDeleteError">Error to delete the information.</string>
+    <string name="TextSaveQuestion">Do you want to save the information.</string>
+    <string name="TextDeleteQuestion">Do you want to delete the information.</string>
+    <string name="TextYes">Yes</string>
+    <string name="TextNo">No</string>
+    <string name="TextDataNoFound">The information was not found.</string>
+    <string name="TextTitleDialogQuestion">Question</string>
+</resources>

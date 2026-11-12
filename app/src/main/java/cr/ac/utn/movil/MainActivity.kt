@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import cr.ac.utn.examenI.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -158,7 +159,7 @@ class MainActivity : AppCompatActivity() {
 
         val btnTemplate_main = findViewById<Button>(R.id.btnTemplate_main)
         btnTemplate_main.setOnClickListener(View.OnClickListener{ view->
-            Toast.makeText(this, R.string.TextTemplate, Toast.LENGTH_LONG).show()
+
         })
     }
 }

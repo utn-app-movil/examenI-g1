@@ -1,27 +1,28 @@
 package cr.ac.utn.movil.util
 
 import android.app.AlertDialog
-import cr.ac.utn.movil.R
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import cr.ac.utn.examenI.R
 import java.time.LocalDate
-import java.util.Locale
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.Locale
 
-const val EXTRA_ID = "cr.ac.utn.appmovil.Id"
-
+const val EXTRA_ID = "cr.ac.utn.movil.Id"
 class util {
-    companion object  {
-        fun openActivity(context: Context, objclass: Class<*>, keyName: String="", value: String?=null){
-            val intent = Intent(context, objclass).apply { putExtra(keyName, value)}
+    companion object{
+        fun openActivity(context: Context
+                         , objClass: Class<*>, extraName: String="", value: String?=null){
+            val intent= Intent(context
+                , objClass).apply { putExtra(extraName, value)}
             context.startActivity(intent)
         }
 
         fun parseStringToDateModern(dateString: String, pattern: String): LocalDate? {
             return try {
-                val formatter = DateTimeFormatter.ofPattern(pattern, Locale.getDefault())
+                val formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy", Locale.getDefault())
                 LocalDate.parse(dateString, formatter)
             } catch (e: Exception) {
                 e.printStackTrace()
