@@ -3,7 +3,7 @@ package cr.ac.utn.examenI.viewmodel
 import androidx.lifecycle.ViewModel
 import cr.ac.utn.examenI.data.memory.MemoryDataManager
 import cr.ac.utn.examenI.domain.model.Person
-import cr.ac.utn.movil.cr.ac.utn.examenI.domain.repository.IRepository
+import cr.ac.utn.examenI.domain.repository.IRepository
 
 class PersonViewModel: ViewModel() {
     companion object{

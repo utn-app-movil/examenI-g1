@@ -1,4 +1,4 @@
-package cr.ac.utn.movil.cr.ac.utn.examenI.domain.repository
+package cr.ac.utn.examenI.domain.repository
 
 import cr.ac.utn.examenI.domain.model.Identifier
 
