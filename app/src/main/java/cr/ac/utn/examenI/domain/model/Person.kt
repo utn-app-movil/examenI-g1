@@ -1,6 +1,6 @@
 package cr.ac.utn.examenI.domain.model
 
-import cr.ac.utn.examenI.domain.model.Country
+import java.time.LocalDate
 
 data class Person(
     override val id: String,
@@ -11,6 +11,7 @@ data class Person(
     val email: String,
     val address: String,
     val country: Country,
+    val birthDate: LocalDate
 ): Identifier(id) {
     override val fullName = "$name $firstName $lastName"
 }

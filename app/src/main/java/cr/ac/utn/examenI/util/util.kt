@@ -4,6 +4,10 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.view.Gravity
+import android.widget.LinearLayout
+import android.widget.ProgressBar
+import android.widget.TextView
 import cr.ac.utn.examenI.R
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -54,6 +58,39 @@ class util {
             val alert = dialogBuilder.create()
             alert.setTitle(context.getString(R.string.TextTitleDialogQuestion))
             alert.show()
+        }
+
+        fun showProgressDialog(context: Context, message: String): AlertDialog {
+            val progressBar = ProgressBar(context).apply {
+                isIndeterminate = true
+                setPadding(40, 40, 40, 40)
+            }
+            val container = LinearLayout(context).apply {
+                orientation = LinearLayout.HORIZONTAL
+                setPadding(50, 40, 50, 40)
+                gravity = Gravity.CENTER_VERTICAL
+                addView(
+                    progressBar,
+                    LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                    )
+                )
+                val tvMessage = TextView(context).apply {
+                    text = message
+                    textSize = 16f
+                    setPadding(30, 0, 0, 0)
+                }
+                addView(tvMessage)
+            }
+
+            val builder = AlertDialog.Builder(context)
+                .setView(container)
+                .setCancelable(false)
+
+            val dialog = builder.create()
+            dialog.show()
+            return dialog
         }
     }
 }

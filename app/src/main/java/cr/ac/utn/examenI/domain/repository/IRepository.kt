@@ -1,6 +1,6 @@
 package cr.ac.utn.movil.cr.ac.utn.examenI.domain.repository
 
-import cr.ac.utn.movil.cr.ac.utn.examenI.domain.model.Identifier
+import cr.ac.utn.examenI.domain.model.Identifier
 
 interface IRepository {
     fun getAll(): List<Identifier>

@@ -1,6 +1,6 @@
-package cr.ac.utn.movil.cr.ac.utn.examenI.data.memory
+package cr.ac.utn.examenI.data.memory
 
-import cr.ac.utn.movil.cr.ac.utn.examenI.domain.model.Identifier
+import cr.ac.utn.examenI.domain.model.Identifier
 import cr.ac.utn.movil.cr.ac.utn.examenI.domain.repository.IRepository
 
 class MemoryDataManager: IRepository {
