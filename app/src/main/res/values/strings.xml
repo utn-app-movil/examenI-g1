@@ -16,5 +16,10 @@
     <string name="TextNo">No</string>
     <string name="TextDataNoFound">La información no existe.</string>
     <string name="TextTitleDialogQuestion">Pregunta</string>
+    <string name="TextAppointment">Cita</string>
+    <string name="TextTemplate">Plantilla</string>
+    <string name="TextSave_menu">Guardar</string>
+    <string name="TextDelete_menu">Eliminar</string>
+    <string name="TextCancel_mnu">Cancelar</string>
     <!-- NO CHANGE ANY ITEM -->
 </resources>

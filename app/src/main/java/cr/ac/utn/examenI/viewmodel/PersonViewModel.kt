@@ -17,7 +17,7 @@ class PersonViewModel: ViewModel() {
         }
 
         fun getPersonById(id: String): Person?{
-            return repository.getById(id) as Person?
+            return repository.getById(id) as? Person
         }
 
         fun savePerson(person: Person){
