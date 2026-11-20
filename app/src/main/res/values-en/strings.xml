@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Examen 1</string>
+    <string name="TextSave">Save</string>
+    <string name="TextDelete">Delete</string>
+    <string name="TextCancel">Cancel</string>
+    <string name="TextSaveSuccess">Information was saved successfully</string>
+    <string name="TextDeleteSuccess">Information was deleted successfully</string>
+    <string name="TextDuplicateData">The information is already stored.</string>
+    <string name="TextSaveError">Error to save the information.</string>
+    <string name="TextDeleteError">Error to delete the information.</string>
+    <string name="TextSaveQuestion">Do you want to save the information.</string>
+    <string name="TextDeleteQuestion">Do you want to delete the information.</string>
+    <string name="TextYes">Yes</string>
+    <string name="TextNo">No</string>
+    <string name="TextDataNoFound">The information was not found.</string>
+    <string name="TextTitleDialogQuestion">Question</string>
+    <string name="TextAppointment">Appointment</string>
+    <string name="TextTemplate">Template</string>
+    <string name="TextSave_menu">Save</string>
+    <string name="TextDelete_menu">Delete</string>
+    <string name="TextCancel_mnu">Cancel</string>
+
+    <!-- Feature Titles -->
+    <string name="app_title">Appointments</string>
+    <string name="vac_title">Vaccination Control</string>
+    <string name="lic_title">License Renewal</string>
+    <string name="med_title">Nursing Check</string>
+    <string name="cli_title">Client Management</string>
+    <string name="fli_title">Flight Registry</string>
+    <string name="rent_title">Rentals</string>
+    <string name="eve_title">Events</string>
+    <string name="pha_title">Pharmacy</string>
+    <string name="recru_title">Recruitment</string>
+    <string name="bid_title">Bidding</string>
+    <string name="sin_title">Sinpe Mobile</string>
+    <string name="pay_title">Payroll</string>
+    <string name="inv_title">Inventory</string>
+    <string name="ship_title">Shipping</string>
+    <string name="lib_title">Library</string>
+    <string name="exch_title">Exchange Rate</string>
+    <string name="train_title">Training</string>
+    <string name="notif_title">Email Service</string>
+    <string name="dash_title">Contribution Dashboard</string>
+    <string name="payen_title">Insurance Reimbursement</string>
+    <string name="mark_title">Marketing Campaigns</string>
+    <string name="ens_title">Enterprise Insurance</string>
+    <string name="veh_title">Vehicle Range</string>
+    <string name="prod_title">Production Orders</string>
+    <string name="wat_title">Water Quality</string>
+    <string name="recy_title">Recycling</string>
+    <string name="template_title">Template</string>
+    <string name="text_add_new">Add New</string>
+</resources>
