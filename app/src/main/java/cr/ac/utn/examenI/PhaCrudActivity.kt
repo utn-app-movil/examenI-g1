@@ -43,18 +43,18 @@ class PhaCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.txtId)
-        txtName = findViewById(R.id.txtName)
-        txtFirstName = findViewById(R.id.txtFirstName)
-        txtLastName = findViewById(R.id.txtLastName)
-        txtPhone = findViewById(R.id.txtPhone)
-        txtEmail = findViewById(R.id.txtEmail)
-        txtAddress = findViewById(R.id.txtAddress)
-        chkCrema = findViewById(R.id.chkCrema)
-        chkPastillas = findViewById(R.id.chkPastillas)
-        chkJarabe = findViewById(R.id.chkJarabe)
-        txtTotalAmount = findViewById(R.id.txtTotalAmount)
-        txtDateTime = findViewById(R.id.txtDateTime)
+        txtId = findViewById(R.id.pha_txtId)
+        txtName = findViewById(R.id.pha_txtName)
+        txtFirstName = findViewById(R.id.pha_txtFirstName)
+        txtLastName = findViewById(R.id.pha_txtLastName)
+        txtPhone = findViewById(R.id.pha_txtPhone)
+        txtEmail = findViewById(R.id.pha_txtEmail)
+        txtAddress = findViewById(R.id.pha_txtAddress)
+        chkCrema = findViewById(R.id.pha_chkCrema)
+        chkPastillas = findViewById(R.id.pha_chkPastillas)
+        chkJarabe = findViewById(R.id.pha_chkJarabe)
+        txtTotalAmount = findViewById(R.id.pha_txtTotalAmount)
+        txtDateTime = findViewById(R.id.pha_txtDateTime)
 
         currentId = intent.getStringExtra(EXTRA_ID)
         if (!currentId.isNullOrEmpty()) {
@@ -63,9 +63,9 @@ class PhaCrudActivity : AppCompatActivity() {
             txtDateTime.setText(util.formatDateTime(LocalDateTime.now()))
         }
 
-        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.pha_btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.pha_btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.pha_btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {

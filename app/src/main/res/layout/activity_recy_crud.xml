@@ -18,21 +18,22 @@
             android:textStyle="bold"
             android:paddingBottom="12dp" />
 
-        <EditText android:id="@+id/txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID Persona" />
-        <EditText android:id="@+id/txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre" />
-        <EditText android:id="@+id/txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
-        <EditText android:id="@+id/txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
-        <EditText android:id="@+id/txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="number" />
-        <EditText android:id="@+id/txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
-        <EditText android:id="@+id/txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
+        <EditText android:id="@+id/recy_txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID" />
+        <EditText android:id="@+id/recy_txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre Persona" />
+        <EditText android:id="@+id/recy_txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
+        <EditText android:id="@+id/recy_txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
+        <EditText android:id="@+id/recy_txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="phone" />
+        <EditText android:id="@+id/recy_txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
+        <EditText android:id="@+id/recy_txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
 
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Tipo Residuo:" android:layout_marginTop="8dp"/>
-        <Spinner android:id="@+id/spnWasteType" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Tipo de Residuo:" android:layout_marginTop="8dp"/>
+        <Spinner android:id="@+id/recy_spnWasteType" android:layout_width="match_parent" android:layout_height="wrap_content" />
 
-        <EditText android:id="@+id/txtWeight" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Peso Kg (&gt; 0)" android:inputType="numberDecimal" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Peso (kg &gt; 0):" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/recy_txtWeight" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="5.5" android:inputType="numberDecimal" />
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fecha y Hora (yyyy-MM-dd HH:mm):" android:layout_marginTop="8dp"/>
-        <EditText android:id="@+id/txtDateTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2024-01-15 10:00" />
+        <EditText android:id="@+id/recy_txtDateTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2024-01-15 10:00" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,9 +41,9 @@
             android:orientation="horizontal"
             android:layout_marginTop="16dp">
 
-            <Button android:id="@+id/btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
-            <Button android:id="@+id/btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
-            <Button android:id="@+id/btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
+            <Button android:id="@+id/recy_btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
+            <Button android:id="@+id/recy_btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
+            <Button android:id="@+id/recy_btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

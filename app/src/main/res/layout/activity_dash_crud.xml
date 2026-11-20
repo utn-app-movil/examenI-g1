@@ -18,17 +18,22 @@
             android:textStyle="bold"
             android:paddingBottom="12dp" />
 
-        <EditText android:id="@+id/txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID Persona" />
-        <EditText android:id="@+id/txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre" />
-        <EditText android:id="@+id/txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
-        <EditText android:id="@+id/txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
-        <EditText android:id="@+id/txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="number" />
-        <EditText android:id="@+id/txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
-        <EditText android:id="@+id/txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
+        <EditText android:id="@+id/dash_txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID" />
+        <EditText android:id="@+id/dash_txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre Persona" />
+        <EditText android:id="@+id/dash_txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
+        <EditText android:id="@+id/dash_txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
+        <EditText android:id="@+id/dash_txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="phone" />
+        <EditText android:id="@+id/dash_txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
+        <EditText android:id="@+id/dash_txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
 
-        <EditText android:id="@+id/txtContributionsTotal" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Total Contribuciones" android:inputType="numberDecimal" />
-        <EditText android:id="@+id/txtMonth" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Mes (1-12)" android:inputType="number" />
-        <EditText android:id="@+id/txtYear" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Año (ej. 2025)" android:inputType="number" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Total Contribuciones:" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/dash_txtContributionsTotal" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="150000.0" android:inputType="numberDecimal" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Mes (1-12):" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/dash_txtMonth" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="5" android:inputType="number" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Año:" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/dash_txtYear" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2025" android:inputType="number" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,9 +41,9 @@
             android:orientation="horizontal"
             android:layout_marginTop="16dp">
 
-            <Button android:id="@+id/btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
-            <Button android:id="@+id/btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
-            <Button android:id="@+id/btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
+            <Button android:id="@+id/dash_btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
+            <Button android:id="@+id/dash_btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
+            <Button android:id="@+id/dash_btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

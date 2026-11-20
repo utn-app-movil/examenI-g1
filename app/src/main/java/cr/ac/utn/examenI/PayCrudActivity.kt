@@ -46,19 +46,19 @@ class PayCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.txtId)
-        txtName = findViewById(R.id.txtName)
-        txtFirstName = findViewById(R.id.txtFirstName)
-        txtLastName = findViewById(R.id.txtLastName)
-        txtPhone = findViewById(R.id.txtPhone)
-        txtEmail = findViewById(R.id.txtEmail)
-        txtAddress = findViewById(R.id.txtAddress)
-        txtEmployeeNum = findViewById(R.id.txtEmployeeNum)
-        txtPosition = findViewById(R.id.txtPosition)
-        txtSalary = findViewById(R.id.txtSalary)
-        txtIban = findViewById(R.id.txtIban)
-        txtMonth = findViewById(R.id.txtMonth)
-        spnBank = findViewById(R.id.spnBank)
+        txtId = findViewById(R.id.pay_txtId)
+        txtName = findViewById(R.id.pay_txtName)
+        txtFirstName = findViewById(R.id.pay_txtFirstName)
+        txtLastName = findViewById(R.id.pay_txtLastName)
+        txtPhone = findViewById(R.id.pay_txtPhone)
+        txtEmail = findViewById(R.id.pay_txtEmail)
+        txtAddress = findViewById(R.id.pay_txtAddress)
+        txtEmployeeNum = findViewById(R.id.pay_txtEmployeeNum)
+        txtPosition = findViewById(R.id.pay_txtPosition)
+        txtSalary = findViewById(R.id.pay_txtSalary)
+        txtIban = findViewById(R.id.pay_txtIban)
+        txtMonth = findViewById(R.id.pay_txtMonth)
+        spnBank = findViewById(R.id.pay_spnBank)
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, banks)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -71,9 +71,9 @@ class PayCrudActivity : AppCompatActivity() {
             txtMonth.setText(LocalDate.now().monthValue.toString())
         }
 
-        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.pay_btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.pay_btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.pay_btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {
@@ -107,7 +107,6 @@ class PayCrudActivity : AppCompatActivity() {
             return
         }
 
-        // Validate IBAN format (e.g., ^[A-Z]{2}\d{15,28}$)
         val ibanRegex = Regex("""^[A-Z]{2}\d{15,28}$""")
         if (!ibanRegex.matches(ibanStr)) {
             Toast.makeText(this, "Formato de IBAN inválido (debe iniciar con código de país y dígitos).", Toast.LENGTH_SHORT).show()

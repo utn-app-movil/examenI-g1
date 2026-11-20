@@ -26,10 +26,10 @@ class DashListActivity : AppCompatActivity(), OnItemClickListener {
             insets
         }
 
-        rvList = findViewById(R.id.rvList)
+        rvList = findViewById(R.id.dash_rvList)
         rvList.layoutManager = LinearLayoutManager(this)
 
-        findViewById<Button>(R.id.btnAdd).setOnClickListener {
+        findViewById<Button>(R.id.dash_btnAdd).setOnClickListener {
             util.openActivity(this, DashCrudActivity::class.java)
         }
     }

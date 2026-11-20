@@ -43,18 +43,18 @@ class TrainCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.txtId)
-        txtName = findViewById(R.id.txtName)
-        txtFirstName = findViewById(R.id.txtFirstName)
-        txtLastName = findViewById(R.id.txtLastName)
-        txtPhone = findViewById(R.id.txtPhone)
-        txtEmail = findViewById(R.id.txtEmail)
-        txtAddress = findViewById(R.id.txtAddress)
-        chkKotlin = findViewById(R.id.chkKotlin)
-        chkAndroid = findViewById(R.id.chkAndroid)
-        chkGit = findViewById(R.id.chkGit)
-        chkScrum = findViewById(R.id.chkScrum)
-        txtDateTime = findViewById(R.id.txtDateTime)
+        txtId = findViewById(R.id.train_txtId)
+        txtName = findViewById(R.id.train_txtName)
+        txtFirstName = findViewById(R.id.train_txtFirstName)
+        txtLastName = findViewById(R.id.train_txtLastName)
+        txtPhone = findViewById(R.id.train_txtPhone)
+        txtEmail = findViewById(R.id.train_txtEmail)
+        txtAddress = findViewById(R.id.train_txtAddress)
+        chkKotlin = findViewById(R.id.train_chkKotlin)
+        chkAndroid = findViewById(R.id.train_chkAndroid)
+        chkGit = findViewById(R.id.train_chkGit)
+        chkScrum = findViewById(R.id.train_chkScrum)
+        txtDateTime = findViewById(R.id.train_txtDateTime)
 
         currentId = intent.getStringExtra(EXTRA_ID)
         if (!currentId.isNullOrEmpty()) {
@@ -63,9 +63,9 @@ class TrainCrudActivity : AppCompatActivity() {
             txtDateTime.setText(util.formatDateTime(LocalDateTime.now().plusDays(1)))
         }
 
-        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.train_btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.train_btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.train_btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {

@@ -47,19 +47,19 @@ class ShipCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.txtId)
-        txtName = findViewById(R.id.txtName)
-        txtFirstName = findViewById(R.id.txtFirstName)
-        txtLastName = findViewById(R.id.txtLastName)
-        txtPhone = findViewById(R.id.txtPhone)
-        txtEmail = findViewById(R.id.txtEmail)
-        txtAddress = findViewById(R.id.txtAddress)
-        txtContainerNum = findViewById(R.id.txtContainerNum)
-        spnContainerType = findViewById(R.id.spnContainerType)
-        txtTemp = findViewById(R.id.txtTemp)
-        txtWeight = findViewById(R.id.txtWeight)
-        spnProduct = findViewById(R.id.spnProduct)
-        txtDateTime = findViewById(R.id.txtDateTime)
+        txtId = findViewById(R.id.ship_txtId)
+        txtName = findViewById(R.id.ship_txtName)
+        txtFirstName = findViewById(R.id.ship_txtFirstName)
+        txtLastName = findViewById(R.id.ship_txtLastName)
+        txtPhone = findViewById(R.id.ship_txtPhone)
+        txtEmail = findViewById(R.id.ship_txtEmail)
+        txtAddress = findViewById(R.id.ship_txtAddress)
+        txtContainerNum = findViewById(R.id.ship_txtContainerNum)
+        spnContainerType = findViewById(R.id.ship_spnContainerType)
+        txtTemp = findViewById(R.id.ship_txtTemp)
+        txtWeight = findViewById(R.id.ship_txtWeight)
+        spnProduct = findViewById(R.id.ship_spnProduct)
+        txtDateTime = findViewById(R.id.ship_txtDateTime)
 
         val adapterType = ArrayAdapter(this, android.R.layout.simple_spinner_item, containerTypes)
         adapterType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -76,9 +76,9 @@ class ShipCrudActivity : AppCompatActivity() {
             txtDateTime.setText(util.formatDateTime(LocalDateTime.now()))
         }
 
-        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.ship_btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.ship_btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.ship_btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {
@@ -118,7 +118,6 @@ class ShipCrudActivity : AppCompatActivity() {
             return
         }
 
-        // Unique container num
         val duplicateContainer = ShipViewModel.getAll().any { it.containerNum == containerNum && it.id != id }
         if (duplicateContainer) {
             Toast.makeText(this, "El número de contenedor ya está registrado.", Toast.LENGTH_SHORT).show()

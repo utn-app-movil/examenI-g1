@@ -18,27 +18,31 @@
             android:textStyle="bold"
             android:paddingBottom="12dp" />
 
-        <EditText android:id="@+id/txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID" />
-        <EditText android:id="@+id/txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre" />
-        <EditText android:id="@+id/txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
-        <EditText android:id="@+id/txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
-        <EditText android:id="@+id/txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="number" />
-        <EditText android:id="@+id/txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
-        <EditText android:id="@+id/txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
+        <EditText android:id="@+id/exch_txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID" />
+        <EditText android:id="@+id/exch_txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre Persona" />
+        <EditText android:id="@+id/exch_txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
+        <EditText android:id="@+id/exch_txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
+        <EditText android:id="@+id/exch_txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="phone" />
+        <EditText android:id="@+id/exch_txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
+        <EditText android:id="@+id/exch_txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
 
-        <EditText android:id="@+id/txtExchangeRate" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Tipo de Cambio (ej 520.5)" android:inputType="numberDecimal" />
-        <EditText android:id="@+id/txtAmountToExchange" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Monto a Cambiar" android:inputType="numberDecimal" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Valor Tipo de Cambio:" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/exch_txtExchangeRate" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="520.0" android:inputType="numberDecimal" />
 
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Moneda:" android:layout_marginTop="8dp"/>
-        <Spinner android:id="@+id/spnCurrencyType" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Monto a Cambiar:" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/exch_txtAmountToExchange" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="100.0" android:inputType="numberDecimal" />
 
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Banco:" android:layout_marginTop="8dp"/>
-        <Spinner android:id="@+id/spnBank" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Tipo de Moneda:" android:layout_marginTop="8dp"/>
+        <Spinner android:id="@+id/exch_spnCurrencyType" android:layout_width="match_parent" android:layout_height="wrap_content" />
 
-        <EditText android:id="@+id/txtTotalAmountToPay" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Monto Total a Pagar" android:enabled="false" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Entidad Bancaria:" android:layout_marginTop="8dp"/>
+        <Spinner android:id="@+id/exch_spnBank" android:layout_width="match_parent" android:layout_height="wrap_content" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Monto Total a Pagar:" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/exch_txtTotalAmountToPay" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="52000.0" android:enabled="false" />
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fecha y Hora (&lt;= ahora):" android:layout_marginTop="8dp"/>
-        <EditText android:id="@+id/txtDateTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2024-01-15 10:00" />
+        <EditText android:id="@+id/exch_txtDateTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2024-01-15 10:00" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,9 +50,9 @@
             android:orientation="horizontal"
             android:layout_marginTop="16dp">
 
-            <Button android:id="@+id/btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
-            <Button android:id="@+id/btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
-            <Button android:id="@+id/btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
+            <Button android:id="@+id/exch_btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
+            <Button android:id="@+id/exch_btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
+            <Button android:id="@+id/exch_btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

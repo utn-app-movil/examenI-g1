@@ -46,21 +46,21 @@ class WatCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.txtId)
-        txtName = findViewById(R.id.txtName)
-        txtFirstName = findViewById(R.id.txtFirstName)
-        txtLastName = findViewById(R.id.txtLastName)
-        txtPhone = findViewById(R.id.txtPhone)
-        txtEmail = findViewById(R.id.txtEmail)
-        txtAddress = findViewById(R.id.txtAddress)
-        txtNisId = findViewById(R.id.txtNisId)
-        txtPh = findViewById(R.id.txtPh)
-        txtTurbidity = findViewById(R.id.txtTurbidity)
-        chkCloro = findViewById(R.id.chkCloro)
-        chkPlomo = findViewById(R.id.chkPlomo)
-        chkBacterias = findViewById(R.id.chkBacterias)
-        chkNitratos = findViewById(R.id.chkNitratos)
-        txtDateTime = findViewById(R.id.txtDateTime)
+        txtId = findViewById(R.id.wat_txtId)
+        txtName = findViewById(R.id.wat_txtName)
+        txtFirstName = findViewById(R.id.wat_txtFirstName)
+        txtLastName = findViewById(R.id.wat_txtLastName)
+        txtPhone = findViewById(R.id.wat_txtPhone)
+        txtEmail = findViewById(R.id.wat_txtEmail)
+        txtAddress = findViewById(R.id.wat_txtAddress)
+        txtNisId = findViewById(R.id.wat_txtNisId)
+        txtPh = findViewById(R.id.wat_txtPh)
+        txtTurbidity = findViewById(R.id.wat_txtTurbidity)
+        chkCloro = findViewById(R.id.wat_chkCloro)
+        chkPlomo = findViewById(R.id.wat_chkPlomo)
+        chkBacterias = findViewById(R.id.wat_chkBacterias)
+        chkNitratos = findViewById(R.id.wat_chkNitratos)
+        txtDateTime = findViewById(R.id.wat_txtDateTime)
 
         currentId = intent.getStringExtra(EXTRA_ID)
         if (!currentId.isNullOrEmpty()) {
@@ -69,9 +69,9 @@ class WatCrudActivity : AppCompatActivity() {
             txtDateTime.setText(util.formatDateTime(LocalDateTime.now()))
         }
 
-        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.wat_btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.wat_btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.wat_btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {

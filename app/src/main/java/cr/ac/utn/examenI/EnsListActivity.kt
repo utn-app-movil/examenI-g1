@@ -26,10 +26,10 @@ class EnsListActivity : AppCompatActivity(), OnItemClickListener {
             insets
         }
 
-        rvList = findViewById(R.id.rvList)
+        rvList = findViewById(R.id.ens_rvList)
         rvList.layoutManager = LinearLayoutManager(this)
 
-        findViewById<Button>(R.id.btnAdd).setOnClickListener {
+        findViewById<Button>(R.id.ens_btnAdd).setOnClickListener {
             util.openActivity(this, EnsCrudActivity::class.java)
         }
     }

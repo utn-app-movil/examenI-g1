@@ -26,10 +26,10 @@ class RentListActivity : AppCompatActivity(), OnItemClickListener {
             insets
         }
 
-        rvList = findViewById(R.id.rvList)
+        rvList = findViewById(R.id.rent_rvList)
         rvList.layoutManager = LinearLayoutManager(this)
 
-        findViewById<Button>(R.id.btnAdd).setOnClickListener {
+        findViewById<Button>(R.id.rent_btnAdd).setOnClickListener {
             util.openActivity(this, RentCrudActivity::class.java)
         }
     }

@@ -18,28 +18,28 @@
             android:textStyle="bold"
             android:paddingBottom="12dp" />
 
-        <EditText android:id="@+id/txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID" />
-        <EditText android:id="@+id/txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre" />
-        <EditText android:id="@+id/txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
-        <EditText android:id="@+id/txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
-        <EditText android:id="@+id/txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="number" />
-        <EditText android:id="@+id/txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
-        <EditText android:id="@+id/txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
+        <EditText android:id="@+id/med_txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID" />
+        <EditText android:id="@+id/med_txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre" />
+        <EditText android:id="@+id/med_txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
+        <EditText android:id="@+id/med_txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
+        <EditText android:id="@+id/med_txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="phone" />
+        <EditText android:id="@+id/med_txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
+        <EditText android:id="@+id/med_txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Presion Arterial (ej. 120/80):" android:layout_marginTop="8dp"/>
-        <EditText android:id="@+id/txtBP" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="120/80" />
+        <EditText android:id="@+id/med_txtBP" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="120/80" />
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Peso (kg):" android:layout_marginTop="8dp"/>
-        <EditText android:id="@+id/txtWeight" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="70.5" android:inputType="numberDecimal" />
+        <EditText android:id="@+id/med_txtWeight" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="70.5" android:inputType="numberDecimal" />
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Estatura (m):" android:layout_marginTop="8dp"/>
-        <EditText android:id="@+id/txtHeight" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="1.75" android:inputType="numberDecimal" />
+        <EditText android:id="@+id/med_txtHeight" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="1.75" android:inputType="numberDecimal" />
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Oxigenacion (%):" android:layout_marginTop="8dp"/>
-        <EditText android:id="@+id/txtOxygen" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="98.0" android:inputType="numberDecimal" />
+        <EditText android:id="@+id/med_txtOxygen" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="98.0" android:inputType="numberDecimal" />
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fecha y Hora (yyyy-MM-dd HH:mm):" android:layout_marginTop="8dp"/>
-        <EditText android:id="@+id/txtDateTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2024-01-15 10:00" />
+        <EditText android:id="@+id/med_txtDateTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2024-01-15 10:00" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,9 +47,9 @@
             android:orientation="horizontal"
             android:layout_marginTop="16dp">
 
-            <Button android:id="@+id/btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
-            <Button android:id="@+id/btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
-            <Button android:id="@+id/btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
+            <Button android:id="@+id/med_btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
+            <Button android:id="@+id/med_btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
+            <Button android:id="@+id/med_btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

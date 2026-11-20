@@ -39,25 +39,25 @@ class DashCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.txtId)
-        txtName = findViewById(R.id.txtName)
-        txtFirstName = findViewById(R.id.txtFirstName)
-        txtLastName = findViewById(R.id.txtLastName)
-        txtPhone = findViewById(R.id.txtPhone)
-        txtEmail = findViewById(R.id.txtEmail)
-        txtAddress = findViewById(R.id.txtAddress)
-        txtContributionsTotal = findViewById(R.id.txtContributionsTotal)
-        txtMonth = findViewById(R.id.txtMonth)
-        txtYear = findViewById(R.id.txtYear)
+        txtId = findViewById(R.id.dash_txtId)
+        txtName = findViewById(R.id.dash_txtName)
+        txtFirstName = findViewById(R.id.dash_txtFirstName)
+        txtLastName = findViewById(R.id.dash_txtLastName)
+        txtPhone = findViewById(R.id.dash_txtPhone)
+        txtEmail = findViewById(R.id.dash_txtEmail)
+        txtAddress = findViewById(R.id.dash_txtAddress)
+        txtContributionsTotal = findViewById(R.id.dash_txtContributionsTotal)
+        txtMonth = findViewById(R.id.dash_txtMonth)
+        txtYear = findViewById(R.id.dash_txtYear)
 
         currentId = intent.getStringExtra(EXTRA_ID)
         if (!currentId.isNullOrEmpty()) {
             loadExistingData(currentId!!)
         }
 
-        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.dash_btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.dash_btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.dash_btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {
@@ -92,7 +92,6 @@ class DashCrudActivity : AppCompatActivity() {
             return
         }
 
-        // Unique combination of person + month + year
         val duplicateCombo = DashViewModel.getAll().any {
             it.id == id && it.month == monthVal && it.year == yearVal && currentId.isNullOrEmpty()
         }

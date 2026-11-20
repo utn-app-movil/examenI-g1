@@ -18,24 +18,24 @@
             android:textStyle="bold"
             android:paddingBottom="12dp" />
 
-        <EditText android:id="@+id/txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID" />
-        <EditText android:id="@+id/txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre Cliente" />
-        <EditText android:id="@+id/txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
-        <EditText android:id="@+id/txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
-        <EditText android:id="@+id/txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="number" />
-        <EditText android:id="@+id/txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
-        <EditText android:id="@+id/txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
+        <EditText android:id="@+id/pha_txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID" />
+        <EditText android:id="@+id/pha_txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre Paciente" />
+        <EditText android:id="@+id/pha_txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
+        <EditText android:id="@+id/pha_txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
+        <EditText android:id="@+id/pha_txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="phone" />
+        <EditText android:id="@+id/pha_txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
+        <EditText android:id="@+id/pha_txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Medicamentos:" android:layout_marginTop="8dp"/>
-        <CheckBox android:id="@+id/chkCrema" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Crema" />
-        <CheckBox android:id="@+id/chkPastillas" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Pastillas" />
-        <CheckBox android:id="@+id/chkJarabe" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Jarabe" />
+        <CheckBox android:id="@+id/pha_chkCrema" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Crema" />
+        <CheckBox android:id="@+id/pha_chkPastillas" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Pastillas" />
+        <CheckBox android:id="@+id/pha_chkJarabe" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Jarabe" />
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Monto Total:" android:layout_marginTop="8dp"/>
-        <EditText android:id="@+id/txtTotalAmount" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="15000" android:inputType="numberDecimal" />
+        <EditText android:id="@+id/pha_txtTotalAmount" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="15000" android:inputType="numberDecimal" />
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fecha y Hora (&lt;= ahora):" android:layout_marginTop="8dp"/>
-        <EditText android:id="@+id/txtDateTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2024-01-15 10:00" />
+        <EditText android:id="@+id/pha_txtDateTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2024-01-15 10:00" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,9 +43,9 @@
             android:orientation="horizontal"
             android:layout_marginTop="16dp">
 
-            <Button android:id="@+id/btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
-            <Button android:id="@+id/btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
-            <Button android:id="@+id/btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
+            <Button android:id="@+id/pha_btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
+            <Button android:id="@+id/pha_btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
+            <Button android:id="@+id/pha_btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

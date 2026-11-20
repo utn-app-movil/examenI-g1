@@ -18,26 +18,26 @@
             android:textStyle="bold"
             android:paddingBottom="12dp" />
 
-        <EditText android:id="@+id/txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID Inspector" />
-        <EditText android:id="@+id/txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre" />
-        <EditText android:id="@+id/txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
-        <EditText android:id="@+id/txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
-        <EditText android:id="@+id/txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="number" />
-        <EditText android:id="@+id/txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
-        <EditText android:id="@+id/txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
+        <EditText android:id="@+id/wat_txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID Dueño" />
+        <EditText android:id="@+id/wat_txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre Dueño" />
+        <EditText android:id="@+id/wat_txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
+        <EditText android:id="@+id/wat_txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
+        <EditText android:id="@+id/wat_txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="phone" />
+        <EditText android:id="@+id/wat_txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
+        <EditText android:id="@+id/wat_txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
 
-        <EditText android:id="@+id/txtNisId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="ID NIS" />
-        <EditText android:id="@+id/txtPh" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="pH (0 - 14)" android:inputType="numberDecimal" />
-        <EditText android:id="@+id/txtTurbidity" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Turbidez (&gt;= 0)" android:inputType="numberDecimal" />
+        <EditText android:id="@+id/wat_txtNisId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="ID NIS" />
+        <EditText android:id="@+id/wat_txtPh" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nivel de pH (0 - 14)" android:inputType="numberDecimal" />
+        <EditText android:id="@+id/wat_txtTurbidity" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Turbidez (&gt;= 0)" android:inputType="numberDecimal" />
 
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Contaminantes:" android:layout_marginTop="8dp"/>
-        <CheckBox android:id="@+id/chkCloro" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Cloro" />
-        <CheckBox android:id="@+id/chkPlomo" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Plomo" />
-        <CheckBox android:id="@+id/chkBacterias" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Bacterias" />
-        <CheckBox android:id="@+id/chkNitratos" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Nitratos" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Contaminantes Detectados:" android:layout_marginTop="8dp"/>
+        <CheckBox android:id="@+id/wat_chkCloro" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Cloro" />
+        <CheckBox android:id="@+id/wat_chkPlomo" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Plomo" />
+        <CheckBox android:id="@+id/wat_chkBacterias" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Bacterias" />
+        <CheckBox android:id="@+id/wat_chkNitratos" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Nitratos" />
 
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fecha Muestra (&lt;= ahora):" android:layout_marginTop="8dp"/>
-        <EditText android:id="@+id/txtDateTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2024-01-15 10:00" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fecha y Hora (&lt;= ahora):" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/wat_txtDateTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2024-01-15 10:00" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,9 +45,9 @@
             android:orientation="horizontal"
             android:layout_marginTop="16dp">
 
-            <Button android:id="@+id/btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
-            <Button android:id="@+id/btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
-            <Button android:id="@+id/btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
+            <Button android:id="@+id/wat_btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
+            <Button android:id="@+id/wat_btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
+            <Button android:id="@+id/wat_btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

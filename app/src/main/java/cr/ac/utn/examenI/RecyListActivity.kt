@@ -26,10 +26,10 @@ class RecyListActivity : AppCompatActivity(), OnItemClickListener {
             insets
         }
 
-        rvList = findViewById(R.id.rvList)
+        rvList = findViewById(R.id.recy_rvList)
         rvList.layoutManager = LinearLayoutManager(this)
 
-        findViewById<Button>(R.id.btnAdd).setOnClickListener {
+        findViewById<Button>(R.id.recy_btnAdd).setOnClickListener {
             util.openActivity(this, RecyCrudActivity::class.java)
         }
     }

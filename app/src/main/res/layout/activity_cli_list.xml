@@ -15,13 +15,13 @@
         android:paddingBottom="8dp" />
 
     <Button
-        android:id="@+id/btnAdd"
+        android:id="@+id/cli_btnAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/text_add_new" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvList"
+        android:id="@+id/cli_rvList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"

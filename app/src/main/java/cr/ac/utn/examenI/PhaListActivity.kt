@@ -26,10 +26,10 @@ class PhaListActivity : AppCompatActivity(), OnItemClickListener {
             insets
         }
 
-        rvList = findViewById(R.id.rvList)
+        rvList = findViewById(R.id.pha_rvList)
         rvList.layoutManager = LinearLayoutManager(this)
 
-        findViewById<Button>(R.id.btnAdd).setOnClickListener {
+        findViewById<Button>(R.id.pha_btnAdd).setOnClickListener {
             util.openActivity(this, PhaCrudActivity::class.java)
         }
     }

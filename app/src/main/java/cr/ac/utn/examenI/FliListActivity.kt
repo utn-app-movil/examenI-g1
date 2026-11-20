@@ -26,10 +26,10 @@ class FliListActivity : AppCompatActivity(), OnItemClickListener {
             insets
         }
 
-        rvList = findViewById(R.id.rvList)
+        rvList = findViewById(R.id.fli_rvList)
         rvList.layoutManager = LinearLayoutManager(this)
 
-        findViewById<Button>(R.id.btnAdd).setOnClickListener {
+        findViewById<Button>(R.id.fli_btnAdd).setOnClickListener {
             util.openActivity(this, FliCrudActivity::class.java)
         }
     }

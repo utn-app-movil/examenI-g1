@@ -49,19 +49,19 @@ class ExchCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.txtId)
-        txtName = findViewById(R.id.txtName)
-        txtFirstName = findViewById(R.id.txtFirstName)
-        txtLastName = findViewById(R.id.txtLastName)
-        txtPhone = findViewById(R.id.txtPhone)
-        txtEmail = findViewById(R.id.txtEmail)
-        txtAddress = findViewById(R.id.txtAddress)
-        txtExchangeRate = findViewById(R.id.txtExchangeRate)
-        txtAmountToExchange = findViewById(R.id.txtAmountToExchange)
-        spnCurrencyType = findViewById(R.id.spnCurrencyType)
-        spnBank = findViewById(R.id.spnBank)
-        txtTotalAmountToPay = findViewById(R.id.txtTotalAmountToPay)
-        txtDateTime = findViewById(R.id.txtDateTime)
+        txtId = findViewById(R.id.exch_txtId)
+        txtName = findViewById(R.id.exch_txtName)
+        txtFirstName = findViewById(R.id.exch_txtFirstName)
+        txtLastName = findViewById(R.id.exch_txtLastName)
+        txtPhone = findViewById(R.id.exch_txtPhone)
+        txtEmail = findViewById(R.id.exch_txtEmail)
+        txtAddress = findViewById(R.id.exch_txtAddress)
+        txtExchangeRate = findViewById(R.id.exch_txtExchangeRate)
+        txtAmountToExchange = findViewById(R.id.exch_txtAmountToExchange)
+        spnCurrencyType = findViewById(R.id.exch_spnCurrencyType)
+        spnBank = findViewById(R.id.exch_spnBank)
+        txtTotalAmountToPay = findViewById(R.id.exch_txtTotalAmountToPay)
+        txtDateTime = findViewById(R.id.exch_txtDateTime)
 
         val adapterCurr = ArrayAdapter(this, android.R.layout.simple_spinner_item, currencies)
         adapterCurr.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -86,9 +86,9 @@ class ExchCrudActivity : AppCompatActivity() {
             txtDateTime.setText(util.formatDateTime(LocalDateTime.now()))
         }
 
-        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.exch_btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.exch_btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.exch_btnCancel).setOnClickListener { finish() }
     }
 
     private fun calculateTotal() {

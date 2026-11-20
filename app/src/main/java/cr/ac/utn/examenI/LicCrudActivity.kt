@@ -44,17 +44,17 @@ class LicCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.txtId)
-        txtName = findViewById(R.id.txtName)
-        txtFirstName = findViewById(R.id.txtFirstName)
-        txtLastName = findViewById(R.id.txtLastName)
-        txtPhone = findViewById(R.id.txtPhone)
-        txtEmail = findViewById(R.id.txtEmail)
-        txtAddress = findViewById(R.id.txtAddress)
-        spnLicenseType = findViewById(R.id.spnLicenseType)
-        txtMedicalCode = findViewById(R.id.txtMedicalCode)
-        txtScore = findViewById(R.id.txtScore)
-        txtDateTime = findViewById(R.id.txtDateTime)
+        txtId = findViewById(R.id.lic_txtId)
+        txtName = findViewById(R.id.lic_txtName)
+        txtFirstName = findViewById(R.id.lic_txtFirstName)
+        txtLastName = findViewById(R.id.lic_txtLastName)
+        txtPhone = findViewById(R.id.lic_txtPhone)
+        txtEmail = findViewById(R.id.lic_txtEmail)
+        txtAddress = findViewById(R.id.lic_txtAddress)
+        spnLicenseType = findViewById(R.id.lic_spnLicenseType)
+        txtMedicalCode = findViewById(R.id.lic_txtMedicalCode)
+        txtScore = findViewById(R.id.lic_txtScore)
+        txtDateTime = findViewById(R.id.lic_txtDateTime)
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, licenseTypes)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -67,9 +67,9 @@ class LicCrudActivity : AppCompatActivity() {
             txtDateTime.setText(util.formatDateTime(LocalDateTime.now()))
         }
 
-        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.lic_btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.lic_btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.lic_btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {

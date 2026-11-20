@@ -26,10 +26,10 @@ class MarkListActivity : AppCompatActivity(), OnItemClickListener {
             insets
         }
 
-        rvList = findViewById(R.id.rvList)
+        rvList = findViewById(R.id.mark_rvList)
         rvList.layoutManager = LinearLayoutManager(this)
 
-        findViewById<Button>(R.id.btnAdd).setOnClickListener {
+        findViewById<Button>(R.id.mark_btnAdd).setOnClickListener {
             util.openActivity(this, MarkCrudActivity::class.java)
         }
     }

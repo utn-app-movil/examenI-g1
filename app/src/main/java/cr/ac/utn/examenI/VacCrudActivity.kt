@@ -43,16 +43,16 @@ class VacCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.txtId)
-        txtName = findViewById(R.id.txtName)
-        txtFirstName = findViewById(R.id.txtFirstName)
-        txtLastName = findViewById(R.id.txtLastName)
-        txtPhone = findViewById(R.id.txtPhone)
-        txtEmail = findViewById(R.id.txtEmail)
-        txtAddress = findViewById(R.id.txtAddress)
-        spnVaccineType = findViewById(R.id.spnVaccineType)
-        txtLocation = findViewById(R.id.txtLocation)
-        txtDateTime = findViewById(R.id.txtDateTime)
+        txtId = findViewById(R.id.vac_txtId)
+        txtName = findViewById(R.id.vac_txtName)
+        txtFirstName = findViewById(R.id.vac_txtFirstName)
+        txtLastName = findViewById(R.id.vac_txtLastName)
+        txtPhone = findViewById(R.id.vac_txtPhone)
+        txtEmail = findViewById(R.id.vac_txtEmail)
+        txtAddress = findViewById(R.id.vac_txtAddress)
+        spnVaccineType = findViewById(R.id.vac_spnVaccineType)
+        txtLocation = findViewById(R.id.vac_txtLocation)
+        txtDateTime = findViewById(R.id.vac_txtDateTime)
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, vaccines)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -65,9 +65,9 @@ class VacCrudActivity : AppCompatActivity() {
             txtDateTime.setText(util.formatDateTime(LocalDateTime.now()))
         }
 
-        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.vac_btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.vac_btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.vac_btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {

@@ -46,19 +46,19 @@ class InvCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.txtId)
-        txtName = findViewById(R.id.txtName)
-        txtFirstName = findViewById(R.id.txtFirstName)
-        txtLastName = findViewById(R.id.txtLastName)
-        txtPhone = findViewById(R.id.txtPhone)
-        txtEmail = findViewById(R.id.txtEmail)
-        txtAddress = findViewById(R.id.txtAddress)
-        txtProductCode = findViewById(R.id.txtProductCode)
-        txtProductName = findViewById(R.id.txtProductName)
-        txtQuantity = findViewById(R.id.txtQuantity)
-        spnSupplier = findViewById(R.id.spnSupplier)
-        txtUnitCost = findViewById(R.id.txtUnitCost)
-        txtDateTime = findViewById(R.id.txtDateTime)
+        txtId = findViewById(R.id.inv_txtId)
+        txtName = findViewById(R.id.inv_txtName)
+        txtFirstName = findViewById(R.id.inv_txtFirstName)
+        txtLastName = findViewById(R.id.inv_txtLastName)
+        txtPhone = findViewById(R.id.inv_txtPhone)
+        txtEmail = findViewById(R.id.inv_txtEmail)
+        txtAddress = findViewById(R.id.inv_txtAddress)
+        txtProductCode = findViewById(R.id.inv_txtProductCode)
+        txtProductName = findViewById(R.id.inv_txtProductName)
+        txtQuantity = findViewById(R.id.inv_txtQuantity)
+        spnSupplier = findViewById(R.id.inv_spnSupplier)
+        txtUnitCost = findViewById(R.id.inv_txtUnitCost)
+        txtDateTime = findViewById(R.id.inv_txtDateTime)
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, suppliers)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -71,9 +71,9 @@ class InvCrudActivity : AppCompatActivity() {
             txtDateTime.setText(util.formatDateTime(LocalDateTime.now()))
         }
 
-        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.inv_btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.inv_btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.inv_btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {

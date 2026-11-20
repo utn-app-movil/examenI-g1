@@ -46,31 +46,31 @@ class CliCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.txtId)
-        txtName = findViewById(R.id.txtName)
-        txtFirstName = findViewById(R.id.txtFirstName)
-        txtLastName = findViewById(R.id.txtLastName)
-        txtPhone = findViewById(R.id.txtPhone)
-        txtEmail = findViewById(R.id.txtEmail)
-        txtAddress = findViewById(R.id.txtAddress)
-        txtCompanyName = findViewById(R.id.txtCompanyName)
-        txtCorporateId = findViewById(R.id.txtCorporateId)
-        txtProvince = findViewById(R.id.txtProvince)
-        txtCanton = findViewById(R.id.txtCanton)
-        txtDistrict = findViewById(R.id.txtDistrict)
-        chkConsulting = findViewById(R.id.chkConsulting)
-        chkSupport = findViewById(R.id.chkSupport)
-        chkDev = findViewById(R.id.chkDev)
-        chkMaint = findViewById(R.id.chkMaint)
+        txtId = findViewById(R.id.cli_txtId)
+        txtName = findViewById(R.id.cli_txtName)
+        txtFirstName = findViewById(R.id.cli_txtFirstName)
+        txtLastName = findViewById(R.id.cli_txtLastName)
+        txtPhone = findViewById(R.id.cli_txtPhone)
+        txtEmail = findViewById(R.id.cli_txtEmail)
+        txtAddress = findViewById(R.id.cli_txtAddress)
+        txtCompanyName = findViewById(R.id.cli_txtCompanyName)
+        txtCorporateId = findViewById(R.id.cli_txtCorporateId)
+        txtProvince = findViewById(R.id.cli_txtProvince)
+        txtCanton = findViewById(R.id.cli_txtCanton)
+        txtDistrict = findViewById(R.id.cli_txtDistrict)
+        chkConsulting = findViewById(R.id.cli_chkConsulting)
+        chkSupport = findViewById(R.id.cli_chkSupport)
+        chkDev = findViewById(R.id.cli_chkDev)
+        chkMaint = findViewById(R.id.cli_chkMaint)
 
         currentId = intent.getStringExtra(EXTRA_ID)
         if (!currentId.isNullOrEmpty()) {
             loadExistingData(currentId!!)
         }
 
-        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.cli_btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.cli_btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.cli_btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {

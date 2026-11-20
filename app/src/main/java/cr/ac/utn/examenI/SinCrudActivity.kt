@@ -43,19 +43,19 @@ class SinCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.txtId)
-        txtName = findViewById(R.id.txtName)
-        txtFirstName = findViewById(R.id.txtFirstName)
-        txtLastName = findViewById(R.id.txtLastName)
-        txtPhone = findViewById(R.id.txtPhone)
-        txtEmail = findViewById(R.id.txtEmail)
-        txtAddress = findViewById(R.id.txtAddress)
-        txtOriginPhone = findViewById(R.id.txtOriginPhone)
-        txtRecipientPhone = findViewById(R.id.txtRecipientPhone)
-        txtRecipientName = findViewById(R.id.txtRecipientName)
-        txtAmount = findViewById(R.id.txtAmount)
-        txtDescription = findViewById(R.id.txtDescription)
-        txtDateTime = findViewById(R.id.txtDateTime)
+        txtId = findViewById(R.id.sin_txtId)
+        txtName = findViewById(R.id.sin_txtName)
+        txtFirstName = findViewById(R.id.sin_txtFirstName)
+        txtLastName = findViewById(R.id.sin_txtLastName)
+        txtPhone = findViewById(R.id.sin_txtPhone)
+        txtEmail = findViewById(R.id.sin_txtEmail)
+        txtAddress = findViewById(R.id.sin_txtAddress)
+        txtOriginPhone = findViewById(R.id.sin_txtOriginPhone)
+        txtRecipientPhone = findViewById(R.id.sin_txtRecipientPhone)
+        txtRecipientName = findViewById(R.id.sin_txtRecipientName)
+        txtAmount = findViewById(R.id.sin_txtAmount)
+        txtDescription = findViewById(R.id.sin_txtDescription)
+        txtDateTime = findViewById(R.id.sin_txtDateTime)
 
         currentId = intent.getStringExtra(EXTRA_ID)
         if (!currentId.isNullOrEmpty()) {
@@ -64,9 +64,9 @@ class SinCrudActivity : AppCompatActivity() {
             txtDateTime.setText(util.formatDateTime(LocalDateTime.now()))
         }
 
-        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.sin_btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.sin_btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.sin_btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {

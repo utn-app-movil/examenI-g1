@@ -45,17 +45,17 @@ class FliCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.txtId)
-        txtName = findViewById(R.id.txtName)
-        txtFirstName = findViewById(R.id.txtFirstName)
-        txtLastName = findViewById(R.id.txtLastName)
-        txtPhone = findViewById(R.id.txtPhone)
-        txtEmail = findViewById(R.id.txtEmail)
-        txtAddress = findViewById(R.id.txtAddress)
-        spnOriginCountry = findViewById(R.id.spnOriginCountry)
-        spnDestCountry = findViewById(R.id.spnDestCountry)
-        txtFlightNum = findViewById(R.id.txtFlightNum)
-        txtDateTime = findViewById(R.id.txtDateTime)
+        txtId = findViewById(R.id.fli_txtId)
+        txtName = findViewById(R.id.fli_txtName)
+        txtFirstName = findViewById(R.id.fli_txtFirstName)
+        txtLastName = findViewById(R.id.fli_txtLastName)
+        txtPhone = findViewById(R.id.fli_txtPhone)
+        txtEmail = findViewById(R.id.fli_txtEmail)
+        txtAddress = findViewById(R.id.fli_txtAddress)
+        spnOriginCountry = findViewById(R.id.fli_spnOriginCountry)
+        spnDestCountry = findViewById(R.id.fli_spnDestCountry)
+        txtFlightNum = findViewById(R.id.fli_txtFlightNum)
+        txtDateTime = findViewById(R.id.fli_txtDateTime)
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, countries)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -69,9 +69,9 @@ class FliCrudActivity : AppCompatActivity() {
             txtDateTime.setText(util.formatDateTime(LocalDateTime.now().plusDays(2)))
         }
 
-        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.fli_btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.fli_btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.fli_btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {
