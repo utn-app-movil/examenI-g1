@@ -26,10 +26,10 @@ class EveListActivity : AppCompatActivity(), OnItemClickListener {
             insets
         }
 
-        rvList = findViewById(R.id.eve_rvList)
+        rvList = findViewById(R.id.rvList)
         rvList.layoutManager = LinearLayoutManager(this)
 
-        findViewById<Button>(R.id.eve_btnAdd).setOnClickListener {
+        findViewById<Button>(R.id.btnAdd).setOnClickListener {
             util.openActivity(this, EveCrudActivity::class.java)
         }
     }

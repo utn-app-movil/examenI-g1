@@ -18,25 +18,25 @@
             android:textStyle="bold"
             android:paddingBottom="12dp" />
 
-        <EditText android:id="@+id/rent_txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID" />
-        <EditText android:id="@+id/rent_txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre Conductor" />
-        <EditText android:id="@+id/rent_txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
-        <EditText android:id="@+id/rent_txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
-        <EditText android:id="@+id/rent_txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="phone" />
-        <EditText android:id="@+id/rent_txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
-        <EditText android:id="@+id/rent_txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
+        <EditText android:id="@+id/txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID" />
+        <EditText android:id="@+id/txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre Conductor" />
+        <EditText android:id="@+id/txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
+        <EditText android:id="@+id/txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
+        <EditText android:id="@+id/txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="number" />
+        <EditText android:id="@+id/txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
+        <EditText android:id="@+id/txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Tipo de Vehiculo:" android:layout_marginTop="8dp"/>
-        <Spinner android:id="@+id/rent_spnVehicleType" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <Spinner android:id="@+id/spnVehicleType" android:layout_width="match_parent" android:layout_height="wrap_content" />
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Placa:" android:layout_marginTop="8dp"/>
-        <EditText android:id="@+id/rent_txtPlate" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Placa del Vehiculo" />
+        <EditText android:id="@+id/txtPlate" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="ABC-123" />
 
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Kilometraje (km):" android:layout_marginTop="8dp"/>
-        <EditText android:id="@+id/rent_txtMileage" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="50000" android:inputType="numberDecimal" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Kilometraje:" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/txtMileage" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="50000" android:inputType="numberDecimal" />
 
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Licencia Conductor:" android:layout_marginTop="8dp"/>
-        <EditText android:id="@+id/rent_txtDriverLicense" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Numero de Licencia" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Licencia Conducir:" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/txtDriverLicense" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="B1" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,9 +44,9 @@
             android:orientation="horizontal"
             android:layout_marginTop="16dp">
 
-            <Button android:id="@+id/rent_btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
-            <Button android:id="@+id/rent_btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
-            <Button android:id="@+id/rent_btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
+            <Button android:id="@+id/btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
+            <Button android:id="@+id/btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
+            <Button android:id="@+id/btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

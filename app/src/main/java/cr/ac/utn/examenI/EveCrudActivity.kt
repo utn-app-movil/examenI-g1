@@ -45,18 +45,18 @@ class EveCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.eve_txtId)
-        txtName = findViewById(R.id.eve_txtName)
-        txtFirstName = findViewById(R.id.eve_txtFirstName)
-        txtLastName = findViewById(R.id.eve_txtLastName)
-        txtPhone = findViewById(R.id.eve_txtPhone)
-        txtEmail = findViewById(R.id.eve_txtEmail)
-        txtAddress = findViewById(R.id.eve_txtAddress)
-        txtInstitution = findViewById(R.id.eve_txtInstitution)
-        txtVenue = findViewById(R.id.eve_txtVenue)
-        txtSeatNum = findViewById(R.id.eve_txtSeatNum)
-        spnEventType = findViewById(R.id.eve_spnEventType)
-        txtDateTime = findViewById(R.id.eve_txtDateTime)
+        txtId = findViewById(R.id.txtId)
+        txtName = findViewById(R.id.txtName)
+        txtFirstName = findViewById(R.id.txtFirstName)
+        txtLastName = findViewById(R.id.txtLastName)
+        txtPhone = findViewById(R.id.txtPhone)
+        txtEmail = findViewById(R.id.txtEmail)
+        txtAddress = findViewById(R.id.txtAddress)
+        txtInstitution = findViewById(R.id.txtInstitution)
+        txtVenue = findViewById(R.id.txtVenue)
+        txtSeatNum = findViewById(R.id.txtSeatNum)
+        spnEventType = findViewById(R.id.spnEventType)
+        txtDateTime = findViewById(R.id.txtDateTime)
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, eventTypes)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -69,9 +69,9 @@ class EveCrudActivity : AppCompatActivity() {
             txtDateTime.setText(util.formatDateTime(LocalDateTime.now().plusDays(1)))
         }
 
-        findViewById<Button>(R.id.eve_btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.eve_btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.eve_btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {
@@ -103,6 +103,7 @@ class EveCrudActivity : AppCompatActivity() {
             return
         }
 
+        // Unique seat per event validation
         val existingWithSeat = EveViewModel.getAll().any { it.venue.equals(venue, ignoreCase = true) && it.seatNumber.equals(seat, ignoreCase = true) && it.id != id }
         if (existingWithSeat) {
             Toast.makeText(this, "El número de asiento ya está ocupado para este evento/lugar.", Toast.LENGTH_SHORT).show()

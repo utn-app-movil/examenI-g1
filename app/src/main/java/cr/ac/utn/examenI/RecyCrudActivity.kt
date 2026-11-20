@@ -43,16 +43,16 @@ class RecyCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.recy_txtId)
-        txtName = findViewById(R.id.recy_txtName)
-        txtFirstName = findViewById(R.id.recy_txtFirstName)
-        txtLastName = findViewById(R.id.recy_txtLastName)
-        txtPhone = findViewById(R.id.recy_txtPhone)
-        txtEmail = findViewById(R.id.recy_txtEmail)
-        txtAddress = findViewById(R.id.recy_txtAddress)
-        spnWasteType = findViewById(R.id.recy_spnWasteType)
-        txtWeight = findViewById(R.id.recy_txtWeight)
-        txtDateTime = findViewById(R.id.recy_txtDateTime)
+        txtId = findViewById(R.id.txtId)
+        txtName = findViewById(R.id.txtName)
+        txtFirstName = findViewById(R.id.txtFirstName)
+        txtLastName = findViewById(R.id.txtLastName)
+        txtPhone = findViewById(R.id.txtPhone)
+        txtEmail = findViewById(R.id.txtEmail)
+        txtAddress = findViewById(R.id.txtAddress)
+        spnWasteType = findViewById(R.id.spnWasteType)
+        txtWeight = findViewById(R.id.txtWeight)
+        txtDateTime = findViewById(R.id.txtDateTime)
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, wasteTypes)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -65,9 +65,9 @@ class RecyCrudActivity : AppCompatActivity() {
             txtDateTime.setText(util.formatDateTime(LocalDateTime.now()))
         }
 
-        findViewById<Button>(R.id.recy_btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.recy_btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.recy_btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {

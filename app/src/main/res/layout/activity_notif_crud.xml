@@ -18,26 +18,26 @@
             android:textStyle="bold"
             android:paddingBottom="12dp" />
 
-        <EditText android:id="@+id/notif_txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID Remitente" />
-        <EditText android:id="@+id/notif_txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre Remitente" />
-        <EditText android:id="@+id/notif_txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
-        <EditText android:id="@+id/notif_txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
-        <EditText android:id="@+id/notif_txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="phone" />
-        <EditText android:id="@+id/notif_txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
-        <EditText android:id="@+id/notif_txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
+        <EditText android:id="@+id/txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID Remitente" />
+        <EditText android:id="@+id/txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre" />
+        <EditText android:id="@+id/txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
+        <EditText android:id="@+id/txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
+        <EditText android:id="@+id/txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="number" />
+        <EditText android:id="@+id/txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email Remitente" android:inputType="textEmailAddress" />
+        <EditText android:id="@+id/txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
 
-        <EditText android:id="@+id/notif_txtEmailTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Titulo del Correo" />
-        <EditText android:id="@+id/notif_txtMessage" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Mensaje del Correo" />
-        <EditText android:id="@+id/notif_txtCC" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="CC (Con Copia)" />
-        <EditText android:id="@+id/notif_txtCCO" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="CCO (Copia Oculta)" />
+        <EditText android:id="@+id/txtEmailTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Titulo del Correo" />
+        <EditText android:id="@+id/txtMessage" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Mensaje" />
+        <EditText android:id="@+id/txtCC" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="CC" />
+        <EditText android:id="@+id/txtCCO" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="CCO" />
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Destinatarios:" android:layout_marginTop="8dp"/>
-        <CheckBox android:id="@+id/notif_chkStudents" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Estudiantes" />
-        <CheckBox android:id="@+id/notif_chkTeachers" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Profesorado" />
-        <CheckBox android:id="@+id/notif_chkStaff" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Administrativos" />
+        <CheckBox android:id="@+id/chkStudents" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Estudiantes" />
+        <CheckBox android:id="@+id/chkTeachers" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Profesorado" />
+        <CheckBox android:id="@+id/chkStaff" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Administrativos" />
 
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fecha y Hora de Envio (&gt; hoy):" android:layout_marginTop="8dp"/>
-        <EditText android:id="@+id/notif_txtSendDateTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2025-06-01 09:00" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fecha Envio (&gt; ahora):" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/txtSendDateTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2025-12-31 10:00" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,9 +45,9 @@
             android:orientation="horizontal"
             android:layout_marginTop="16dp">
 
-            <Button android:id="@+id/notif_btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
-            <Button android:id="@+id/notif_btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
-            <Button android:id="@+id/notif_btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
+            <Button android:id="@+id/btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
+            <Button android:id="@+id/btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
+            <Button android:id="@+id/btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

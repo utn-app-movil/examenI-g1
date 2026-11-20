@@ -37,23 +37,23 @@ class TemplateCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.template_txtId)
-        txtName = findViewById(R.id.template_txtName)
-        txtFirstName = findViewById(R.id.template_txtFirstName)
-        txtLastName = findViewById(R.id.template_txtLastName)
-        txtPhone = findViewById(R.id.template_txtPhone)
-        txtEmail = findViewById(R.id.template_txtEmail)
-        txtAddress = findViewById(R.id.template_txtAddress)
-        txtNote = findViewById(R.id.template_txtNote)
+        txtId = findViewById(R.id.txtId)
+        txtName = findViewById(R.id.txtName)
+        txtFirstName = findViewById(R.id.txtFirstName)
+        txtLastName = findViewById(R.id.txtLastName)
+        txtPhone = findViewById(R.id.txtPhone)
+        txtEmail = findViewById(R.id.txtEmail)
+        txtAddress = findViewById(R.id.txtAddress)
+        txtNote = findViewById(R.id.txtNote)
 
         currentId = intent.getStringExtra(EXTRA_ID)
         if (!currentId.isNullOrEmpty()) {
             loadExistingData(currentId!!)
         }
 
-        findViewById<Button>(R.id.template_btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.template_btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.template_btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {

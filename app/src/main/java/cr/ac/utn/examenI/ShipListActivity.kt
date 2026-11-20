@@ -26,10 +26,10 @@ class ShipListActivity : AppCompatActivity(), OnItemClickListener {
             insets
         }
 
-        rvList = findViewById(R.id.ship_rvList)
+        rvList = findViewById(R.id.rvList)
         rvList.layoutManager = LinearLayoutManager(this)
 
-        findViewById<Button>(R.id.ship_btnAdd).setOnClickListener {
+        findViewById<Button>(R.id.btnAdd).setOnClickListener {
             util.openActivity(this, ShipCrudActivity::class.java)
         }
     }

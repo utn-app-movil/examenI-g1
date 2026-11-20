@@ -46,21 +46,21 @@ class NotifCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.notif_txtId)
-        txtName = findViewById(R.id.notif_txtName)
-        txtFirstName = findViewById(R.id.notif_txtFirstName)
-        txtLastName = findViewById(R.id.notif_txtLastName)
-        txtPhone = findViewById(R.id.notif_txtPhone)
-        txtEmail = findViewById(R.id.notif_txtEmail)
-        txtAddress = findViewById(R.id.notif_txtAddress)
-        txtEmailTitle = findViewById(R.id.notif_txtEmailTitle)
-        txtMessage = findViewById(R.id.notif_txtMessage)
-        txtCC = findViewById(R.id.notif_txtCC)
-        txtCCO = findViewById(R.id.notif_txtCCO)
-        chkStudents = findViewById(R.id.notif_chkStudents)
-        chkTeachers = findViewById(R.id.notif_chkTeachers)
-        chkStaff = findViewById(R.id.notif_chkStaff)
-        txtSendDateTime = findViewById(R.id.notif_txtSendDateTime)
+        txtId = findViewById(R.id.txtId)
+        txtName = findViewById(R.id.txtName)
+        txtFirstName = findViewById(R.id.txtFirstName)
+        txtLastName = findViewById(R.id.txtLastName)
+        txtPhone = findViewById(R.id.txtPhone)
+        txtEmail = findViewById(R.id.txtEmail)
+        txtAddress = findViewById(R.id.txtAddress)
+        txtEmailTitle = findViewById(R.id.txtEmailTitle)
+        txtMessage = findViewById(R.id.txtMessage)
+        txtCC = findViewById(R.id.txtCC)
+        txtCCO = findViewById(R.id.txtCCO)
+        chkStudents = findViewById(R.id.chkStudents)
+        chkTeachers = findViewById(R.id.chkTeachers)
+        chkStaff = findViewById(R.id.chkStaff)
+        txtSendDateTime = findViewById(R.id.txtSendDateTime)
 
         currentId = intent.getStringExtra(EXTRA_ID)
         if (!currentId.isNullOrEmpty()) {
@@ -69,9 +69,9 @@ class NotifCrudActivity : AppCompatActivity() {
             txtSendDateTime.setText(util.formatDateTime(LocalDateTime.now().plusDays(1)))
         }
 
-        findViewById<Button>(R.id.notif_btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.notif_btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.notif_btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {

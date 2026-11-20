@@ -26,10 +26,10 @@ class ExchListActivity : AppCompatActivity(), OnItemClickListener {
             insets
         }
 
-        rvList = findViewById(R.id.exch_rvList)
+        rvList = findViewById(R.id.rvList)
         rvList.layoutManager = LinearLayoutManager(this)
 
-        findViewById<Button>(R.id.exch_btnAdd).setOnClickListener {
+        findViewById<Button>(R.id.btnAdd).setOnClickListener {
             util.openActivity(this, ExchCrudActivity::class.java)
         }
     }

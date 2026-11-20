@@ -46,18 +46,18 @@ class BidCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.bid_txtId)
-        txtName = findViewById(R.id.bid_txtName)
-        txtFirstName = findViewById(R.id.bid_txtFirstName)
-        txtLastName = findViewById(R.id.bid_txtLastName)
-        txtPhone = findViewById(R.id.bid_txtPhone)
-        txtEmail = findViewById(R.id.bid_txtEmail)
-        txtAddress = findViewById(R.id.bid_txtAddress)
-        spnArticleCode = findViewById(R.id.bid_spnArticleCode)
-        txtDescription = findViewById(R.id.bid_txtDescription)
-        txtBidAmount = findViewById(R.id.bid_txtBidAmount)
-        chkAwarded = findViewById(R.id.bid_chkAwarded)
-        txtDateTime = findViewById(R.id.bid_txtDateTime)
+        txtId = findViewById(R.id.txtId)
+        txtName = findViewById(R.id.txtName)
+        txtFirstName = findViewById(R.id.txtFirstName)
+        txtLastName = findViewById(R.id.txtLastName)
+        txtPhone = findViewById(R.id.txtPhone)
+        txtEmail = findViewById(R.id.txtEmail)
+        txtAddress = findViewById(R.id.txtAddress)
+        spnArticleCode = findViewById(R.id.spnArticleCode)
+        txtDescription = findViewById(R.id.txtDescription)
+        txtBidAmount = findViewById(R.id.txtBidAmount)
+        chkAwarded = findViewById(R.id.chkAwarded)
+        txtDateTime = findViewById(R.id.txtDateTime)
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, articleCodes)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -70,9 +70,9 @@ class BidCrudActivity : AppCompatActivity() {
             txtDateTime.setText(util.formatDateTime(LocalDateTime.now()))
         }
 
-        findViewById<Button>(R.id.bid_btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.bid_btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.bid_btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {
@@ -111,6 +111,7 @@ class BidCrudActivity : AppCompatActivity() {
             return
         }
 
+        // Validate bid amount > previous bid for this article
         val maxPrevBid = BidViewModel.getAll()
             .filter { it.articleCode == article && it.id != id }
             .maxOfOrNull { it.bidAmount } ?: 0.0

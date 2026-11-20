@@ -47,19 +47,19 @@ class EnsCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.ens_txtId)
-        txtName = findViewById(R.id.ens_txtName)
-        txtFirstName = findViewById(R.id.ens_txtFirstName)
-        txtLastName = findViewById(R.id.ens_txtLastName)
-        txtPhone = findViewById(R.id.ens_txtPhone)
-        txtEmail = findViewById(R.id.ens_txtEmail)
-        txtAddress = findViewById(R.id.ens_txtAddress)
-        txtPolicyNum = findViewById(R.id.ens_txtPolicyNum)
-        spnCompany = findViewById(R.id.ens_spnCompany)
-        spnInsuranceType = findViewById(R.id.ens_spnInsuranceType)
-        txtPremium = findViewById(R.id.ens_txtPremium)
-        txtStartDate = findViewById(R.id.ens_txtStartDate)
-        txtExpirationDate = findViewById(R.id.ens_txtExpirationDate)
+        txtId = findViewById(R.id.txtId)
+        txtName = findViewById(R.id.txtName)
+        txtFirstName = findViewById(R.id.txtFirstName)
+        txtLastName = findViewById(R.id.txtLastName)
+        txtPhone = findViewById(R.id.txtPhone)
+        txtEmail = findViewById(R.id.txtEmail)
+        txtAddress = findViewById(R.id.txtAddress)
+        txtPolicyNum = findViewById(R.id.txtPolicyNum)
+        spnCompany = findViewById(R.id.spnCompany)
+        spnInsuranceType = findViewById(R.id.spnInsuranceType)
+        txtPremium = findViewById(R.id.txtPremium)
+        txtStartDate = findViewById(R.id.txtStartDate)
+        txtExpirationDate = findViewById(R.id.txtExpirationDate)
 
         val adapterComp = ArrayAdapter(this, android.R.layout.simple_spinner_item, companies)
         adapterComp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -77,9 +77,9 @@ class EnsCrudActivity : AppCompatActivity() {
             txtExpirationDate.setText(util.formatDate(LocalDate.now().plusYears(1)))
         }
 
-        findViewById<Button>(R.id.ens_btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.ens_btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.ens_btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {
@@ -112,6 +112,7 @@ class EnsCrudActivity : AppCompatActivity() {
             return
         }
 
+        // Unique policy num
         val duplicatePolicy = EnsViewModel.getAll().any { it.policyNum.equals(policy, ignoreCase = true) && it.id != id }
         if (duplicatePolicy) {
             Toast.makeText(this, "El número de póliza ya existe.", Toast.LENGTH_SHORT).show()

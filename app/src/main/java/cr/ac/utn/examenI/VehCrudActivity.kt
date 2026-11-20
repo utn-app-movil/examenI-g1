@@ -48,20 +48,20 @@ class VehCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.veh_txtId)
-        txtName = findViewById(R.id.veh_txtName)
-        txtFirstName = findViewById(R.id.veh_txtFirstName)
-        txtLastName = findViewById(R.id.veh_txtLastName)
-        txtPhone = findViewById(R.id.veh_txtPhone)
-        txtEmail = findViewById(R.id.veh_txtEmail)
-        txtAddress = findViewById(R.id.veh_txtAddress)
-        txtVehicleId = findViewById(R.id.veh_txtVehicleId)
-        txtRangeKm = findViewById(R.id.veh_txtRangeKm)
-        txtInitialBattery = findViewById(R.id.veh_txtInitialBattery)
-        txtFinalBattery = findViewById(R.id.veh_txtFinalBattery)
-        spnBrand = findViewById(R.id.veh_spnBrand)
-        spnVehicleType = findViewById(R.id.veh_spnVehicleType)
-        txtChargeDate = findViewById(R.id.veh_txtChargeDate)
+        txtId = findViewById(R.id.txtId)
+        txtName = findViewById(R.id.txtName)
+        txtFirstName = findViewById(R.id.txtFirstName)
+        txtLastName = findViewById(R.id.txtLastName)
+        txtPhone = findViewById(R.id.txtPhone)
+        txtEmail = findViewById(R.id.txtEmail)
+        txtAddress = findViewById(R.id.txtAddress)
+        txtVehicleId = findViewById(R.id.txtVehicleId)
+        txtRangeKm = findViewById(R.id.txtRangeKm)
+        txtInitialBattery = findViewById(R.id.txtInitialBattery)
+        txtFinalBattery = findViewById(R.id.txtFinalBattery)
+        spnBrand = findViewById(R.id.spnBrand)
+        spnVehicleType = findViewById(R.id.spnVehicleType)
+        txtChargeDate = findViewById(R.id.txtChargeDate)
 
         val adapterBrand = ArrayAdapter(this, android.R.layout.simple_spinner_item, brands)
         adapterBrand.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -78,9 +78,9 @@ class VehCrudActivity : AppCompatActivity() {
             txtChargeDate.setText(util.formatDateTime(LocalDateTime.now()))
         }
 
-        findViewById<Button>(R.id.veh_btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.veh_btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.veh_btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {

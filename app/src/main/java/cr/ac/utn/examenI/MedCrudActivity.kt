@@ -42,18 +42,18 @@ class MedCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.med_txtId)
-        txtName = findViewById(R.id.med_txtName)
-        txtFirstName = findViewById(R.id.med_txtFirstName)
-        txtLastName = findViewById(R.id.med_txtLastName)
-        txtPhone = findViewById(R.id.med_txtPhone)
-        txtEmail = findViewById(R.id.med_txtEmail)
-        txtAddress = findViewById(R.id.med_txtAddress)
-        txtBP = findViewById(R.id.med_txtBP)
-        txtWeight = findViewById(R.id.med_txtWeight)
-        txtHeight = findViewById(R.id.med_txtHeight)
-        txtOxygen = findViewById(R.id.med_txtOxygen)
-        txtDateTime = findViewById(R.id.med_txtDateTime)
+        txtId = findViewById(R.id.txtId)
+        txtName = findViewById(R.id.txtName)
+        txtFirstName = findViewById(R.id.txtFirstName)
+        txtLastName = findViewById(R.id.txtLastName)
+        txtPhone = findViewById(R.id.txtPhone)
+        txtEmail = findViewById(R.id.txtEmail)
+        txtAddress = findViewById(R.id.txtAddress)
+        txtBP = findViewById(R.id.txtBP)
+        txtWeight = findViewById(R.id.txtWeight)
+        txtHeight = findViewById(R.id.txtHeight)
+        txtOxygen = findViewById(R.id.txtOxygen)
+        txtDateTime = findViewById(R.id.txtDateTime)
 
         currentId = intent.getStringExtra(EXTRA_ID)
         if (!currentId.isNullOrEmpty()) {
@@ -62,9 +62,9 @@ class MedCrudActivity : AppCompatActivity() {
             txtDateTime.setText(util.formatDateTime(LocalDateTime.now()))
         }
 
-        findViewById<Button>(R.id.med_btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.med_btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.med_btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {
@@ -95,6 +95,7 @@ class MedCrudActivity : AppCompatActivity() {
             return
         }
 
+        // Validate Blood Pressure format 120/80
         val bpRegex = Regex("""^\d{2,3}/\d{2,3}$""")
         if (!bpRegex.matches(bp)) {
             Toast.makeText(this, "Formato de presión arterial debe ser 120/80.", Toast.LENGTH_SHORT).show()

@@ -43,17 +43,17 @@ class RentCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.rent_txtId)
-        txtName = findViewById(R.id.rent_txtName)
-        txtFirstName = findViewById(R.id.rent_txtFirstName)
-        txtLastName = findViewById(R.id.rent_txtLastName)
-        txtPhone = findViewById(R.id.rent_txtPhone)
-        txtEmail = findViewById(R.id.rent_txtEmail)
-        txtAddress = findViewById(R.id.rent_txtAddress)
-        spnVehicleType = findViewById(R.id.rent_spnVehicleType)
-        txtPlate = findViewById(R.id.rent_txtPlate)
-        txtMileage = findViewById(R.id.rent_txtMileage)
-        txtDriverLicense = findViewById(R.id.rent_txtDriverLicense)
+        txtId = findViewById(R.id.txtId)
+        txtName = findViewById(R.id.txtName)
+        txtFirstName = findViewById(R.id.txtFirstName)
+        txtLastName = findViewById(R.id.txtLastName)
+        txtPhone = findViewById(R.id.txtPhone)
+        txtEmail = findViewById(R.id.txtEmail)
+        txtAddress = findViewById(R.id.txtAddress)
+        spnVehicleType = findViewById(R.id.spnVehicleType)
+        txtPlate = findViewById(R.id.txtPlate)
+        txtMileage = findViewById(R.id.txtMileage)
+        txtDriverLicense = findViewById(R.id.txtDriverLicense)
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, vehicleTypes)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -64,9 +64,9 @@ class RentCrudActivity : AppCompatActivity() {
             loadExistingData(currentId!!)
         }
 
-        findViewById<Button>(R.id.rent_btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.rent_btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.rent_btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {

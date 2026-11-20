@@ -44,19 +44,19 @@ class LibCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.lib_txtId)
-        txtName = findViewById(R.id.lib_txtName)
-        txtFirstName = findViewById(R.id.lib_txtFirstName)
-        txtLastName = findViewById(R.id.lib_txtLastName)
-        txtPhone = findViewById(R.id.lib_txtPhone)
-        txtEmail = findViewById(R.id.lib_txtEmail)
-        txtAddress = findViewById(R.id.lib_txtAddress)
-        chkBook1 = findViewById(R.id.lib_chkBook1)
-        chkBook2 = findViewById(R.id.lib_chkBook2)
-        chkBook3 = findViewById(R.id.lib_chkBook3)
-        txtBranch = findViewById(R.id.lib_txtBranch)
-        txtResDate = findViewById(R.id.lib_txtResDate)
-        txtRetDate = findViewById(R.id.lib_txtRetDate)
+        txtId = findViewById(R.id.txtId)
+        txtName = findViewById(R.id.txtName)
+        txtFirstName = findViewById(R.id.txtFirstName)
+        txtLastName = findViewById(R.id.txtLastName)
+        txtPhone = findViewById(R.id.txtPhone)
+        txtEmail = findViewById(R.id.txtEmail)
+        txtAddress = findViewById(R.id.txtAddress)
+        chkBook1 = findViewById(R.id.chkBook1)
+        chkBook2 = findViewById(R.id.chkBook2)
+        chkBook3 = findViewById(R.id.chkBook3)
+        txtBranch = findViewById(R.id.txtBranch)
+        txtResDate = findViewById(R.id.txtResDate)
+        txtRetDate = findViewById(R.id.txtRetDate)
 
         currentId = intent.getStringExtra(EXTRA_ID)
         if (!currentId.isNullOrEmpty()) {
@@ -66,9 +66,9 @@ class LibCrudActivity : AppCompatActivity() {
             txtRetDate.setText(util.formatDateTime(LocalDateTime.now().plusDays(7)))
         }
 
-        findViewById<Button>(R.id.lib_btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.lib_btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.lib_btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {

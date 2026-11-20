@@ -18,28 +18,23 @@
             android:textStyle="bold"
             android:paddingBottom="12dp" />
 
-        <EditText android:id="@+id/eve_txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID" />
-        <EditText android:id="@+id/eve_txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre Estudiante" />
-        <EditText android:id="@+id/eve_txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
-        <EditText android:id="@+id/eve_txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
-        <EditText android:id="@+id/eve_txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="phone" />
-        <EditText android:id="@+id/eve_txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
-        <EditText android:id="@+id/eve_txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
+        <EditText android:id="@+id/txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID" />
+        <EditText android:id="@+id/txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre Asistente" />
+        <EditText android:id="@+id/txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
+        <EditText android:id="@+id/txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
+        <EditText android:id="@+id/txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="number" />
+        <EditText android:id="@+id/txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
+        <EditText android:id="@+id/txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
 
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Institucion:" android:layout_marginTop="8dp"/>
-        <EditText android:id="@+id/eve_txtInstitution" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Colegio / Universidad" />
+        <EditText android:id="@+id/txtInstitution" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Institucion" />
+        <EditText android:id="@+id/txtVenue" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Lugar / Venue" />
+        <EditText android:id="@+id/txtSeatNum" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Numero de Asiento (Unico por evento)" />
 
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Lugar del Evento:" android:layout_marginTop="8dp"/>
-        <EditText android:id="@+id/eve_txtVenue" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Teatro Nacional / Cine" />
-
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Numero Asiento:" android:layout_marginTop="8dp"/>
-        <EditText android:id="@+id/eve_txtSeatNum" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="A-12" />
-
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Tipo Evento:" android:layout_marginTop="8dp"/>
-        <Spinner android:id="@+id/eve_spnEventType" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Tipo de Evento:" android:layout_marginTop="8dp"/>
+        <Spinner android:id="@+id/spnEventType" android:layout_width="match_parent" android:layout_height="wrap_content" />
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fecha y Hora (yyyy-MM-dd HH:mm):" android:layout_marginTop="8dp"/>
-        <EditText android:id="@+id/eve_txtDateTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2025-05-20 18:00" />
+        <EditText android:id="@+id/txtDateTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2025-05-20 20:00" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,9 +42,9 @@
             android:orientation="horizontal"
             android:layout_marginTop="16dp">
 
-            <Button android:id="@+id/eve_btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
-            <Button android:id="@+id/eve_btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
-            <Button android:id="@+id/eve_btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
+            <Button android:id="@+id/btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
+            <Button android:id="@+id/btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
+            <Button android:id="@+id/btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

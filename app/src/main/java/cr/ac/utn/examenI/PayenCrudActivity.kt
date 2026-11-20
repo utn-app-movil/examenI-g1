@@ -49,22 +49,22 @@ class PayenCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.payen_txtId)
-        txtName = findViewById(R.id.payen_txtName)
-        txtFirstName = findViewById(R.id.payen_txtFirstName)
-        txtLastName = findViewById(R.id.payen_txtLastName)
-        txtPhone = findViewById(R.id.payen_txtPhone)
-        txtEmail = findViewById(R.id.payen_txtEmail)
-        txtAddress = findViewById(R.id.payen_txtAddress)
-        txtSpecialty = findViewById(R.id.payen_txtSpecialty)
-        txtApptCost = findViewById(R.id.payen_txtApptCost)
-        txtMedicineCost = findViewById(R.id.payen_txtMedicineCost)
-        chkMed1 = findViewById(R.id.payen_chkMed1)
-        chkMed2 = findViewById(R.id.payen_chkMed2)
-        chkMed3 = findViewById(R.id.payen_chkMed3)
-        txtReimbursement = findViewById(R.id.payen_txtReimbursement)
-        txtApptDate = findViewById(R.id.payen_txtApptDate)
-        txtClaimDate = findViewById(R.id.payen_txtClaimDate)
+        txtId = findViewById(R.id.txtId)
+        txtName = findViewById(R.id.txtName)
+        txtFirstName = findViewById(R.id.txtFirstName)
+        txtLastName = findViewById(R.id.txtLastName)
+        txtPhone = findViewById(R.id.txtPhone)
+        txtEmail = findViewById(R.id.txtEmail)
+        txtAddress = findViewById(R.id.txtAddress)
+        txtSpecialty = findViewById(R.id.txtSpecialty)
+        txtApptCost = findViewById(R.id.txtApptCost)
+        txtMedicineCost = findViewById(R.id.txtMedicineCost)
+        chkMed1 = findViewById(R.id.chkMed1)
+        chkMed2 = findViewById(R.id.chkMed2)
+        chkMed3 = findViewById(R.id.chkMed3)
+        txtReimbursement = findViewById(R.id.txtReimbursement)
+        txtApptDate = findViewById(R.id.txtApptDate)
+        txtClaimDate = findViewById(R.id.txtClaimDate)
 
         val watcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -82,9 +82,9 @@ class PayenCrudActivity : AppCompatActivity() {
             txtClaimDate.setText(util.formatDateTime(LocalDateTime.now()))
         }
 
-        findViewById<Button>(R.id.payen_btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.payen_btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.payen_btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
     }
 
     private fun calculateReimbursement() {

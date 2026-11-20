@@ -49,21 +49,21 @@ class MarkCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.mark_txtId)
-        txtName = findViewById(R.id.mark_txtName)
-        txtFirstName = findViewById(R.id.mark_txtFirstName)
-        txtLastName = findViewById(R.id.mark_txtLastName)
-        txtPhone = findViewById(R.id.mark_txtPhone)
-        txtEmail = findViewById(R.id.mark_txtEmail)
-        txtAddress = findViewById(R.id.mark_txtAddress)
-        txtCode = findViewById(R.id.mark_txtCode)
-        txtCampaignName = findViewById(R.id.mark_txtCampaignName)
-        txtBudget = findViewById(R.id.mark_txtBudget)
-        spnChannel = findViewById(R.id.mark_spnChannel)
-        txtLeader = findViewById(R.id.mark_txtLeader)
-        spnProvince = findViewById(R.id.mark_spnProvince)
-        txtStartDate = findViewById(R.id.mark_txtStartDate)
-        txtEndDate = findViewById(R.id.mark_txtEndDate)
+        txtId = findViewById(R.id.txtId)
+        txtName = findViewById(R.id.txtName)
+        txtFirstName = findViewById(R.id.txtFirstName)
+        txtLastName = findViewById(R.id.txtLastName)
+        txtPhone = findViewById(R.id.txtPhone)
+        txtEmail = findViewById(R.id.txtEmail)
+        txtAddress = findViewById(R.id.txtAddress)
+        txtCode = findViewById(R.id.txtCode)
+        txtCampaignName = findViewById(R.id.txtCampaignName)
+        txtBudget = findViewById(R.id.txtBudget)
+        spnChannel = findViewById(R.id.spnChannel)
+        txtLeader = findViewById(R.id.txtLeader)
+        spnProvince = findViewById(R.id.spnProvince)
+        txtStartDate = findViewById(R.id.txtStartDate)
+        txtEndDate = findViewById(R.id.txtEndDate)
 
         val adapterChan = ArrayAdapter(this, android.R.layout.simple_spinner_item, channels)
         adapterChan.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -81,9 +81,9 @@ class MarkCrudActivity : AppCompatActivity() {
             txtEndDate.setText(util.formatDate(LocalDate.now().plusMonths(6)))
         }
 
-        findViewById<Button>(R.id.mark_btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.mark_btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.mark_btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {

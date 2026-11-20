@@ -49,21 +49,21 @@ class ProdCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.prod_txtId)
-        txtName = findViewById(R.id.prod_txtName)
-        txtFirstName = findViewById(R.id.prod_txtFirstName)
-        txtLastName = findViewById(R.id.prod_txtLastName)
-        txtPhone = findViewById(R.id.prod_txtPhone)
-        txtEmail = findViewById(R.id.prod_txtEmail)
-        txtAddress = findViewById(R.id.prod_txtAddress)
-        txtOrderNum = findViewById(R.id.prod_txtOrderNum)
-        chkProdA = findViewById(R.id.prod_chkProdA)
-        chkProdB = findViewById(R.id.prod_chkProdB)
-        chkProdC = findViewById(R.id.prod_chkProdC)
-        txtQuantity = findViewById(R.id.prod_txtQuantity)
-        spnTargetCompany = findViewById(R.id.prod_spnTargetCompany)
-        txtStartDate = findViewById(R.id.prod_txtStartDate)
-        txtDeliveryDate = findViewById(R.id.prod_txtDeliveryDate)
+        txtId = findViewById(R.id.txtId)
+        txtName = findViewById(R.id.txtName)
+        txtFirstName = findViewById(R.id.txtFirstName)
+        txtLastName = findViewById(R.id.txtLastName)
+        txtPhone = findViewById(R.id.txtPhone)
+        txtEmail = findViewById(R.id.txtEmail)
+        txtAddress = findViewById(R.id.txtAddress)
+        txtOrderNum = findViewById(R.id.txtOrderNum)
+        chkProdA = findViewById(R.id.chkProdA)
+        chkProdB = findViewById(R.id.chkProdB)
+        chkProdC = findViewById(R.id.chkProdC)
+        txtQuantity = findViewById(R.id.txtQuantity)
+        spnTargetCompany = findViewById(R.id.spnTargetCompany)
+        txtStartDate = findViewById(R.id.txtStartDate)
+        txtDeliveryDate = findViewById(R.id.txtDeliveryDate)
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, companies)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -77,9 +77,9 @@ class ProdCrudActivity : AppCompatActivity() {
             txtDeliveryDate.setText(util.formatDateTime(LocalDateTime.now().plusDays(7)))
         }
 
-        findViewById<Button>(R.id.prod_btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.prod_btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.prod_btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {

@@ -43,16 +43,16 @@ class AppCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.app_txtId)
-        txtName = findViewById(R.id.app_txtName)
-        txtFirstName = findViewById(R.id.app_txtFirstName)
-        txtLastName = findViewById(R.id.app_txtLastName)
-        txtPhone = findViewById(R.id.app_txtPhone)
-        txtEmail = findViewById(R.id.app_txtEmail)
-        txtAddress = findViewById(R.id.app_txtAddress)
-        txtDoctor = findViewById(R.id.app_txtDoctor)
-        spnSpecialty = findViewById(R.id.app_spnSpecialty)
-        txtDateTime = findViewById(R.id.app_txtDateTime)
+        txtId = findViewById(R.id.txtId)
+        txtName = findViewById(R.id.txtName)
+        txtFirstName = findViewById(R.id.txtFirstName)
+        txtLastName = findViewById(R.id.txtLastName)
+        txtPhone = findViewById(R.id.txtPhone)
+        txtEmail = findViewById(R.id.txtEmail)
+        txtAddress = findViewById(R.id.txtAddress)
+        txtDoctor = findViewById(R.id.txtDoctor)
+        spnSpecialty = findViewById(R.id.spnSpecialty)
+        txtDateTime = findViewById(R.id.txtDateTime)
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, specialties)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -65,9 +65,9 @@ class AppCrudActivity : AppCompatActivity() {
             txtDateTime.setText(util.formatDateTime(LocalDateTime.now().plusDays(1)))
         }
 
-        findViewById<Button>(R.id.app_btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.app_btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.app_btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {
