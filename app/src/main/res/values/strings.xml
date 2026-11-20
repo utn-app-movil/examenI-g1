@@ -22,4 +22,35 @@
     <string name="TextDelete_menu">Eliminar</string>
     <string name="TextCancel_mnu">Cancelar</string>
     <!-- NO CHANGE ANY ITEM -->
+
+    <!-- Feature Titles -->
+    <string name="app_title">Citas</string>
+    <string name="vac_title">Control de Vacunación</string>
+    <string name="lic_title">Renovación de Licencia</string>
+    <string name="med_title">Control Enfermería</string>
+    <string name="cli_title">Gestión de Clientes</string>
+    <string name="fli_title">Registro Vuelos</string>
+    <string name="rent_title">Alquileres</string>
+    <string name="eve_title">Eventos</string>
+    <string name="pha_title">Farmacia</string>
+    <string name="recru_title">Reclutamiento</string>
+    <string name="bid_title">Subasta</string>
+    <string name="sin_title">Sinpe</string>
+    <string name="pay_title">Nómina</string>
+    <string name="inv_title">Inventario</string>
+    <string name="ship_title">Naviera</string>
+    <string name="lib_title">Biblioteca</string>
+    <string name="exch_title">Tipo de Cambio</string>
+    <string name="train_title">Capacitación</string>
+    <string name="notif_title">Servicio de Correo</string>
+    <string name="dash_title">Dashboard Contribución</string>
+    <string name="payen_title">Reembolso Seguro</string>
+    <string name="mark_title">Campañas de Marketing</string>
+    <string name="ens_title">Seguro Empresarial</string>
+    <string name="veh_title">Autonomía Vehículo</string>
+    <string name="prod_title">Órdenes de Producción</string>
+    <string name="wat_title">Calidad del Agua</string>
+    <string name="recy_title">Reciclaje</string>
+    <string name="template_title">Plantilla</string>
+    <string name="text_add_new">Agregar Nuevo</string>
 </resources>

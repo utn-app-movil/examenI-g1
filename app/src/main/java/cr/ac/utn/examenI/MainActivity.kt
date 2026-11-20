@@ -1,12 +1,12 @@
 package cr.ac.utn.examenI
 
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import cr.ac.utn.examenI.util.util
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,145 +19,116 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val btnAppointment_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnAppointment_main.setOnClickListener(View.OnClickListener{ view->
-            //app_
-        })
+        findViewById<Button>(R.id.btnAppointment_main).setOnClickListener {
+            util.openActivity(this, AppListActivity::class.java)
+        }
 
-        val btnVaccine_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnVaccine_main.setOnClickListener(View.OnClickListener{ view->
-            //vac_
+        findViewById<Button>(R.id.btnVaccine_main).setOnClickListener {
+            util.openActivity(this, VacListActivity::class.java)
+        }
 
-        })
+        findViewById<Button>(R.id.btnLicense_main).setOnClickListener {
+            util.openActivity(this, LicListActivity::class.java)
+        }
 
-        val btnLicense_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnLicense_main.setOnClickListener(View.OnClickListener{ view->
-            //lic_
-        })
+        findViewById<Button>(R.id.btnMedChecking_main).setOnClickListener {
+            util.openActivity(this, MedListActivity::class.java)
+        }
 
-        val btnMedChecking_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnMedChecking_main.setOnClickListener(View.OnClickListener{ view->
-            //med_
-        })
+        findViewById<Button>(R.id.btnClients_main).setOnClickListener {
+            util.openActivity(this, CliListActivity::class.java)
+        }
 
-        val btnClients_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnClients_main.setOnClickListener(View.OnClickListener{ view->
-            //cli_
-        })
+        findViewById<Button>(R.id.btnFlights_main).setOnClickListener {
+            util.openActivity(this, FliListActivity::class.java)
+        }
 
-        val btnFlights_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnFlights_main.setOnClickListener(View.OnClickListener{ view->
-            //fli_
-        })
+        findViewById<Button>(R.id.btnRent_main).setOnClickListener {
+            util.openActivity(this, RentListActivity::class.java)
+        }
 
-        val btnRent_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnRent_main.setOnClickListener(View.OnClickListener{ view->
-            //rent_
-        })
+        findViewById<Button>(R.id.btnEvents_main).setOnClickListener {
+            util.openActivity(this, EveListActivity::class.java)
+        }
 
-        val btnEvents_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnEvents_main.setOnClickListener(View.OnClickListener{ view->
-            //eve_
-        })
+        findViewById<Button>(R.id.btnPharmacy_main).setOnClickListener {
+            util.openActivity(this, PhaListActivity::class.java)
+        }
 
-        val btnPharmacy_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnPharmacy_main.setOnClickListener(View.OnClickListener{ view->
-            //pha_
-        })
+        findViewById<Button>(R.id.btnRecruitering_main).setOnClickListener {
+            util.openActivity(this, RecruListActivity::class.java)
+        }
 
-        val btnRecruitering_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnRecruitering_main.setOnClickListener(View.OnClickListener{ view->
-            //recru_
-        })
+        findViewById<Button>(R.id.btnBidding_main).setOnClickListener {
+            util.openActivity(this, BidListActivity::class.java)
+        }
 
-        val btnBidding_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnBidding_main.setOnClickListener(View.OnClickListener{ view->
-            //bid_
-        })
+        findViewById<Button>(R.id.btnSinpe_main).setOnClickListener {
+            util.openActivity(this, SinListActivity::class.java)
+        }
 
-        val btnSinpe_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnSinpe_main.setOnClickListener(View.OnClickListener{ view->
-            //sin_
-        })
+        findViewById<Button>(R.id.btnPayroll_main).setOnClickListener {
+            util.openActivity(this, PayListActivity::class.java)
+        }
 
-        val btnPayroll_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnPayroll_main.setOnClickListener(View.OnClickListener{ view->
-            //pay_
-        })
+        findViewById<Button>(R.id.btnInventory_main).setOnClickListener {
+            util.openActivity(this, InvListActivity::class.java)
+        }
 
-        val btnInventory_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnInventory_main.setOnClickListener(View.OnClickListener{ view->
-            //inv_
-        })
+        findViewById<Button>(R.id.btnShipper_main).setOnClickListener {
+            util.openActivity(this, ShipListActivity::class.java)
+        }
 
-        val btnShipper_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnShipper_main.setOnClickListener(View.OnClickListener{ view->
-            //ship_
-        })
+        findViewById<Button>(R.id.btnLibrary_main).setOnClickListener {
+            util.openActivity(this, LibListActivity::class.java)
+        }
 
-        val btnLibrary_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnLibrary_main.setOnClickListener(View.OnClickListener{ view->
-            //lib_
-        })
+        findViewById<Button>(R.id.btnExchange_main).setOnClickListener {
+            util.openActivity(this, ExchListActivity::class.java)
+        }
 
-        val btnExchange_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnExchange_main.setOnClickListener(View.OnClickListener{ view->
-            //exch_
-        })
+        findViewById<Button>(R.id.btnTraining_main).setOnClickListener {
+            util.openActivity(this, TrainListActivity::class.java)
+        }
 
-        val btnTraining_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnTraining_main.setOnClickListener(View.OnClickListener{ view->
-            //train_
-        })
+        findViewById<Button>(R.id.btnNotification_main).setOnClickListener {
+            util.openActivity(this, NotifListActivity::class.java)
+        }
 
-        val btnNotification_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnNotification_main.setOnClickListener(View.OnClickListener{ view->
-            //notif_
-        })
+        findViewById<Button>(R.id.btnDashboard_main).setOnClickListener {
+            util.openActivity(this, DashListActivity::class.java)
+        }
 
-        val btnDashboard_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnDashboard_main.setOnClickListener(View.OnClickListener{ view->
-            //dash_
-        })
+        findViewById<Button>(R.id.btnPaymentEnsurance_main).setOnClickListener {
+            util.openActivity(this, PayenListActivity::class.java)
+        }
 
-        val btnPaymentEnsurance_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnPaymentEnsurance_main.setOnClickListener(View.OnClickListener{ view->
-            //payen_
-        })
+        findViewById<Button>(R.id.btnMarketing_main).setOnClickListener {
+            util.openActivity(this, MarkListActivity::class.java)
+        }
 
-        val btnMarketing_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnMarketing_main.setOnClickListener(View.OnClickListener{ view->
-            //mark_
-        })
+        findViewById<Button>(R.id.btnEnsurance_main).setOnClickListener {
+            util.openActivity(this, EnsListActivity::class.java)
+        }
 
-        val btnEnsurance_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnEnsurance_main.setOnClickListener(View.OnClickListener{ view->
-            //ens_
-        })
+        findViewById<Button>(R.id.btnVehicle_main).setOnClickListener {
+            util.openActivity(this, VehListActivity::class.java)
+        }
 
-        val btnVehicle_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnVehicle_main.setOnClickListener(View.OnClickListener{ view->
-            //veh_
-        })
+        findViewById<Button>(R.id.btnProduction_main).setOnClickListener {
+            util.openActivity(this, ProdListActivity::class.java)
+        }
 
-        val btnProduction_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnProduction_main.setOnClickListener(View.OnClickListener{ view->
-            //prod_
-        })
+        findViewById<Button>(R.id.btnWater_main).setOnClickListener {
+            util.openActivity(this, WatListActivity::class.java)
+        }
 
-        val btnWater_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnWater_main.setOnClickListener(View.OnClickListener{ view->
-            //wat_
-        })
+        findViewById<Button>(R.id.btnRecycling_main).setOnClickListener {
+            util.openActivity(this, RecyListActivity::class.java)
+        }
 
-        val btnRecycling_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnRecycling_main.setOnClickListener(View.OnClickListener{ view->
-            //recy_
-        })
-
-        val btnTemplate_main = findViewById<Button>(R.id.btnTemplate_main)
-        btnTemplate_main.setOnClickListener(View.OnClickListener{ view->
-
-        })
+        findViewById<Button>(R.id.btnTemplate_main).setOnClickListener {
+            util.openActivity(this, TemplateListActivity::class.java)
+        }
     }
 }

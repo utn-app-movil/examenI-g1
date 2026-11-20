@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExamenI">
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -20,10 +21,121 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ListActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
+
+        <activity android:name=".ListActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 1: Citas -->
+        <activity android:name=".AppListActivity" android:exported="false" />
+        <activity android:name=".AppCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 2: Vacunación -->
+        <activity android:name=".VacListActivity" android:exported="false" />
+        <activity android:name=".VacCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 3: Licencia -->
+        <activity android:name=".LicListActivity" android:exported="false" />
+        <activity android:name=".LicCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 4: Control Enfermería -->
+        <activity android:name=".MedListActivity" android:exported="false" />
+        <activity android:name=".MedCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 5: Clientes -->
+        <activity android:name=".CliListActivity" android:exported="false" />
+        <activity android:name=".CliCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 6: Vuelos -->
+        <activity android:name=".FliListActivity" android:exported="false" />
+        <activity android:name=".FliCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 7: Alquileres -->
+        <activity android:name=".RentListActivity" android:exported="false" />
+        <activity android:name=".RentCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 8: Eventos -->
+        <activity android:name=".EveListActivity" android:exported="false" />
+        <activity android:name=".EveCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 9: Farmacia -->
+        <activity android:name=".PhaListActivity" android:exported="false" />
+        <activity android:name=".PhaCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 10: Reclutamiento -->
+        <activity android:name=".RecruListActivity" android:exported="false" />
+        <activity android:name=".RecruCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 11: Subasta -->
+        <activity android:name=".BidListActivity" android:exported="false" />
+        <activity android:name=".BidCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 12: Sinpe -->
+        <activity android:name=".SinListActivity" android:exported="false" />
+        <activity android:name=".SinCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 13: Nómina -->
+        <activity android:name=".PayListActivity" android:exported="false" />
+        <activity android:name=".PayCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 14: Inventario -->
+        <activity android:name=".InvListActivity" android:exported="false" />
+        <activity android:name=".InvCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 15: Naviera -->
+        <activity android:name=".ShipListActivity" android:exported="false" />
+        <activity android:name=".ShipCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 16: Biblioteca -->
+        <activity android:name=".LibListActivity" android:exported="false" />
+        <activity android:name=".LibCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 17: Tipo de Cambio -->
+        <activity android:name=".ExchListActivity" android:exported="false" />
+        <activity android:name=".ExchCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 18: Capacitación -->
+        <activity android:name=".TrainListActivity" android:exported="false" />
+        <activity android:name=".TrainCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 19: Notificaciones -->
+        <activity android:name=".NotifListActivity" android:exported="false" />
+        <activity android:name=".NotifCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 20: Dashboard -->
+        <activity android:name=".DashListActivity" android:exported="false" />
+        <activity android:name=".DashCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 21: Reembolso Seguro -->
+        <activity android:name=".PayenListActivity" android:exported="false" />
+        <activity android:name=".PayenCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 22: Marketing -->
+        <activity android:name=".MarkListActivity" android:exported="false" />
+        <activity android:name=".MarkCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 23: Seguro Empresarial -->
+        <activity android:name=".EnsListActivity" android:exported="false" />
+        <activity android:name=".EnsCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 24: Vehículo -->
+        <activity android:name=".VehListActivity" android:exported="false" />
+        <activity android:name=".VehCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 25: Producción -->
+        <activity android:name=".ProdListActivity" android:exported="false" />
+        <activity android:name=".ProdCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 26: Agua -->
+        <activity android:name=".WatListActivity" android:exported="false" />
+        <activity android:name=".WatCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 27: Reciclaje -->
+        <activity android:name=".RecyListActivity" android:exported="false" />
+        <activity android:name=".RecyCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Feature 28: Plantilla -->
+        <activity android:name=".TemplateListActivity" android:exported="false" />
+        <activity android:name=".TemplateCrudActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
     </application>
 
 </manifest>

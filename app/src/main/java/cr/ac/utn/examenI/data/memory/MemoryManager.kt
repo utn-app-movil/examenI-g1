@@ -21,7 +21,7 @@ class MemoryDataManager: IRepository {
     override fun getAll() = objList
 
     override fun getById(id: String): Identifier? {
-        val result = objList.filter { it.id == id }
+        val result = objList.filter { it.id.trim() == id.trim() }
         return if(result.any()) result[0] else null
     }
 }

@@ -15,45 +15,69 @@ import java.time.format.DateTimeFormatter
 import java.util.Locale
 
 const val EXTRA_ID = "cr.ac.utn.movil.Id"
+
 class util {
-    companion object{
-        fun openActivity(context: Context
-                         , objClass: Class<*>, extraName: String="", value: String?=null){
-            val intent= Intent(context
-                , objClass).apply { putExtra(extraName, value)}
+    companion object {
+        fun openActivity(
+            context: Context,
+            objClass: Class<*>,
+            extraName: String = "",
+            value: String? = null
+        ) {
+            val intent = Intent(context, objClass).apply {
+                if (extraName.isNotEmpty()) {
+                    putExtra(extraName, value)
+                }
+            }
             context.startActivity(intent)
         }
 
-        fun parseStringToDateModern(dateString: String, pattern: String): LocalDate? {
-            return try {
-                val formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy", Locale.getDefault())
-                LocalDate.parse(dateString, formatter)
-            } catch (e: Exception) {
-                e.printStackTrace()
-                null
-            }
-        }
-
-        fun parseStringToDateTimeModern(dateTimeString: String, pattern: String): LocalDateTime? {
+        fun parseStringToDateModern(dateString: String, pattern: String = "yyyy-MM-dd"): LocalDate? {
+            if (dateString.isBlank()) return null
             return try {
                 val formatter = DateTimeFormatter.ofPattern(pattern, Locale.getDefault())
-                LocalDateTime.parse(dateTimeString, formatter)
+                LocalDate.parse(dateString.trim(), formatter)
             } catch (e: Exception) {
-                e.printStackTrace()
-                null
+                try {
+                    val altFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy", Locale.getDefault())
+                    LocalDate.parse(dateString.trim(), altFormatter)
+                } catch (e2: Exception) {
+                    null
+                }
             }
         }
 
-        fun showDialogCondition(context: Context, questionText: String, callback: () ->  Unit){
+        fun parseStringToDateTimeModern(dateTimeString: String, pattern: String = "yyyy-MM-dd HH:mm"): LocalDateTime? {
+            if (dateTimeString.isBlank()) return null
+            return try {
+                val formatter = DateTimeFormatter.ofPattern(pattern, Locale.getDefault())
+                LocalDateTime.parse(dateTimeString.trim(), formatter)
+            } catch (e: Exception) {
+                try {
+                    val altFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm", Locale.getDefault())
+                    LocalDateTime.parse(dateTimeString.trim(), altFormatter)
+                } catch (e2: Exception) {
+                    null
+                }
+            }
+        }
+
+        fun formatDate(date: LocalDate?): String {
+            if (date == null) return ""
+            return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.getDefault()))
+        }
+
+        fun formatDateTime(dateTime: LocalDateTime?): String {
+            if (dateTime == null) return ""
+            return dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm", Locale.getDefault()))
+        }
+
+        fun showDialogCondition(context: Context, questionText: String, callback: () -> Unit) {
             val dialogBuilder = AlertDialog.Builder(context)
             dialogBuilder.setMessage(questionText)
                 .setCancelable(false)
-                .setPositiveButton(context.getString(R.string.TextYes), DialogInterface.OnClickListener{
-                        dialog, id -> callback()
-                })
-                .setNegativeButton(context.getString(R.string.TextNo), DialogInterface.OnClickListener {
-                        dialog, id -> dialog.cancel()
-                })
+                .setPositiveButton(context.getString(R.string.TextYes)) { _, _ -> callback() }
+                .setNegativeButton(context.getString(R.string.TextNo)) { dialog, _ -> dialog.cancel() }
 
             val alert = dialogBuilder.create()
             alert.setTitle(context.getString(R.string.TextTitleDialogQuestion))
