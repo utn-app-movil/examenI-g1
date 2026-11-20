@@ -12,10 +12,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.RecyRecycling
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-import cr.ac.utn.examenI.viewmodel.RecyViewModel
 import java.time.LocalDateTime
 
 class RecyCrudActivity : AppCompatActivity() {
@@ -71,7 +69,7 @@ class RecyCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        val item = RecyViewModel.getById(id) ?: return
+        /*val item = RecyViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -83,7 +81,7 @@ class RecyCrudActivity : AppCompatActivity() {
         val pos = wasteTypes.indexOf(item.wasteType)
         if (pos >= 0) spnWasteType.setSelection(pos)
         txtWeight.setText(item.weightKg.toString())
-        txtDateTime.setText(util.formatDateTime(item.recyclingDateTime))
+        txtDateTime.setText(util.formatDateTime(item.recyclingDateTime))*/
     }
 
     private fun doSave() {
@@ -103,27 +101,15 @@ class RecyCrudActivity : AppCompatActivity() {
 
         val dt = util.parseStringToDateTimeModern(txtDateTime.text.toString().trim()) ?: LocalDateTime.now()
 
-        val item = RecyRecycling(
-            id = id,
-            name = name,
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
-            wasteType = spnWasteType.selectedItem?.toString() ?: "",
-            weightKg = weightVal,
-            recyclingDateTime = dt
-        )
 
         if (currentId.isNullOrEmpty()) {
-            if (RecyViewModel.getById(id) != null) {
+            if (null != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            RecyViewModel.save(item)
+            //RecyViewModel.save(item)
         } else {
-            RecyViewModel.update(item)
+            //RecyViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -134,7 +120,7 @@ class RecyCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            RecyViewModel.delete(id)
+            //RecyViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }

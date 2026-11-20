@@ -10,10 +10,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.MedNursingCheck
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-import cr.ac.utn.examenI.viewmodel.MedViewModel
 import java.time.LocalDateTime
 
 class MedCrudActivity : AppCompatActivity() {
@@ -68,7 +66,7 @@ class MedCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        val item = MedViewModel.getById(id) ?: return
+        /*val item = MedViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -81,7 +79,7 @@ class MedCrudActivity : AppCompatActivity() {
         txtWeight.setText(item.weight.toString())
         txtHeight.setText(item.height.toString())
         txtOxygen.setText(item.oxygenation.toString())
-        txtDateTime.setText(util.formatDateTime(item.checkDateTime))
+        txtDateTime.setText(util.formatDateTime(item.checkDateTime))*/
     }
 
     private fun doSave() {
@@ -104,29 +102,16 @@ class MedCrudActivity : AppCompatActivity() {
 
         val dt = util.parseStringToDateTimeModern(dateTimeStr) ?: LocalDateTime.now()
 
-        val item = MedNursingCheck(
-            id = id,
-            name = name,
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
-            bloodPressure = bp,
-            weight = txtWeight.text.toString().toDoubleOrNull() ?: 0.0,
-            height = txtHeight.text.toString().toDoubleOrNull() ?: 0.0,
-            oxygenation = txtOxygen.text.toString().toDoubleOrNull() ?: 0.0,
-            checkDateTime = dt
-        )
+
 
         if (currentId.isNullOrEmpty()) {
-            if (MedViewModel.getById(id) != null) {
+            if (null != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            MedViewModel.save(item)
+            //MedViewModel.save(item)
         } else {
-            MedViewModel.update(item)
+            //MedViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -137,7 +122,7 @@ class MedCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            MedViewModel.delete(id)
+            //MedViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }

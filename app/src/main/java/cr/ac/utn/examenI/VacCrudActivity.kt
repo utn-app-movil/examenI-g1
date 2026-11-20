@@ -12,10 +12,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.VacVaccination
+import cr.ac.utn.examenI.domain.model.Identifier
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-import cr.ac.utn.examenI.viewmodel.VacViewModel
 import java.time.LocalDateTime
 
 class VacCrudActivity : AppCompatActivity() {
@@ -71,7 +70,7 @@ class VacCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        val item = VacViewModel.getById(id) ?: return
+        /*val item = VacViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -83,7 +82,7 @@ class VacCrudActivity : AppCompatActivity() {
         val pos = vaccines.indexOf(item.vaccineType)
         if (pos >= 0) spnVaccineType.setSelection(pos)
         txtLocation.setText(item.location)
-        txtDateTime.setText(util.formatDateTime(item.vaccinationDateTime))
+        txtDateTime.setText(util.formatDateTime(item.vaccinationDateTime))*/
     }
 
     private fun doSave() {
@@ -108,27 +107,16 @@ class VacCrudActivity : AppCompatActivity() {
             return
         }
 
-        val item = VacVaccination(
-            id = id,
-            name = name,
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
-            vaccineType = spnVaccineType.selectedItem?.toString() ?: "",
-            location = location,
-            vaccinationDateTime = dt
-        )
+
 
         if (currentId.isNullOrEmpty()) {
-            if (VacViewModel.getById(id) != null) {
+            if (null != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            VacViewModel.save(item)
+            //VacViewModel.save(item)
         } else {
-            VacViewModel.update(item)
+            //VacViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -139,7 +127,7 @@ class VacCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            VacViewModel.delete(id)
+            //VacViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }

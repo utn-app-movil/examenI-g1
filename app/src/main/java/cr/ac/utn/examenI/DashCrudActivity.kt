@@ -10,10 +10,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.DashDashboard
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-import cr.ac.utn.examenI.viewmodel.DashViewModel
 
 class DashCrudActivity : AppCompatActivity() {
     private lateinit var txtId: EditText
@@ -61,7 +59,7 @@ class DashCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        val item = DashViewModel.getById(id) ?: return
+        /*val item = DashViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -72,7 +70,7 @@ class DashCrudActivity : AppCompatActivity() {
         txtAddress.setText(item.address)
         txtContributionsTotal.setText(item.contributionsTotal.toString())
         txtMonth.setText(item.month.toString())
-        txtYear.setText(item.year.toString())
+        txtYear.setText(item.year.toString())*/
     }
 
     private fun doSave() {
@@ -93,31 +91,20 @@ class DashCrudActivity : AppCompatActivity() {
         }
 
         // Unique combination of person + month + year
-        val duplicateCombo = DashViewModel.getAll().any {
+        val duplicateCombo = false /*DashViewModel.getAll().any {
             it.id == id && it.month == monthVal && it.year == yearVal && currentId.isNullOrEmpty()
-        }
+        }*/
         if (duplicateCombo) {
             Toast.makeText(this, "Ya existe un registro para esta persona en el mes $monthVal/$yearVal.", Toast.LENGTH_SHORT).show()
             return
         }
 
-        val item = DashDashboard(
-            id = id,
-            name = name,
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
-            contributionsTotal = total,
-            month = monthVal,
-            year = yearVal
-        )
+
 
         if (currentId.isNullOrEmpty()) {
-            DashViewModel.save(item)
+            //DashViewModel.save(item)
         } else {
-            DashViewModel.update(item)
+            //DashViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -128,7 +115,7 @@ class DashCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            DashViewModel.delete(id)
+            //DashViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }

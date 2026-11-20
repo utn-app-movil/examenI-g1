@@ -127,8 +127,5 @@ class MainActivity : AppCompatActivity() {
             util.openActivity(this, RecyListActivity::class.java)
         }
 
-        findViewById<Button>(R.id.btnTemplate_main).setOnClickListener {
-            util.openActivity(this, TemplateListActivity::class.java)
-        }
     }
 }

@@ -12,10 +12,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.MarkMarketing
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-import cr.ac.utn.examenI.viewmodel.MarkViewModel
 import java.time.LocalDate
 
 class MarkCrudActivity : AppCompatActivity() {
@@ -87,7 +85,7 @@ class MarkCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        val item = MarkViewModel.getById(id) ?: return
+        /*val item = MarkViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -105,7 +103,7 @@ class MarkCrudActivity : AppCompatActivity() {
         val posProv = provinces.indexOf(item.province)
         if (posProv >= 0) spnProvince.setSelection(posProv)
         txtStartDate.setText(util.formatDate(item.startDate))
-        txtEndDate.setText(util.formatDate(item.endDate))
+        txtEndDate.setText(util.formatDate(item.endDate))*/
     }
 
     private fun doSave() {
@@ -132,32 +130,16 @@ class MarkCrudActivity : AppCompatActivity() {
             return
         }
 
-        val item = MarkMarketing(
-            id = id,
-            name = txtName.text.toString().trim(),
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
-            code = codeVal,
-            campaignName = campaign,
-            budget = budgetVal,
-            channel = spnChannel.selectedItem?.toString() ?: "",
-            leader = txtLeader.text.toString().trim(),
-            province = spnProvince.selectedItem?.toString() ?: "",
-            startDate = startDt,
-            endDate = endDt
-        )
+
 
         if (currentId.isNullOrEmpty()) {
-            if (MarkViewModel.getById(id) != null) {
+            if (null != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            MarkViewModel.save(item)
+            //MarkViewModel.save(item)
         } else {
-            MarkViewModel.update(item)
+            //MarkViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -168,7 +150,7 @@ class MarkCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            MarkViewModel.delete(id)
+            //MarkViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }

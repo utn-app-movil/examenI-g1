@@ -11,10 +11,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.NotifNotification
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-import cr.ac.utn.examenI.viewmodel.NotifViewModel
 import java.time.LocalDateTime
 
 class NotifCrudActivity : AppCompatActivity() {
@@ -75,7 +73,7 @@ class NotifCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        val item = NotifViewModel.getById(id) ?: return
+        /*val item = NotifViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -91,7 +89,7 @@ class NotifCrudActivity : AppCompatActivity() {
         chkStudents.isChecked = item.targetRecipients.contains("Estudiantes")
         chkTeachers.isChecked = item.targetRecipients.contains("Profesorado")
         chkStaff.isChecked = item.targetRecipients.contains("Administrativos")
-        txtSendDateTime.setText(util.formatDateTime(item.sendDateTime))
+        txtSendDateTime.setText(util.formatDateTime(item.sendDateTime))*/
     }
 
     private fun doSave() {
@@ -116,30 +114,16 @@ class NotifCrudActivity : AppCompatActivity() {
         if (chkTeachers.isChecked) targets.add("Profesorado")
         if (chkStaff.isChecked) targets.add("Administrativos")
 
-        val item = NotifNotification(
-            id = id,
-            name = txtName.text.toString().trim(),
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
-            emailTitle = title,
-            message = msg,
-            cc = txtCC.text.toString().trim(),
-            cco = txtCCO.text.toString().trim(),
-            targetRecipients = targets.joinToString(", "),
-            sendDateTime = dt
-        )
+
 
         if (currentId.isNullOrEmpty()) {
-            if (NotifViewModel.getById(id) != null) {
+            if (null != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            NotifViewModel.save(item)
+            //NotifViewModel.save(item)
         } else {
-            NotifViewModel.update(item)
+            //NotifViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -150,7 +134,7 @@ class NotifCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            NotifViewModel.delete(id)
+            //NotifViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }

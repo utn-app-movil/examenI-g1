@@ -11,10 +11,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.WatWaterMonitoring
+import cr.ac.utn.examenI.domain.model.Identifier
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-import cr.ac.utn.examenI.viewmodel.WatViewModel
 import java.time.LocalDateTime
 
 class WatCrudActivity : AppCompatActivity() {
@@ -75,7 +74,7 @@ class WatCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        val item = WatViewModel.getById(id) ?: return
+        /*val item = WatViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -91,7 +90,7 @@ class WatCrudActivity : AppCompatActivity() {
         chkPlomo.isChecked = item.contaminants.contains("Plomo")
         chkBacterias.isChecked = item.contaminants.contains("Bacterias")
         chkNitratos.isChecked = item.contaminants.contains("Nitratos")
-        txtDateTime.setText(util.formatDateTime(item.monitoringDateTime))
+        txtDateTime.setText(util.formatDateTime(item.monitoringDateTime))*/
     }
 
     private fun doSave() {
@@ -129,29 +128,16 @@ class WatCrudActivity : AppCompatActivity() {
         if (chkBacterias.isChecked) contaminantsList.add("Bacterias")
         if (chkNitratos.isChecked) contaminantsList.add("Nitratos")
 
-        val item = WatWaterMonitoring(
-            id = id,
-            name = name,
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
-            nisId = nis,
-            ph = phVal,
-            turbidity = turbVal,
-            contaminants = contaminantsList.joinToString(", "),
-            monitoringDateTime = dt
-        )
+
 
         if (currentId.isNullOrEmpty()) {
-            if (WatViewModel.getById(id) != null) {
+            if (null != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            WatViewModel.save(item)
+            //WatViewModel.save(item)
         } else {
-            WatViewModel.update(item)
+            //WatViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -162,7 +148,7 @@ class WatCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            WatViewModel.delete(id)
+            //WatViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }

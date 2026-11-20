@@ -11,10 +11,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.LibLibrary
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-import cr.ac.utn.examenI.viewmodel.LibViewModel
 import java.time.LocalDateTime
 
 class LibCrudActivity : AppCompatActivity() {
@@ -72,7 +70,7 @@ class LibCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        val item = LibViewModel.getById(id) ?: return
+        /*val item = LibViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -86,7 +84,7 @@ class LibCrudActivity : AppCompatActivity() {
         chkBook3.isChecked = item.reservedBooks.contains("El Principito")
         txtBranch.setText(item.branch)
         txtResDate.setText(util.formatDateTime(item.reservationDateTime))
-        txtRetDate.setText(util.formatDateTime(item.returnDateTime))
+        txtRetDate.setText(util.formatDateTime(item.returnDateTime))*/
     }
 
     private fun doSave() {
@@ -113,28 +111,16 @@ class LibCrudActivity : AppCompatActivity() {
         if (chkBook2.isChecked) selectedBooks.add("Cien Años de Soledad")
         if (chkBook3.isChecked) selectedBooks.add("El Principito")
 
-        val item = LibLibrary(
-            id = id,
-            name = name,
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
-            reservedBooks = selectedBooks.joinToString(", "),
-            branch = txtBranch.text.toString().trim(),
-            reservationDateTime = resDt,
-            returnDateTime = retDt
-        )
+
 
         if (currentId.isNullOrEmpty()) {
-            if (LibViewModel.getById(id) != null) {
+            if (null != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            LibViewModel.save(item)
+            //LibViewModel.save(item)
         } else {
-            LibViewModel.update(item)
+            //LibViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -145,7 +131,7 @@ class LibCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            LibViewModel.delete(id)
+            //LibViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }

@@ -12,10 +12,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.RentRental
+import cr.ac.utn.examenI.domain.model.Identifier
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-import cr.ac.utn.examenI.viewmodel.RentViewModel
 
 class RentCrudActivity : AppCompatActivity() {
     private lateinit var txtId: EditText
@@ -70,7 +69,7 @@ class RentCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        val item = RentViewModel.getById(id) ?: return
+        /*val item = RentViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -83,7 +82,7 @@ class RentCrudActivity : AppCompatActivity() {
         if (pos >= 0) spnVehicleType.setSelection(pos)
         txtPlate.setText(item.plate)
         txtMileage.setText(item.mileage.toString())
-        txtDriverLicense.setText(item.driverLicense)
+        txtDriverLicense.setText(item.driverLicense)*/
     }
 
     private fun doSave() {
@@ -97,28 +96,16 @@ class RentCrudActivity : AppCompatActivity() {
             return
         }
 
-        val item = RentRental(
-            id = id,
-            name = name,
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
-            vehicleType = spnVehicleType.selectedItem?.toString() ?: "",
-            plate = plate,
-            mileage = txtMileage.text.toString().toDoubleOrNull() ?: 0.0,
-            driverLicense = license
-        )
+
 
         if (currentId.isNullOrEmpty()) {
-            if (RentViewModel.getById(id) != null) {
+            if ( null != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            RentViewModel.save(item)
+            //RentViewModel.save(item)
         } else {
-            RentViewModel.update(item)
+            //RentViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -129,7 +116,7 @@ class RentCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            RentViewModel.delete(id)
+            //RentViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }

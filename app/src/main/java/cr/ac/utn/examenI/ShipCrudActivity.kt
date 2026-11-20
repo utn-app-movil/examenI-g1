@@ -12,10 +12,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.ShipShipping
+import cr.ac.utn.examenI.domain.model.Identifier
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-import cr.ac.utn.examenI.viewmodel.ShipViewModel
 import java.time.LocalDateTime
 
 class ShipCrudActivity : AppCompatActivity() {
@@ -82,7 +81,7 @@ class ShipCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        val item = ShipViewModel.getById(id) ?: return
+        /*val item = ShipViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -98,7 +97,7 @@ class ShipCrudActivity : AppCompatActivity() {
         txtWeight.setText(item.weight.toString())
         val posProd = products.indexOf(item.product)
         if (posProd >= 0) spnProduct.setSelection(posProd)
-        txtDateTime.setText(util.formatDateTime(item.shipmentDateTime))
+        txtDateTime.setText(util.formatDateTime(item.shipmentDateTime))*/
     }
 
     private fun doSave() {
@@ -119,7 +118,7 @@ class ShipCrudActivity : AppCompatActivity() {
         }
 
         // Unique container num
-        val duplicateContainer = ShipViewModel.getAll().any { it.containerNum == containerNum && it.id != id }
+        val duplicateContainer = false //ShipViewModel.getAll().any { it.containerNum == containerNum && it.id != id }
         if (duplicateContainer) {
             Toast.makeText(this, "El número de contenedor ya está registrado.", Toast.LENGTH_SHORT).show()
             return
@@ -131,30 +130,16 @@ class ShipCrudActivity : AppCompatActivity() {
             return
         }
 
-        val item = ShipShipping(
-            id = id,
-            name = name,
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
-            containerNum = containerNum,
-            containerType = spnContainerType.selectedItem?.toString() ?: "",
-            temperature = txtTemp.text.toString().toDoubleOrNull() ?: 0.0,
-            weight = txtWeight.text.toString().toDoubleOrNull() ?: 0.0,
-            product = spnProduct.selectedItem?.toString() ?: "",
-            shipmentDateTime = dt
-        )
+
 
         if (currentId.isNullOrEmpty()) {
-            if (ShipViewModel.getById(id) != null) {
+            if (null != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            ShipViewModel.save(item)
+            //ShipViewModel.save(item)
         } else {
-            ShipViewModel.update(item)
+            //ShipViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -165,7 +150,7 @@ class ShipCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            ShipViewModel.delete(id)
+            //ShipViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }

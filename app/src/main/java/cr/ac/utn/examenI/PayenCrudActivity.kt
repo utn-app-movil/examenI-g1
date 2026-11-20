@@ -13,10 +13,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.PayenReimbursement
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-import cr.ac.utn.examenI.viewmodel.PayenViewModel
 import java.time.LocalDateTime
 
 class PayenCrudActivity : AppCompatActivity() {
@@ -95,7 +93,7 @@ class PayenCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        val item = PayenViewModel.getById(id) ?: return
+        /*val item = PayenViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -112,7 +110,7 @@ class PayenCrudActivity : AppCompatActivity() {
         chkMed3.isChecked = item.medicines.contains("Antiinflamatorios")
         txtReimbursement.setText(item.reimbursementAmount.toString())
         txtApptDate.setText(util.formatDateTime(item.apptDateTime))
-        txtClaimDate.setText(util.formatDateTime(item.claimDateTime))
+        txtClaimDate.setText(util.formatDateTime(item.claimDateTime))*/
     }
 
     private fun doSave() {
@@ -136,31 +134,16 @@ class PayenCrudActivity : AppCompatActivity() {
 
         val reimbursement = (apptCostVal + medCostVal) * 0.80
 
-        val item = PayenReimbursement(
-            id = id,
-            name = name,
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
-            specialty = txtSpecialty.text.toString().trim(),
-            apptCost = apptCostVal,
-            medicineCost = medCostVal,
-            reimbursementAmount = reimbursement,
-            medicines = selectedMeds.joinToString(", "),
-            apptDateTime = apptDt,
-            claimDateTime = claimDt
-        )
+
 
         if (currentId.isNullOrEmpty()) {
-            if (PayenViewModel.getById(id) != null) {
+            if (null != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            PayenViewModel.save(item)
+            //PayenViewModel.save(item)
         } else {
-            PayenViewModel.update(item)
+            //PayenViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -171,7 +154,7 @@ class PayenCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            PayenViewModel.delete(id)
+            //PayenViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }

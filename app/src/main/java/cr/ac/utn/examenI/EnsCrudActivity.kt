@@ -12,10 +12,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.EnsInsurancePolicy
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-import cr.ac.utn.examenI.viewmodel.EnsViewModel
 import java.time.LocalDate
 
 class EnsCrudActivity : AppCompatActivity() {
@@ -83,7 +81,7 @@ class EnsCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        val item = EnsViewModel.getById(id) ?: return
+        /*val item = EnsViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -99,7 +97,7 @@ class EnsCrudActivity : AppCompatActivity() {
         if (posType >= 0) spnInsuranceType.setSelection(posType)
         txtPremium.setText(item.premium.toString())
         txtStartDate.setText(util.formatDate(item.startDate))
-        txtExpirationDate.setText(util.formatDate(item.expirationDate))
+        txtExpirationDate.setText(util.formatDate(item.expirationDate))*/
     }
 
     private fun doSave() {
@@ -113,7 +111,7 @@ class EnsCrudActivity : AppCompatActivity() {
         }
 
         // Unique policy num
-        val duplicatePolicy = EnsViewModel.getAll().any { it.policyNum.equals(policy, ignoreCase = true) && it.id != id }
+        val duplicatePolicy = false //EnsViewModel.getAll().any { it.policyNum.equals(policy, ignoreCase = true) && it.id != id }
         if (duplicatePolicy) {
             Toast.makeText(this, "El número de póliza ya existe.", Toast.LENGTH_SHORT).show()
             return
@@ -127,30 +125,15 @@ class EnsCrudActivity : AppCompatActivity() {
             return
         }
 
-        val item = EnsInsurancePolicy(
-            id = id,
-            name = name,
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
-            policyNum = policy,
-            company = spnCompany.selectedItem?.toString() ?: "",
-            insuranceType = spnInsuranceType.selectedItem?.toString() ?: "",
-            premium = txtPremium.text.toString().toDoubleOrNull() ?: 0.0,
-            startDate = startDt,
-            expirationDate = expDt
-        )
 
         if (currentId.isNullOrEmpty()) {
-            if (EnsViewModel.getById(id) != null) {
+            if (null != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            EnsViewModel.save(item)
+            //EnsViewModel.save(item)
         } else {
-            EnsViewModel.update(item)
+            //EnsViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -161,7 +144,7 @@ class EnsCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            EnsViewModel.delete(id)
+            //EnsViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }

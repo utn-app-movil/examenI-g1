@@ -554,15 +554,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity
-            android:name=".TemplateCrudActivity"
-            android:exported="false"
-            android:parentActivityName=".TemplateListActivity"
-            android:windowSoftInputMode="adjustResize">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".TemplateListActivity" />
-        </activity>
 
     </application>
 

@@ -13,10 +13,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.BidAuction
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-import cr.ac.utn.examenI.viewmodel.BidViewModel
 import java.time.LocalDateTime
 
 class BidCrudActivity : AppCompatActivity() {
@@ -76,7 +74,7 @@ class BidCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        val item = BidViewModel.getById(id) ?: return
+        /*val item = BidViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -90,7 +88,7 @@ class BidCrudActivity : AppCompatActivity() {
         txtDescription.setText(item.description)
         txtBidAmount.setText(item.bidAmount.toString())
         chkAwarded.isChecked = item.awarded
-        txtDateTime.setText(util.formatDateTime(item.bidDateTime))
+        txtDateTime.setText(util.formatDateTime(item.bidDateTime))*/
     }
 
     private fun doSave() {
@@ -112,38 +110,24 @@ class BidCrudActivity : AppCompatActivity() {
         }
 
         // Validate bid amount > previous bid for this article
-        val maxPrevBid = BidViewModel.getAll()
+        val maxPrevBid = 0 /*BidViewModel.getAll()
             .filter { it.articleCode == article && it.id != id }
-            .maxOfOrNull { it.bidAmount } ?: 0.0
+            .maxOfOrNull { it.bidAmount } ?: 0.0*/
 
         if (bidAmt <= maxPrevBid) {
             Toast.makeText(this, "El monto de la oferta debe ser mayor a la oferta anterior ($$maxPrevBid).", Toast.LENGTH_SHORT).show()
             return
         }
 
-        val item = BidAuction(
-            id = id,
-            name = name,
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
-            articleCode = article,
-            description = txtDescription.text.toString().trim(),
-            bidAmount = bidAmt,
-            awarded = chkAwarded.isChecked,
-            bidDateTime = dt
-        )
 
         if (currentId.isNullOrEmpty()) {
-            if (BidViewModel.getById(id) != null) {
+            if (null != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            BidViewModel.save(item)
+            //BidViewModel.save(item)
         } else {
-            BidViewModel.update(item)
+            //BidViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -154,7 +138,7 @@ class BidCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            BidViewModel.delete(id)
+            //BidViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }

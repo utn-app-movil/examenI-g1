@@ -12,10 +12,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.AppAppointment
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-import cr.ac.utn.examenI.viewmodel.AppViewModel
 import java.time.LocalDateTime
 
 class AppCrudActivity : AppCompatActivity() {
@@ -71,7 +69,7 @@ class AppCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        val item = AppViewModel.getById(id) ?: return
+        /*val item = AppViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -83,7 +81,7 @@ class AppCrudActivity : AppCompatActivity() {
         txtDoctor.setText(item.doctorName)
         val pos = specialties.indexOf(item.specialty)
         if (pos >= 0) spnSpecialty.setSelection(pos)
-        txtDateTime.setText(util.formatDateTime(item.appointmentDateTime))
+        txtDateTime.setText(util.formatDateTime(item.appointmentDateTime))*/
     }
 
     private fun doSave() {
@@ -108,27 +106,16 @@ class AppCrudActivity : AppCompatActivity() {
             return
         }
 
-        val item = AppAppointment(
-            id = id,
-            name = name,
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
-            doctorName = doctor,
-            specialty = spnSpecialty.selectedItem?.toString() ?: "",
-            appointmentDateTime = dt
-        )
+
 
         if (currentId.isNullOrEmpty()) {
-            if (AppViewModel.getById(id) != null) {
+            if (null != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            AppViewModel.save(item)
+            //AppViewModel.save(item)
         } else {
-            AppViewModel.update(item)
+            //AppViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -139,7 +126,7 @@ class AppCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            AppViewModel.delete(id)
+            //AppViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }

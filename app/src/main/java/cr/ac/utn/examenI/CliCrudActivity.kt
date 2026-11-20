@@ -11,10 +11,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.CliClient
+import cr.ac.utn.examenI.domain.model.Identifier
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-import cr.ac.utn.examenI.viewmodel.CliViewModel
 
 class CliCrudActivity : AppCompatActivity() {
     private lateinit var txtId: EditText
@@ -74,7 +73,7 @@ class CliCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        val item = CliViewModel.getById(id) ?: return
+        /*val item = CliViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -92,7 +91,7 @@ class CliCrudActivity : AppCompatActivity() {
         chkConsulting.isChecked = item.services.contains("Consultoría")
         chkSupport.isChecked = item.services.contains("Soporte")
         chkDev.isChecked = item.services.contains("Desarrollo")
-        chkMaint.isChecked = item.services.contains("Mantenimiento")
+        chkMaint.isChecked = item.services.contains("Mantenimiento")*/
     }
 
     private fun doSave() {
@@ -111,30 +110,16 @@ class CliCrudActivity : AppCompatActivity() {
         if (chkDev.isChecked) selectedServices.add("Desarrollo")
         if (chkMaint.isChecked) selectedServices.add("Mantenimiento")
 
-        val item = CliClient(
-            id = id,
-            name = txtName.text.toString().trim(),
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
-            companyName = companyName,
-            corporateId = corpId,
-            province = txtProvince.text.toString().trim(),
-            canton = txtCanton.text.toString().trim(),
-            district = txtDistrict.text.toString().trim(),
-            services = selectedServices.joinToString(", ")
-        )
+
 
         if (currentId.isNullOrEmpty()) {
-            if (CliViewModel.getById(id) != null) {
+            if (null != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            CliViewModel.save(item)
+            //CliViewModel.save(item)
         } else {
-            CliViewModel.update(item)
+            //CliViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -145,7 +130,7 @@ class CliCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            CliViewModel.delete(id)
+            //CliViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }

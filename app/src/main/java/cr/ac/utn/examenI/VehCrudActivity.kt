@@ -12,10 +12,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.VehVehicleRange
+import cr.ac.utn.examenI.domain.model.Identifier
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-import cr.ac.utn.examenI.viewmodel.VehViewModel
 import java.time.LocalDateTime
 
 class VehCrudActivity : AppCompatActivity() {
@@ -84,7 +83,7 @@ class VehCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        val item = VehViewModel.getById(id) ?: return
+        /*val item = VehViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -101,7 +100,7 @@ class VehCrudActivity : AppCompatActivity() {
         if (posBrand >= 0) spnBrand.setSelection(posBrand)
         val posType = vehicleTypes.indexOf(item.vehicleType)
         if (posType >= 0) spnVehicleType.setSelection(posType)
-        txtChargeDate.setText(util.formatDateTime(item.chargeDateTime))
+        txtChargeDate.setText(util.formatDateTime(item.chargeDateTime))*/
     }
 
     private fun doSave() {
@@ -128,31 +127,16 @@ class VehCrudActivity : AppCompatActivity() {
 
         val dt = util.parseStringToDateTimeModern(txtChargeDate.text.toString().trim()) ?: LocalDateTime.now()
 
-        val item = VehVehicleRange(
-            id = id,
-            name = txtName.text.toString().trim(),
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
-            vehicleId = vehId,
-            rangeKm = range,
-            initialBatteryPct = initBat,
-            finalBatteryPct = finalBat,
-            brand = spnBrand.selectedItem?.toString() ?: "",
-            vehicleType = spnVehicleType.selectedItem?.toString() ?: "",
-            chargeDateTime = dt
-        )
+
 
         if (currentId.isNullOrEmpty()) {
-            if (VehViewModel.getById(id) != null) {
+            if (null != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            VehViewModel.save(item)
+            //VehViewModel.save(item)
         } else {
-            VehViewModel.update(item)
+            //VehViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -163,7 +147,7 @@ class VehCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            VehViewModel.delete(id)
+            //VehViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }

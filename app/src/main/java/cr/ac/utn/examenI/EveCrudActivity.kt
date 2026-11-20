@@ -12,10 +12,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.EveEvent
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-import cr.ac.utn.examenI.viewmodel.EveViewModel
 import java.time.LocalDateTime
 
 class EveCrudActivity : AppCompatActivity() {
@@ -75,7 +73,7 @@ class EveCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        val item = EveViewModel.getById(id) ?: return
+        /*val item = EveViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -89,7 +87,7 @@ class EveCrudActivity : AppCompatActivity() {
         txtSeatNum.setText(item.seatNumber)
         val pos = eventTypes.indexOf(item.eventType)
         if (pos >= 0) spnEventType.setSelection(pos)
-        txtDateTime.setText(util.formatDateTime(item.eventDateTime))
+        txtDateTime.setText(util.formatDateTime(item.eventDateTime))*/
     }
 
     private fun doSave() {
@@ -104,7 +102,7 @@ class EveCrudActivity : AppCompatActivity() {
         }
 
         // Unique seat per event validation
-        val existingWithSeat = EveViewModel.getAll().any { it.venue.equals(venue, ignoreCase = true) && it.seatNumber.equals(seat, ignoreCase = true) && it.id != id }
+        val existingWithSeat = false //EveViewModel.getAll().any { it.venue.equals(venue, ignoreCase = true) && it.seatNumber.equals(seat, ignoreCase = true) && it.id != id }
         if (existingWithSeat) {
             Toast.makeText(this, "El número de asiento ya está ocupado para este evento/lugar.", Toast.LENGTH_SHORT).show()
             return
@@ -112,29 +110,16 @@ class EveCrudActivity : AppCompatActivity() {
 
         val dt = util.parseStringToDateTimeModern(txtDateTime.text.toString().trim()) ?: LocalDateTime.now()
 
-        val item = EveEvent(
-            id = id,
-            name = name,
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
-            institution = txtInstitution.text.toString().trim(),
-            venue = venue,
-            seatNumber = seat,
-            eventType = spnEventType.selectedItem?.toString() ?: "",
-            eventDateTime = dt
-        )
+
 
         if (currentId.isNullOrEmpty()) {
-            if (EveViewModel.getById(id) != null) {
+            if (null != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            EveViewModel.save(item)
+            //EveViewModel.save(item)
         } else {
-            EveViewModel.update(item)
+            //EveViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -145,7 +130,7 @@ class EveCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            EveViewModel.delete(id)
+            //EveViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }

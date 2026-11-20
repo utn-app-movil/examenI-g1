@@ -11,10 +11,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.RecruRecruitment
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-import cr.ac.utn.examenI.viewmodel.RecruViewModel
 import java.time.LocalDateTime
 
 class RecruCrudActivity : AppCompatActivity() {
@@ -83,7 +81,7 @@ class RecruCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        val item = RecruViewModel.getById(id) ?: return
+        /*val item = RecruViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -103,7 +101,7 @@ class RecruCrudActivity : AppCompatActivity() {
         chkQA.isChecked = item.roles.contains("QA")
         txtSalaryExpectation.setText(item.salaryExpectation.toString())
         txtExperienceYears.setText(item.experienceYears.toString())
-        txtDateTime.setText(util.formatDateTime(item.registrationDateTime))
+        txtDateTime.setText(util.formatDateTime(item.registrationDateTime))*/
     }
 
     private fun doSave() {
@@ -124,7 +122,7 @@ class RecruCrudActivity : AppCompatActivity() {
         }
 
         // Unique registration per company
-        val duplicateCompanyReg = RecruViewModel.getAll().any { it.id == id && it.targetCompany.equals(company, ignoreCase = true) && currentId.isNullOrEmpty() }
+        val duplicateCompanyReg = false //RecruViewModel.getAll().any { it.id == id && it.targetCompany.equals(company, ignoreCase = true) && currentId.isNullOrEmpty() }
         if (duplicateCompanyReg) {
             Toast.makeText(this, "Esta persona ya tiene un registro activo para la empresa $company.", Toast.LENGTH_SHORT).show()
             return
@@ -137,32 +135,16 @@ class RecruCrudActivity : AppCompatActivity() {
         if (chkSeguridad.isChecked) selectedRoles.add("Seguridad")
         if (chkQA.isChecked) selectedRoles.add("QA")
 
-        val item = RecruRecruitment(
-            id = id,
-            name = name,
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
-            province = txtProvince.text.toString().trim(),
-            canton = txtCanton.text.toString().trim(),
-            district = txtDistrict.text.toString().trim(),
-            targetCompany = company,
-            roles = selectedRoles.joinToString(", "),
-            salaryExpectation = txtSalaryExpectation.text.toString().toDoubleOrNull() ?: 0.0,
-            experienceYears = txtExperienceYears.text.toString().toIntOrNull() ?: 0,
-            registrationDateTime = dt
-        )
+
 
         if (currentId.isNullOrEmpty()) {
-            if (RecruViewModel.getById(id) != null) {
+            if (null != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            RecruViewModel.save(item)
+            //RecruViewModel.save(item)
         } else {
-            RecruViewModel.update(item)
+            //RecruViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -173,7 +155,7 @@ class RecruCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            RecruViewModel.delete(id)
+            //RecruViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }

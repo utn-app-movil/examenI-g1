@@ -10,10 +10,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.SinSinpe
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-import cr.ac.utn.examenI.viewmodel.SinViewModel
 import java.time.LocalDateTime
 
 class SinCrudActivity : AppCompatActivity() {
@@ -47,7 +45,7 @@ class SinCrudActivity : AppCompatActivity() {
         txtName = findViewById(R.id.txtName)
         txtFirstName = findViewById(R.id.txtFirstName)
         txtLastName = findViewById(R.id.txtLastName)
-        txtPhone = findViewById(R.id.txtPhone)
+        //txtPhone = findViewById(R.id.txtPhone)
         txtEmail = findViewById(R.id.txtEmail)
         txtAddress = findViewById(R.id.txtAddress)
         txtOriginPhone = findViewById(R.id.txtOriginPhone)
@@ -70,7 +68,7 @@ class SinCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        val item = SinViewModel.getById(id) ?: return
+        /*val item = SinViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -84,7 +82,7 @@ class SinCrudActivity : AppCompatActivity() {
         txtRecipientName.setText(item.recipientName)
         txtAmount.setText(item.amount.toString())
         txtDescription.setText(item.description)
-        txtDateTime.setText(util.formatDateTime(item.sinpeDateTime))
+        txtDateTime.setText(util.formatDateTime(item.sinpeDateTime))*/
     }
 
     private fun doSave() {
@@ -118,30 +116,16 @@ class SinCrudActivity : AppCompatActivity() {
             return
         }
 
-        val item = SinSinpe(
-            id = id,
-            name = name,
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
-            originPhone = originPhone,
-            recipientPhone = recipientPhone,
-            recipientName = recipientName,
-            amount = amountVal,
-            description = txtDescription.text.toString().trim(),
-            sinpeDateTime = dt
-        )
+
 
         if (currentId.isNullOrEmpty()) {
-            if (SinViewModel.getById(id) != null) {
+            if (null != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            SinViewModel.save(item)
+            //SinViewModel.save(item)
         } else {
-            SinViewModel.update(item)
+            //SinViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -152,7 +136,7 @@ class SinCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            SinViewModel.delete(id)
+            //SinViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }

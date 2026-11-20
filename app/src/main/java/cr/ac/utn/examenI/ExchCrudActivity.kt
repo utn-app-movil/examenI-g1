@@ -14,10 +14,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.ExchExchangeRate
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-import cr.ac.utn.examenI.viewmodel.ExchViewModel
 import java.time.LocalDateTime
 
 class ExchCrudActivity : AppCompatActivity() {
@@ -99,7 +97,7 @@ class ExchCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        val item = ExchViewModel.getById(id) ?: return
+        /*val item = ExchViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -115,7 +113,7 @@ class ExchCrudActivity : AppCompatActivity() {
         val posBank = banks.indexOf(item.bank)
         if (posBank >= 0) spnBank.setSelection(posBank)
         txtTotalAmountToPay.setText(item.totalAmountToPay.toString())
-        txtDateTime.setText(util.formatDateTime(item.exchangeDateTime))
+        txtDateTime.setText(util.formatDateTime(item.exchangeDateTime))*/
     }
 
     private fun doSave() {
@@ -138,30 +136,16 @@ class ExchCrudActivity : AppCompatActivity() {
 
         val total = rate * amount
 
-        val item = ExchExchangeRate(
-            id = id,
-            name = name,
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
-            exchangeRate = rate,
-            amountToExchange = amount,
-            currencyType = spnCurrencyType.selectedItem?.toString() ?: "",
-            bank = spnBank.selectedItem?.toString() ?: "",
-            totalAmountToPay = total,
-            exchangeDateTime = dt
-        )
+
 
         if (currentId.isNullOrEmpty()) {
-            if (ExchViewModel.getById(id) != null) {
+            if (null != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            ExchViewModel.save(item)
+            //ExchViewModel.save(item)
         } else {
-            ExchViewModel.update(item)
+            //ExchViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -172,7 +156,7 @@ class ExchCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            ExchViewModel.delete(id)
+            //ExchViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }

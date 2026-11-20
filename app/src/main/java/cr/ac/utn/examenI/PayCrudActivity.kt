@@ -12,10 +12,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.PayPayroll
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-import cr.ac.utn.examenI.viewmodel.PayViewModel
 import java.time.LocalDate
 
 class PayCrudActivity : AppCompatActivity() {
@@ -77,7 +75,7 @@ class PayCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        val item = PayViewModel.getById(id) ?: return
+        /*val item = PayViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -92,7 +90,7 @@ class PayCrudActivity : AppCompatActivity() {
         txtIban.setText(item.iban)
         txtMonth.setText(item.month.toString())
         val pos = banks.indexOf(item.bank)
-        if (pos >= 0) spnBank.setSelection(pos)
+        if (pos >= 0) spnBank.setSelection(pos)*/
     }
 
     private fun doSave() {
@@ -120,30 +118,16 @@ class PayCrudActivity : AppCompatActivity() {
             return
         }
 
-        val item = PayPayroll(
-            id = id,
-            name = name,
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
-            employeeNum = empNum,
-            position = txtPosition.text.toString().trim(),
-            salary = txtSalary.text.toString().toDoubleOrNull() ?: 0.0,
-            iban = ibanStr,
-            month = monthVal,
-            bank = spnBank.selectedItem?.toString() ?: ""
-        )
+
 
         if (currentId.isNullOrEmpty()) {
-            if (PayViewModel.getById(id) != null) {
+            if (null != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            PayViewModel.save(item)
+            //PayViewModel.save(item)
         } else {
-            PayViewModel.update(item)
+            //PayViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -154,7 +138,7 @@ class PayCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            PayViewModel.delete(id)
+            //PayViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }

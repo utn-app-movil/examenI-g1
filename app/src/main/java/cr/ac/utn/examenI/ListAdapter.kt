@@ -32,15 +32,15 @@ class ListAdapter (private var items: List<Identifier>,
 
 class CustomViewHolder(view: View): RecyclerView.ViewHolder(view)
 {
-    val tvTitle = view.findViewById<TextView>(R.id.txtTitle_Item)
-    val tvStatus = view.findViewById<TextView>(R.id.txtStatus_Item)
-    val tvPriority = view.findViewById<TextView>(R.id.txtPriority_Item)
-    val tvAssingTo = view.findViewById<TextView>(R.id.txtAssignTo_Item)
+    val tvText1 = view.findViewById<TextView>(R.id.txtText1_Item)
+    val tvText2 = view.findViewById<TextView>(R.id.txtText2_Item)
+    val tvText3 = view.findViewById<TextView>(R.id.txtText3_Item)
+    val tvText4 = view.findViewById<TextView>(R.id.txtText4_Item)
     val imgPicture = view.findViewById<ImageView>(R.id.imgPicture_Item)
 
     fun bind(obj: Identifier, itemClickListener: OnItemClickListener){
-        tvTitle.text = obj.id
-        tvStatus.text = obj.fullName
+        tvText1.text = obj.id
+        tvText2.text = obj.fullName
 
         imgPicture.setImageResource(R.drawable.ic_launcher_foreground)
         itemView.setOnClickListener{

@@ -12,10 +12,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.InvInventory
+import cr.ac.utn.examenI.domain.model.Identifier
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-import cr.ac.utn.examenI.viewmodel.InvViewModel
 import java.time.LocalDateTime
 
 class InvCrudActivity : AppCompatActivity() {
@@ -77,7 +76,7 @@ class InvCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        val item = InvViewModel.getById(id) ?: return
+        /*val item = InvViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -92,7 +91,7 @@ class InvCrudActivity : AppCompatActivity() {
         val pos = suppliers.indexOf(item.supplier)
         if (pos >= 0) spnSupplier.setSelection(pos)
         txtUnitCost.setText(item.unitCost.toString())
-        txtDateTime.setText(util.formatDateTime(item.entryDateTime))
+        txtDateTime.setText(util.formatDateTime(item.entryDateTime))*/
     }
 
     private fun doSave() {
@@ -119,30 +118,15 @@ class InvCrudActivity : AppCompatActivity() {
             return
         }
 
-        val item = InvInventory(
-            id = id,
-            name = name,
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
-            productCode = prodCode,
-            productName = prodName,
-            quantity = qty,
-            supplier = spnSupplier.selectedItem?.toString() ?: "",
-            unitCost = txtUnitCost.text.toString().toDoubleOrNull() ?: 0.0,
-            entryDateTime = dt
-        )
 
         if (currentId.isNullOrEmpty()) {
-            if (InvViewModel.getById(id) != null) {
+            if (null != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            InvViewModel.save(item)
+            //InvViewModel.save(item)
         } else {
-            InvViewModel.update(item)
+            //InvViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -153,7 +137,7 @@ class InvCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            InvViewModel.delete(id)
+            //InvViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }

@@ -11,10 +11,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.TrainTraining
+import cr.ac.utn.examenI.domain.model.Identifier
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-import cr.ac.utn.examenI.viewmodel.TrainViewModel
 import java.time.LocalDateTime
 
 class TrainCrudActivity : AppCompatActivity() {
@@ -69,7 +68,7 @@ class TrainCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        val item = TrainViewModel.getById(id) ?: return
+        /*val item = TrainViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -82,7 +81,7 @@ class TrainCrudActivity : AppCompatActivity() {
         chkAndroid.isChecked = item.courses.contains("Android Studio")
         chkGit.isChecked = item.courses.contains("Git")
         chkScrum.isChecked = item.courses.contains("Scrum")
-        txtDateTime.setText(util.formatDateTime(item.trainingDateTime))
+        txtDateTime.setText(util.formatDateTime(item.trainingDateTime))*/
     }
 
     private fun doSave() {
@@ -107,26 +106,16 @@ class TrainCrudActivity : AppCompatActivity() {
         if (chkGit.isChecked) selectedCourses.add("Git")
         if (chkScrum.isChecked) selectedCourses.add("Scrum")
 
-        val item = TrainTraining(
-            id = id,
-            name = name,
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
-            courses = selectedCourses.joinToString(", "),
-            trainingDateTime = dt
-        )
+
 
         if (currentId.isNullOrEmpty()) {
-            if (TrainViewModel.getById(id) != null) {
+            if (null != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            TrainViewModel.save(item)
+            //TrainViewModel.save(item)
         } else {
-            TrainViewModel.update(item)
+            //TrainViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -137,7 +126,7 @@ class TrainCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            TrainViewModel.delete(id)
+            //TrainViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }
