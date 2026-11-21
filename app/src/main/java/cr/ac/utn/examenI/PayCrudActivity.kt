@@ -15,7 +15,9 @@ import androidx.core.view.WindowInsetsCompat
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
 import java.time.LocalDate
-
+import android.util.Patterns
+import cr.ac.utn.examenI.domain.model.PayEmployee
+import cr.ac.utn.examenI.viewmodel.PayViewModel
 class PayCrudActivity : AppCompatActivity() {
     private lateinit var txtId: EditText
     private lateinit var txtName: EditText
@@ -75,7 +77,7 @@ class PayCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        /*val item = PayViewModel.getById(id) ?: return
+        val item = PayViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -90,55 +92,149 @@ class PayCrudActivity : AppCompatActivity() {
         txtIban.setText(item.iban)
         txtMonth.setText(item.month.toString())
         val pos = banks.indexOf(item.bank)
-        if (pos >= 0) spnBank.setSelection(pos)*/
+        if (pos >= 0) spnBank.setSelection(pos)
     }
+
 
     private fun doSave() {
         val id = txtId.text.toString().trim()
         val name = txtName.text.toString().trim()
-        val empNum = txtEmployeeNum.text.toString().trim()
-        val ibanStr = txtIban.text.toString().trim().uppercase()
-        val monthVal = txtMonth.text.toString().toIntOrNull() ?: 1
+        val firstName = txtFirstName.text.toString().trim()
+        val lastName = txtLastName.text.toString().trim()
+        val phoneText = txtPhone.text.toString().trim()
+        val email = txtEmail.text.toString().trim()
+        val address = txtAddress.text.toString().trim()
+        val employeeNum = txtEmployeeNum.text.toString().trim()
+        val position = txtPosition.text.toString().trim()
+        val salary = txtSalary.text.toString().trim().toDoubleOrNull()
+        val iban = txtIban.text.toString().trim().uppercase()
+        val month = txtMonth.text.toString().trim().toIntOrNull()
+        val bank = spnBank.selectedItem?.toString()
 
-        if (id.isEmpty() || name.isEmpty() || empNum.isEmpty() || ibanStr.isEmpty()) {
-            Toast.makeText(this, "Por favor complete los campos requeridos.", Toast.LENGTH_SHORT).show()
-            return
-        }
+        val errorMessage = getString(R.string.TextSaveError)
 
-        // Validate IBAN format (e.g., ^[A-Z]{2}\d{15,28}$)
-        val ibanRegex = Regex("""^[A-Z]{2}\d{15,28}$""")
-        if (!ibanRegex.matches(ibanStr)) {
-            Toast.makeText(this, "Formato de IBAN inválido (debe iniciar con código de país y dígitos).", Toast.LENGTH_SHORT).show()
-            return
-        }
+        val requiredFields = listOf(
+            txtId, txtName, txtFirstName, txtLastName,
+            txtPhone, txtEmail, txtAddress,
+            txtEmployeeNum, txtPosition,
+            txtSalary, txtIban, txtMonth
+        )
 
-        val currentMonth = LocalDate.now().monthValue
-        if (monthVal < 1 || monthVal > currentMonth) {
-            Toast.makeText(this, "El mes debe ser menor o igual al mes actual ($currentMonth).", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-
-
-        if (currentId.isNullOrEmpty()) {
-            if (null != null) {
-                Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
+        for (field in requiredFields) {
+            if (field.text.toString().isBlank()) {
+                field.error = errorMessage
+                field.requestFocus()
                 return
             }
-            //PayViewModel.save(item)
-        } else {
-            //PayViewModel.update(item)
         }
 
-        Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
-        finish()
+        val phone = phoneText.toIntOrNull()
+        if (phone == null || phoneText.length != 8) {
+            txtPhone.error = errorMessage
+            txtPhone.requestFocus()
+            return
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            txtEmail.error = errorMessage
+            txtEmail.requestFocus()
+            return
+        }
+
+        if (salary == null || !salary.isFinite() || salary <= 0.0) {
+            txtSalary.error = errorMessage
+            txtSalary.requestFocus()
+            return
+        }
+
+        if (month == null ||
+            month !in 1..LocalDate.now().monthValue) {
+            txtMonth.error = errorMessage
+            txtMonth.requestFocus()
+            return
+        }
+
+        if (!isValidPayIban(iban)) {
+            txtIban.error = errorMessage
+            txtIban.requestFocus()
+            return
+        }
+
+        if (bank.isNullOrBlank()) {
+            Toast.makeText(
+                this, errorMessage, Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
+
+        val employee = PayEmployee(
+            id = id,
+            name = name,
+            firstName = firstName,
+            lastName = lastName,
+            phone = phone,
+            email = email,
+            address = address,
+            employeeNum = employeeNum,
+            position = position,
+            salary = salary,
+            iban = iban,
+            month = month,
+            bank = bank
+        )
+
+        val saved = if (currentId.isNullOrEmpty()) {
+            PayViewModel.save(employee)
+        } else {
+            if (currentId != id) {
+                false
+            } else {
+                PayViewModel.update(employee)
+            }
+        }
+
+        val message = when {
+            saved -> R.string.TextSaveSuccess
+            currentId.isNullOrEmpty() ->
+                R.string.TextDuplicateData
+            else -> R.string.TextSaveError
+        }
+
+        Toast.makeText(
+            this, getString(message), Toast.LENGTH_SHORT
+        ).show()
+
+        if (saved) finish()
+    }
+
+    private fun isValidPayIban(iban: String): Boolean {
+        if (!Regex("""^CR\d{20}$""").matches(iban)) {
+            return false
+        }
+
+        val rearranged = iban.substring(4) + iban.substring(0, 4)
+        var remainder = 0
+
+        for (character in rearranged) {
+            val digits = if (character.isLetter()) {
+                (character - 'A' + 10).toString()
+            } else {
+                character.toString()
+            }
+
+            for (digit in digits) {
+                remainder = (remainder * 10 + digit.digitToInt()) % 97
+            }
+        }
+
+        return remainder == 1
     }
 
     private fun doDelete() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            //PayViewModel.delete(id)
+            PayViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import cr.ac.utn.examenI.domain.model.Identifier
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
+import cr.ac.utn.examenI.viewmodel.PayViewModel
 
 class PayListActivity : AppCompatActivity(), OnItemClickListener {
     private lateinit var rvList: RecyclerView
@@ -38,10 +39,12 @@ class PayListActivity : AppCompatActivity(), OnItemClickListener {
         loadData()
     }
 
+
     private fun loadData() {
-        val items = emptyList<Identifier>()
+        val items: List<Identifier> = PayViewModel.getAll()
         rvList.adapter = ListAdapter(items, this)
     }
+
 
     override fun onItemClick(obj: Identifier) {
         util.openActivity(this, PayCrudActivity::class.java, EXTRA_ID, obj.id)
