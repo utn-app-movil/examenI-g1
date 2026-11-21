@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import cr.ac.utn.examenI.domain.model.Identifier
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
+import cr.ac.utn.examenI.viewmodel.FliViewModel
 
 class FliListActivity : AppCompatActivity(), OnItemClickListener {
     private lateinit var rvList: RecyclerView
@@ -39,8 +40,8 @@ class FliListActivity : AppCompatActivity(), OnItemClickListener {
     }
 
     private fun loadData() {
-        val items =emptyList<Identifier>()
-        rvList.adapter = ListAdapter(items, this)
+        val fli_items = FliViewModel.getAll()
+        rvList.adapter = ListAdapter(fli_items, this)
     }
 
     override fun onItemClick(obj: Identifier) {

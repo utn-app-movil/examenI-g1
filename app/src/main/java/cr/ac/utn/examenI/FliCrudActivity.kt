@@ -13,8 +13,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import cr.ac.utn.examenI.domain.model.Country
+import cr.ac.utn.examenI.domain.model.Fli
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
+import cr.ac.utn.examenI.viewmodel.FliViewModel
 import java.time.LocalDateTime
 
 class FliCrudActivity : AppCompatActivity() {
@@ -73,29 +75,34 @@ class FliCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        /*val item = FliViewModel.getById(id) ?: return
-        txtId.setText(item.id)
+        val fli_item = FliViewModel.getById(id) ?: return
+        txtId.setText(fli_item.id)
         txtId.isEnabled = false
-        txtName.setText(item.name)
-        txtFirstName.setText(item.firstName)
-        txtLastName.setText(item.lastName)
-        txtPhone.setText(item.phone.toString())
-        txtEmail.setText(item.email)
-        txtAddress.setText(item.address)
-        spnOriginCountry.setSelection(countries.indexOf(item.originCountry))
-        spnDestCountry.setSelection(countries.indexOf(item.destCountry))
-        txtFlightNum.setText(item.flightNumber)
-        txtDateTime.setText(util.formatDateTime(item.flightDateTime))*/
+        txtName.setText(fli_item.name)
+        txtFirstName.setText(fli_item.firstName)
+        txtLastName.setText(fli_item.lastName)
+        txtPhone.setText(fli_item.phone.toString())
+        txtEmail.setText(fli_item.email)
+        txtAddress.setText(fli_item.address)
+        spnOriginCountry.setSelection(countries.indexOf(fli_item.originCountry))
+        spnDestCountry.setSelection(countries.indexOf(fli_item.destCountry))
+        txtFlightNum.setText(fli_item.flightNumber)
+        txtDateTime.setText(util.formatDateTime(fli_item.flightDateTime))
     }
 
     private fun doSave() {
         val id = txtId.text.toString().trim()
         val name = txtName.text.toString().trim()
+        val firstName = txtFirstName.text.toString().trim()
+        val lastName = txtLastName.text.toString().trim()
+        val phone = txtPhone.text.toString().trim().toIntOrNull() ?: 0
+        val email = txtEmail.text.toString().trim()
+        val address = txtAddress.text.toString().trim()
         val flightNum = txtFlightNum.text.toString().trim().uppercase()
         val dateTimeStr = txtDateTime.text.toString().trim()
 
         if (id.isEmpty() || name.isEmpty() || flightNum.isEmpty()) {
-            Toast.makeText(this, "Por favor complete los campos requeridos.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -103,34 +110,46 @@ class FliCrudActivity : AppCompatActivity() {
         val dest = spnDestCountry.selectedItem as Country
 
         if (origin == dest) {
-            Toast.makeText(this, "El país destino debe ser diferente al país de origen.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
             return
         }
 
         val flightRegex = Regex("""^[A-Z]{2}\d{4}$""")
         if (!flightRegex.matches(flightNum)) {
-            Toast.makeText(this, "Número de vuelo debe ser de formato AB1234.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
             return
         }
 
         val dt = util.parseStringToDateTimeModern(dateTimeStr)
         if (dt == null || !dt.isAfter(LocalDateTime.now())) {
-            Toast.makeText(this, "La fecha de vuelo debe ser mayor a la fecha actual.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
             return
         }
 
-
+        val fli_obj = Fli(
+            id = id,
+            name = name,
+            firstName = firstName,
+            lastName = lastName,
+            phone = phone,
+            email = email,
+            address = address,
+            originCountry = origin,
+            destCountry = dest,
+            flightNumber = flightNum,
+            flightDateTime = dt
+        )
 
         if (currentId.isNullOrEmpty()) {
-            if (null != null) {
-                Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
+            if (FliViewModel.getById(id) != null) {
+                Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT)
+                    .show()
                 return
             }
-            //FliViewModel.save(item)
+            FliViewModel.save(fli_obj)
         } else {
-            //FliViewModel.update(item)
+            FliViewModel.update(fli_obj)
         }
-
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
         finish()
     }
