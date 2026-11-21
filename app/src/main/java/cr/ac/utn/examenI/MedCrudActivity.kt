@@ -13,6 +13,8 @@ import androidx.core.view.WindowInsetsCompat
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
 import java.time.LocalDateTime
+import cr.ac.utn.examenI.domain.model.Med
+import cr.ac.utn.examenI.viewmodel.MedViewModel
 
 class MedCrudActivity : AppCompatActivity() {
     private lateinit var txtId: EditText
@@ -100,18 +102,43 @@ class MedCrudActivity : AppCompatActivity() {
             return
         }
 
-        val dt = util.parseStringToDateTimeModern(dateTimeStr) ?: LocalDateTime.now()
+        val dt = util.parseStringToDateTimeModern(dateTimeStr)
 
+        val phone = txtPhone.text.toString().toIntOrNull()
+        val weight = txtWeight.text.toString().toDoubleOrNull()
+        val height = txtHeight.text.toString().toDoubleOrNull()
+        val oxygen = txtOxygen.text.toString().toIntOrNull()
 
+        if (dt == null || phone == null || weight == null ||
+            height == null || oxygen == null) {
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val item = Med(
+            id = id,
+            name = name,
+            firstName = txtFirstName.text.toString().trim(),
+            lastName = txtLastName.text.toString().trim(),
+            phone = phone,
+            email = txtEmail.text.toString().trim(),
+            address = txtAddress.text.toString().trim(),
+            bloodPressure = bp,
+            weight = weight,
+            height = height,
+            oxygenation = oxygen,
+            checkDateTime = dt
+        )
 
         if (currentId.isNullOrEmpty()) {
-            if (null != null) {
+            if (MedViewModel.getById(id) != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            //MedViewModel.save(item)
+
+            MedViewModel.save(item)
         } else {
-            //MedViewModel.update(item)
+            MedViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()

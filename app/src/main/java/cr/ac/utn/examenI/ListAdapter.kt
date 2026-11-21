@@ -21,7 +21,8 @@ class ListAdapter (private var items: List<Identifier>,
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        val item = if (position > 0) items[position - 1] else items[position]
+        //val item = if (position > 0) items[position - 1] else items[position] // "error de guardado"
+        val item = items[position] //correccion manual
         holder.bind(item, itemClickListener)
     }
 
