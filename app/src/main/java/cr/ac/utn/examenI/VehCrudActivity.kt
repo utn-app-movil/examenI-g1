@@ -13,9 +13,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import cr.ac.utn.examenI.domain.model.Identifier
+import cr.ac.utn.examenI.domain.model.VehCharge
+import cr.ac.utn.examenI.viewmodel.VehViewModel
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
 import java.time.LocalDateTime
+import androidx.core.view.isVisible
 
 class VehCrudActivity : AppCompatActivity() {
     private lateinit var txtId: EditText
@@ -35,32 +38,32 @@ class VehCrudActivity : AppCompatActivity() {
 
     private var currentId: String? = null
     private val brands = arrayOf("Tesla", "BYD", "Nissan", "Hyundai")
-    private val vehicleTypes = arrayOf("Sedan", "SUV", "Hatchback")
+    private val vehicleTypes = arrayOf("Sedan", "Cargo", "SUV", "Van")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_veh_crud)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.veh_main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        txtId = findViewById(R.id.txtId)
-        txtName = findViewById(R.id.txtName)
-        txtFirstName = findViewById(R.id.txtFirstName)
-        txtLastName = findViewById(R.id.txtLastName)
-        txtPhone = findViewById(R.id.txtPhone)
-        txtEmail = findViewById(R.id.txtEmail)
-        txtAddress = findViewById(R.id.txtAddress)
-        txtVehicleId = findViewById(R.id.txtVehicleId)
-        txtRangeKm = findViewById(R.id.txtRangeKm)
-        txtInitialBattery = findViewById(R.id.txtInitialBattery)
-        txtFinalBattery = findViewById(R.id.txtFinalBattery)
-        spnBrand = findViewById(R.id.spnBrand)
-        spnVehicleType = findViewById(R.id.spnVehicleType)
-        txtChargeDate = findViewById(R.id.txtChargeDate)
+        txtId = findViewById(R.id.veh_txtId)
+        txtName = findViewById(R.id.veh_txtName)
+        txtFirstName = findViewById(R.id.veh_txtFirstName)
+        txtLastName = findViewById(R.id.veh_txtLastName)
+        txtPhone = findViewById(R.id.veh_txtPhone)
+        txtEmail = findViewById(R.id.veh_txtEmail)
+        txtAddress = findViewById(R.id.veh_txtAddress)
+        txtVehicleId = findViewById(R.id.veh_txtVehicleId)
+        txtRangeKm = findViewById(R.id.veh_txtRangeKm)
+        txtInitialBattery = findViewById(R.id.veh_txtInitialBattery)
+        txtFinalBattery = findViewById(R.id.veh_txtFinalBattery)
+        spnBrand = findViewById(R.id.veh_spnBrand)
+        spnVehicleType = findViewById(R.id.veh_spnVehicleType)
+        txtChargeDate = findViewById(R.id.veh_txtChargeDate)
 
         val adapterBrand = ArrayAdapter(this, android.R.layout.simple_spinner_item, brands)
         adapterBrand.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -77,13 +80,12 @@ class VehCrudActivity : AppCompatActivity() {
             txtChargeDate.setText(util.formatDateTime(LocalDateTime.now()))
         }
 
-        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.veh_btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.veh_btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {
-        /*val item = VehViewModel.getById(id) ?: return
+        val item = VehViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -100,7 +102,7 @@ class VehCrudActivity : AppCompatActivity() {
         if (posBrand >= 0) spnBrand.setSelection(posBrand)
         val posType = vehicleTypes.indexOf(item.vehicleType)
         if (posType >= 0) spnVehicleType.setSelection(posType)
-        txtChargeDate.setText(util.formatDateTime(item.chargeDateTime))*/
+        txtChargeDate.setText(util.formatDateTime(item.chargeDateTime))
     }
 
     private fun doSave() {
@@ -127,16 +129,31 @@ class VehCrudActivity : AppCompatActivity() {
 
         val dt = util.parseStringToDateTimeModern(txtChargeDate.text.toString().trim()) ?: LocalDateTime.now()
 
-
+        val item = VehCharge(
+            id,
+            txtName.text.toString().trim(),
+            txtFirstName.text.toString().trim(),
+            txtLastName.text.toString().trim(),
+            txtPhone.text.toString().toIntOrNull() ?: 0,
+            txtEmail.text.toString().trim(),
+            txtAddress.text.toString().trim(),
+            vehId,
+            range,
+            initBat,
+            finalBat,
+            spnBrand.selectedItem.toString(),
+            spnVehicleType.selectedItem.toString(),
+            dt
+        )
 
         if (currentId.isNullOrEmpty()) {
-            if (null != null) {
+            if (VehViewModel.getById(id) != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            //VehViewModel.save(item)
+            VehViewModel.save(item)
         } else {
-            //VehViewModel.update(item)
+            VehViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -145,9 +162,12 @@ class VehCrudActivity : AppCompatActivity() {
 
     private fun doDelete() {
         val id = txtId.text.toString().trim()
-        if (id.isEmpty()) return
+        if (currentId.isNullOrEmpty()) {
+            Toast.makeText(this, getString(R.string.TextDataNoFound), Toast.LENGTH_SHORT).show()
+            return
+        }
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            //VehViewModel.delete(id)
+            VehViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }
@@ -155,6 +175,8 @@ class VehCrudActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_crud, menu)
+        val menuDelete = menu!!.findItem(R.id.mnu_delete)
+        menuDelete.isVisible = !currentId.isNullOrEmpty()
         return true
     }
 
