@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/inv_title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingBottom="12dp" />
+
+        <EditText android:id="@+id/inv_txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID" />
+        <EditText android:id="@+id/inv_txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre Usuario" />
+        <EditText android:id="@+id/inv_txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
+        <EditText android:id="@+id/inv_txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
+        <EditText android:id="@+id/inv_txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="phone" />
+        <EditText android:id="@+id/inv_txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
+        <EditText android:id="@+id/inv_txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
+
+        <EditText android:id="@+id/inv_txtProductCode" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Codigo Producto" />
+        <EditText android:id="@+id/inv_txtProductName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre Producto" />
+        <EditText android:id="@+id/inv_txtQuantity" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cantidad (&gt; 0)" android:inputType="number" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Proveedor:" android:layout_marginTop="8dp"/>
+        <Spinner android:id="@+id/inv_spnSupplier" android:layout_width="match_parent" android:layout_height="wrap_content" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Costo por Unidad:" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/inv_txtUnitCost" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2500" android:inputType="numberDecimal" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fecha y Hora (&lt;= ahora):" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/inv_txtDateTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2024-01-15 10:00" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <Button android:id="@+id/inv_btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
+            <Button android:id="@+id/inv_btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
+            <Button android:id="@+id/inv_btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bid_title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingBottom="12dp" />
+
+        <EditText android:id="@+id/bid_txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID" />
+        <EditText android:id="@+id/bid_txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre Ofertante" />
+        <EditText android:id="@+id/bid_txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
+        <EditText android:id="@+id/bid_txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
+        <EditText android:id="@+id/bid_txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="phone" />
+        <EditText android:id="@+id/bid_txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
+        <EditText android:id="@+id/bid_txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Codigo de Articulo:" android:layout_marginTop="8dp"/>
+        <Spinner android:id="@+id/bid_spnArticleCode" android:layout_width="match_parent" android:layout_height="wrap_content" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Descripcion:" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/bid_txtDescription" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Detalles del articulo" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Monto de la Puja:" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/bid_txtBidAmount" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="100.0" android:inputType="numberDecimal" />
+
+        <CheckBox android:id="@+id/bid_chkAwarded" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Adjudicado" android:layout_marginTop="8dp" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fecha y Hora (&lt;= ahora):" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/bid_txtDateTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2024-01-15 10:00" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <Button android:id="@+id/bid_btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
+            <Button android:id="@+id/bid_btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
+            <Button android:id="@+id/bid_btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

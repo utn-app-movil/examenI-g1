@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/veh_title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingBottom="12dp" />
+
+        <EditText android:id="@+id/veh_txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID Dueño" />
+        <EditText android:id="@+id/veh_txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre Dueño" />
+        <EditText android:id="@+id/veh_txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
+        <EditText android:id="@+id/veh_txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
+        <EditText android:id="@+id/veh_txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="phone" />
+        <EditText android:id="@+id/veh_txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
+        <EditText android:id="@+id/veh_txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
+
+        <EditText android:id="@+id/veh_txtVehicleId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="ID Vehiculo" />
+        <EditText android:id="@+id/veh_txtRangeKm" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Autonomia (km &gt; 0)" android:inputType="numberDecimal" />
+        <EditText android:id="@+id/veh_txtInitialBattery" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="% Bateria Inicial" android:inputType="numberDecimal" />
+        <EditText android:id="@+id/veh_txtFinalBattery" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="% Bateria Final (&lt;= 100)" android:inputType="numberDecimal" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Marca:" android:layout_marginTop="8dp"/>
+        <Spinner android:id="@+id/veh_spnBrand" android:layout_width="match_parent" android:layout_height="wrap_content" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Tipo Vehiculo:" android:layout_marginTop="8dp"/>
+        <Spinner android:id="@+id/veh_spnVehicleType" android:layout_width="match_parent" android:layout_height="wrap_content" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fecha Carga:" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/veh_txtChargeDate" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2024-01-15 10:00" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <Button android:id="@+id/veh_btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
+            <Button android:id="@+id/veh_btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
+            <Button android:id="@+id/veh_btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

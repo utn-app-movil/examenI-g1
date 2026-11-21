@@ -1,0 +1,172 @@
+package cr.ac.utn.examenI
+
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Button
+import android.widget.CheckBox
+import android.widget.EditText
+import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import cr.ac.utn.examenI.domain.model.NotifNotification
+import cr.ac.utn.examenI.util.EXTRA_ID
+import cr.ac.utn.examenI.util.util
+import cr.ac.utn.examenI.viewmodel.NotifViewModel
+import java.time.LocalDateTime
+
+class NotifCrudActivity : AppCompatActivity() {
+    private lateinit var txtId: EditText
+    private lateinit var txtName: EditText
+    private lateinit var txtFirstName: EditText
+    private lateinit var txtLastName: EditText
+    private lateinit var txtPhone: EditText
+    private lateinit var txtEmail: EditText
+    private lateinit var txtAddress: EditText
+    private lateinit var txtEmailTitle: EditText
+    private lateinit var txtMessage: EditText
+    private lateinit var txtCC: EditText
+    private lateinit var txtCCO: EditText
+    private lateinit var chkStudents: CheckBox
+    private lateinit var chkTeachers: CheckBox
+    private lateinit var chkStaff: CheckBox
+    private lateinit var txtSendDateTime: EditText
+
+    private var currentId: String? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_notif_crud)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+        txtId = findViewById(R.id.notif_txtId)
+        txtName = findViewById(R.id.notif_txtName)
+        txtFirstName = findViewById(R.id.notif_txtFirstName)
+        txtLastName = findViewById(R.id.notif_txtLastName)
+        txtPhone = findViewById(R.id.notif_txtPhone)
+        txtEmail = findViewById(R.id.notif_txtEmail)
+        txtAddress = findViewById(R.id.notif_txtAddress)
+        txtEmailTitle = findViewById(R.id.notif_txtEmailTitle)
+        txtMessage = findViewById(R.id.notif_txtMessage)
+        txtCC = findViewById(R.id.notif_txtCC)
+        txtCCO = findViewById(R.id.notif_txtCCO)
+        chkStudents = findViewById(R.id.notif_chkStudents)
+        chkTeachers = findViewById(R.id.notif_chkTeachers)
+        chkStaff = findViewById(R.id.notif_chkStaff)
+        txtSendDateTime = findViewById(R.id.notif_txtSendDateTime)
+
+        currentId = intent.getStringExtra(EXTRA_ID)
+        if (!currentId.isNullOrEmpty()) {
+            loadExistingData(currentId!!)
+        } else {
+            txtSendDateTime.setText(util.formatDateTime(LocalDateTime.now().plusDays(1)))
+        }
+
+        findViewById<Button>(R.id.notif_btnSave).setOnClickListener { doSave() }
+        findViewById<Button>(R.id.notif_btnDelete).setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.notif_btnCancel).setOnClickListener { finish() }
+    }
+
+    private fun loadExistingData(id: String) {
+        val item = NotifViewModel.getById(id) ?: return
+        txtId.setText(item.id)
+        txtId.isEnabled = false
+        txtName.setText(item.name)
+        txtFirstName.setText(item.firstName)
+        txtLastName.setText(item.lastName)
+        txtPhone.setText(item.phone.toString())
+        txtEmail.setText(item.email)
+        txtAddress.setText(item.address)
+        txtEmailTitle.setText(item.emailTitle)
+        txtMessage.setText(item.message)
+        txtCC.setText(item.cc)
+        txtCCO.setText(item.cco)
+        chkStudents.isChecked = item.targetRecipients.contains("Estudiantes")
+        chkTeachers.isChecked = item.targetRecipients.contains("Profesorado")
+        chkStaff.isChecked = item.targetRecipients.contains("Administrativos")
+        txtSendDateTime.setText(util.formatDateTime(item.sendDateTime))
+    }
+
+    private fun doSave() {
+        val id = txtId.text.toString().trim()
+        val title = txtEmailTitle.text.toString().trim()
+        val msg = txtMessage.text.toString().trim()
+        val dateTimeStr = txtSendDateTime.text.toString().trim()
+
+        if (id.isEmpty() || title.isEmpty() || msg.isEmpty()) {
+            Toast.makeText(this, "Por favor complete los campos requeridos.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val dt = util.parseStringToDateTimeModern(dateTimeStr)
+        if (dt == null || !dt.isAfter(LocalDateTime.now())) {
+            Toast.makeText(this, "La fecha de envío debe ser posterior a la actual.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val targets = mutableListOf<String>()
+        if (chkStudents.isChecked) targets.add("Estudiantes")
+        if (chkTeachers.isChecked) targets.add("Profesorado")
+        if (chkStaff.isChecked) targets.add("Administrativos")
+
+        val item = NotifNotification(
+            id = id,
+            name = txtName.text.toString().trim(),
+            firstName = txtFirstName.text.toString().trim(),
+            lastName = txtLastName.text.toString().trim(),
+            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
+            email = txtEmail.text.toString().trim(),
+            address = txtAddress.text.toString().trim(),
+            emailTitle = title,
+            message = msg,
+            cc = txtCC.text.toString().trim(),
+            cco = txtCCO.text.toString().trim(),
+            targetRecipients = targets.joinToString(", "),
+            sendDateTime = dt
+        )
+
+        if (currentId.isNullOrEmpty()) {
+            if (NotifViewModel.getById(id) != null) {
+                Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
+                return
+            }
+            NotifViewModel.save(item)
+        } else {
+            NotifViewModel.update(item)
+        }
+
+        Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
+        finish()
+    }
+
+    private fun doDelete() {
+        val id = txtId.text.toString().trim()
+        if (id.isEmpty()) return
+        util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
+            NotifViewModel.delete(id)
+            Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
+            finish()
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_crud, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.mnu_save -> { doSave(); true }
+            R.id.mnu_delete -> { doDelete(); true }
+            R.id.mnu_cancel -> { finish(); true }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+}

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/eve_title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingBottom="12dp" />
+
+        <EditText android:id="@+id/eve_txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID" />
+        <EditText android:id="@+id/eve_txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre Estudiante" />
+        <EditText android:id="@+id/eve_txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
+        <EditText android:id="@+id/eve_txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
+        <EditText android:id="@+id/eve_txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="phone" />
+        <EditText android:id="@+id/eve_txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
+        <EditText android:id="@+id/eve_txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Institucion:" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/eve_txtInstitution" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Colegio / Universidad" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Lugar del Evento:" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/eve_txtVenue" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Teatro Nacional / Cine" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Numero Asiento:" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/eve_txtSeatNum" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="A-12" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Tipo Evento:" android:layout_marginTop="8dp"/>
+        <Spinner android:id="@+id/eve_spnEventType" android:layout_width="match_parent" android:layout_height="wrap_content" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fecha y Hora (yyyy-MM-dd HH:mm):" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/eve_txtDateTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2025-05-20 18:00" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <Button android:id="@+id/eve_btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
+            <Button android:id="@+id/eve_btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
+            <Button android:id="@+id/eve_btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
