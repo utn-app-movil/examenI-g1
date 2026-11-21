@@ -1,0 +1,39 @@
+Appointments debugging and verification
+
+Baseline reproduction on the Android emulator
+The instrumented check entered a sample ID, patient name, and doctor, then used the default date for the next day.
+11-21 01:41:43.240  6435  6471 I CitasEvidence: development: requested save for DEMO101 using tomorrow's default date
+11-21 01:41:51.236  6435  6435 I CitasEvidence: development: rows after saving DEMO101 = 0
+
+Source inspection of development (3769c54)
+In AppCrudActivity.kt, the add, update, and delete calls are commented out. The condition null != null is always false.
+In AppListActivity.kt, loadData() creates emptyList<Identifier>() and assigns it to the adapter.
+In ListAdapter.kt, positions after the first use items[position - 1].
+The current development commit (c233a95) changes the shared adapter to items[position].
+
+Previously completed emulator checks
+
+Restored form: save, reopen, change the address, delete, and cancel.
+cr.ac.utn.movil.AppFormRestorationVerification:
+INSTRUMENTATION_STATUS: test=savesAndReloadsFieldsFromTheOriginalForm
+INSTRUMENTATION_STATUS: test=savesAndReloadsFieldsFromTheOriginalForm
+INSTRUMENTATION_STATUS_CODE: 0
+OK (1 test)
+
+Appointments listing: verify displayed details and refresh after a doctor update.
+cr.ac.utn.movil.AppListDisplayVerification:
+INSTRUMENTATION_STATUS: test=showsAppointmentDetailsAndRefreshesAfterEditing
+INSTRUMENTATION_STATUS: test=showsAppointmentDetailsAndRefreshesAfterEditing
+INSTRUMENTATION_STATUS_CODE: 0
+OK (1 test)
+
+Earlier layout: reject duplicate IDs and past or invalid dates. The same validation and memory repository are used in the restored form.
+cr.ac.utn.movil.AppPreviewVerification:
+INSTRUMENTATION_STATUS: test=createsChecksAndEditsAppointments
+INSTRUMENTATION_STATUS: test=createsChecksAndEditsAppointments
+INSTRUMENTATION_STATUS_CODE: 0
+OK (1 test)
+
+Build verification on the updated base (c233a95)
+gradlew.bat --offline --console=plain assembleDebug testDebugUnitTest assembleDebugAndroidTest
+BUILD SUCCESSFUL
