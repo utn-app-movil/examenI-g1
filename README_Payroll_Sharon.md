@@ -1,17 +1,15 @@
-# Nómina (Payroll)
+Nómina (Payroll)
 
 En este examen me tocó trabajar el escenario 13 de Nómina, en la rama `sharon`, que saqué de `development`.
 
-El proyecto ya traía las pantallas hechas. Yo trabajé en mi parte para que se pudiera agregar, ver, modificar y eliminar la información de los empleados. Se guardan los datos personales, número de empleado, puesto, salario, IBAN, mes de pago y banco. El banco se escoge de una lista.
-
-## Qué hice
+Qué hice
 
 - Creé `PayEmployee` para manejar los datos y `PayViewModel` para guardar, consultar, actualizar y eliminar usando el administrador de memoria que ya traía el proyecto.
 - Conecté el formulario de `PayCrudActivity` y el listado de `PayListActivity`.
 - Agregué las validaciones de los campos, los duplicados, el salario, el mes y el IBAN.
 - Dejé los botones y los íconos del menú como venían en el proyecto.
 
-## Errores que encontré y cómo los corregí
+ Errores que encontré y cómo los corregí
 
 **El listado salía vacío.** Revisé `PayListActivity` y vi que usaba `emptyList()`. Lo cambié para que cargara los registros desde `PayViewModel`.
 
