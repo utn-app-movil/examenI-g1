@@ -37,7 +37,30 @@
         <CheckBox android:id="@+id/chkStaff" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Administrativos" />
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fecha Envio (&gt; ahora):" android:layout_marginTop="8dp"/>
-        <EditText android:id="@+id/txtSendDateTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2025-12-31 10:00" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/txtSendDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="yyyy-MM-dd"
+                android:focusable="false"
+                android:clickable="true" />
+
+            <ImageButton
+                android:id="@+id/btnDatePicker"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:contentDescription="Select Date"
+                android:src="@android:drawable/ic_menu_my_calendar"
+                android:background="?attr/selectableItemBackgroundBorderless"/>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
