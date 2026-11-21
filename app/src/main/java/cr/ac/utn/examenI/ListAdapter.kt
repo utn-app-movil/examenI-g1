@@ -21,7 +21,7 @@ class ListAdapter (private var items: List<Identifier>,
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        val item = if (position > 0) items[position - 1] else items[position]
+        val item = items[position]
         holder.bind(item, itemClickListener)
     }
 

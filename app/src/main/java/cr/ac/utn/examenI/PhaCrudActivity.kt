@@ -25,9 +25,9 @@ class PhaCrudActivity : AppCompatActivity() {
     private lateinit var txtPhone: EditText
     private lateinit var txtEmail: EditText
     private lateinit var txtAddress: EditText
-    private lateinit var chkCrema: CheckBox
-    private lateinit var chkPastillas: CheckBox
-    private lateinit var chkJarabe: CheckBox
+    private lateinit var chkCream: CheckBox
+    private lateinit var chkPills: CheckBox
+    private lateinit var chkSyrup: CheckBox
     private lateinit var txtTotalAmount: EditText
     private lateinit var txtDateTime: EditText
 
@@ -50,9 +50,9 @@ class PhaCrudActivity : AppCompatActivity() {
         txtPhone = findViewById(R.id.pha_txtPhone)
         txtEmail = findViewById(R.id.pha_txtEmail)
         txtAddress = findViewById(R.id.pha_txtAddress)
-        chkCrema = findViewById(R.id.pha_chkCrema)
-        chkPastillas = findViewById(R.id.pha_chkPastillas)
-        chkJarabe = findViewById(R.id.pha_chkJarabe)
+        chkCream = findViewById(R.id.pha_chkCream)
+        chkPills = findViewById(R.id.pha_chkPills)
+        chkSyrup = findViewById(R.id.pha_chkSyrup)
         txtTotalAmount = findViewById(R.id.pha_txtTotalAmount)
         txtDateTime = findViewById(R.id.pha_txtDateTime)
 
@@ -78,9 +78,9 @@ class PhaCrudActivity : AppCompatActivity() {
         txtPhone.setText(item.phone.toString())
         txtEmail.setText(item.email)
         txtAddress.setText(item.address)
-        chkCrema.isChecked = item.medicines.contains("Crema")
-        chkPastillas.isChecked = item.medicines.contains("Pastillas")
-        chkJarabe.isChecked = item.medicines.contains("Jarabe")
+        chkCream.isChecked = item.medicines.contains("Crema")
+        chkPills.isChecked = item.medicines.contains("Pastillas")
+        chkSyrup.isChecked = item.medicines.contains("Jarabe")
         txtTotalAmount.setText(item.totalAmount.toString())
         txtDateTime.setText(util.formatDateTime(item.purchaseDateTime))
     }
@@ -88,32 +88,56 @@ class PhaCrudActivity : AppCompatActivity() {
     private fun doSave() {
         val id = txtId.text.toString().trim()
         val name = txtName.text.toString().trim()
-        val totalAmt = txtTotalAmount.text.toString().toDoubleOrNull() ?: 0.0
+        val totalAmt = txtTotalAmount.text.toString().toDoubleOrNull()
+
+        if (totalAmt == null || !totalAmt.isFinite() || totalAmt <= 0.0) {
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
+            return
+        }
+
         val dateTimeStr = txtDateTime.text.toString().trim()
 
         if (id.isEmpty() || name.isEmpty()) {
-            Toast.makeText(this, "Por favor complete los campos requeridos.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val email = txtEmail.text.toString().trim()
+        if (email.isNotEmpty() && (!email.contains("@") || !email.contains("."))) {
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val phoneText = txtPhone.text.toString().trim()
+        val phone = phoneText.toIntOrNull()
+        if (phone == null || phone <= 0 || phoneText.length < 8) {
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
             return
         }
 
         val dt = util.parseStringToDateTimeModern(dateTimeStr)
         if (dt == null || dt.isAfter(LocalDateTime.now())) {
-            Toast.makeText(this, "La fecha de compra debe ser menor o igual a la actual.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
             return
         }
 
         val selectedMeds = mutableListOf<String>()
-        if (chkCrema.isChecked) selectedMeds.add("Crema")
-        if (chkPastillas.isChecked) selectedMeds.add("Pastillas")
-        if (chkJarabe.isChecked) selectedMeds.add("Jarabe")
+        if (chkCream.isChecked) selectedMeds.add("Crema")
+        if (chkPills.isChecked) selectedMeds.add("Pastillas")
+        if (chkSyrup.isChecked) selectedMeds.add("Jarabe")
+
+        if (selectedMeds.isEmpty()) {
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
+            return
+        }
 
         val item = PhaPharmacy(
             id = id,
             name = name,
             firstName = txtFirstName.text.toString().trim(),
             lastName = txtLastName.text.toString().trim(),
-            phone = txtPhone.text.toString().toIntOrNull() ?: 0,
-            email = txtEmail.text.toString().trim(),
+            phone = phone,
+            email = email,
             address = txtAddress.text.toString().trim(),
             medicines = selectedMeds.joinToString(", "),
             totalAmount = totalAmt,
@@ -136,7 +160,10 @@ class PhaCrudActivity : AppCompatActivity() {
 
     private fun doDelete() {
         val id = txtId.text.toString().trim()
-        if (id.isEmpty()) return
+        if (id.isEmpty() || PhaViewModel.getById(id) == null) {
+            Toast.makeText(this, getString(R.string.TextDataNoFound), Toast.LENGTH_SHORT).show()
+            return
+        }
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
             PhaViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()

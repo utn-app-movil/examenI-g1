@@ -27,9 +27,9 @@
         <EditText android:id="@+id/pha_txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Medicamentos:" android:layout_marginTop="8dp"/>
-        <CheckBox android:id="@+id/pha_chkCrema" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Crema" />
-        <CheckBox android:id="@+id/pha_chkPastillas" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Pastillas" />
-        <CheckBox android:id="@+id/pha_chkJarabe" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Jarabe" />
+        <CheckBox android:id="@+id/pha_chkCream" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Crema" />
+        <CheckBox android:id="@+id/pha_chkPills" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Pastillas" />
+        <CheckBox android:id="@+id/pha_chkSyrup" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Jarabe" />
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Monto Total:" android:layout_marginTop="8dp"/>
         <EditText android:id="@+id/pha_txtTotalAmount" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="15000" android:inputType="numberDecimal" />
