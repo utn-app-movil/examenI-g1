@@ -66,9 +66,8 @@ class MedCrudActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
         findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
     }
-
     private fun loadExistingData(id: String) {
-        /*val item = MedViewModel.getById(id) ?: return
+        val item = MedViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -81,7 +80,7 @@ class MedCrudActivity : AppCompatActivity() {
         txtWeight.setText(item.weight.toString())
         txtHeight.setText(item.height.toString())
         txtOxygen.setText(item.oxygenation.toString())
-        txtDateTime.setText(util.formatDateTime(item.checkDateTime))*/
+        txtDateTime.setText(util.formatDateTime(item.checkDateTime))
     }
 
     private fun doSave() {
@@ -149,7 +148,7 @@ class MedCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            //MedViewModel.delete(id)
+            MedViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }
