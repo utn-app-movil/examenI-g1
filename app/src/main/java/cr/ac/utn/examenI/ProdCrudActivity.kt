@@ -13,8 +13,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import cr.ac.utn.examenI.domain.model.ProdOrder
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
+import cr.ac.utn.examenI.viewmodel.ProdViewModel
 import java.time.LocalDateTime
 
 class ProdCrudActivity : AppCompatActivity() {
@@ -81,39 +83,32 @@ class ProdCrudActivity : AppCompatActivity() {
     }
 
     private fun loadExistingData(id: String) {
-        /*val item = ProdViewModel.getById(id) ?: return
+        val item = ProdViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
-        txtName.setText(item.name)
-        txtFirstName.setText(item.firstName)
-        txtLastName.setText(item.lastName)
-        txtPhone.setText(item.phone.toString())
-        txtEmail.setText(item.email)
-        txtAddress.setText(item.address)
-        txtOrderNum.setText(item.orderNum)
-        chkProdA.isChecked = item.products.contains("Producto A")
-        chkProdB.isChecked = item.products.contains("Producto B")
-        chkProdC.isChecked = item.products.contains("Producto C")
+        txtOrderNum.setText(item.orderNumber)
+        chkProdA.isChecked = item.products.contains("Product A")
+        chkProdB.isChecked = item.products.contains("Product B")
+        chkProdC.isChecked = item.products.contains("Product C")
         txtQuantity.setText(item.quantity.toString())
         val posComp = companies.indexOf(item.targetCompany)
         if (posComp >= 0) spnTargetCompany.setSelection(posComp)
         txtStartDate.setText(util.formatDateTime(item.startDate))
-        txtDeliveryDate.setText(util.formatDateTime(item.deliveryDateTime))*/
+        txtDeliveryDate.setText(util.formatDateTime(item.deliveryDateTime))
     }
 
     private fun doSave() {
         val id = txtId.text.toString().trim()
-        val name = txtName.text.toString().trim()
         val orderNum = txtOrderNum.text.toString().trim()
         val qty = txtQuantity.text.toString().toIntOrNull() ?: 0
 
-        if (id.isEmpty() || name.isEmpty() || orderNum.isEmpty()) {
-            Toast.makeText(this, "Por favor complete los campos requeridos.", Toast.LENGTH_SHORT).show()
+        if (id.isEmpty() || orderNum.isEmpty()) {
+            Toast.makeText(this, "Please complete required fields (ID and Order Number).", Toast.LENGTH_SHORT).show()
             return
         }
 
         if (qty <= 0) {
-            Toast.makeText(this, "La cantidad debe ser mayor a 0.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Quantity must be greater than zero.", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -121,25 +116,40 @@ class ProdCrudActivity : AppCompatActivity() {
         val deliveryDt = util.parseStringToDateTimeModern(txtDeliveryDate.text.toString().trim()) ?: startDt.plusDays(7)
 
         if (!deliveryDt.isAfter(startDt)) {
-            Toast.makeText(this, "La fecha de entrega debe ser posterior a la fecha de inicio.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Delivery date must be after start date.", Toast.LENGTH_SHORT).show()
             return
         }
 
         val selectedProds = mutableListOf<String>()
-        if (chkProdA.isChecked) selectedProds.add("Producto A")
-        if (chkProdB.isChecked) selectedProds.add("Producto B")
-        if (chkProdC.isChecked) selectedProds.add("Producto C")
+        if (chkProdA.isChecked) selectedProds.add("Product A")
+        if (chkProdB.isChecked) selectedProds.add("Product B")
+        if (chkProdC.isChecked) selectedProds.add("Product C")
 
+        if (selectedProds.isEmpty()) {
+            Toast.makeText(this, "Please select at least one product.", Toast.LENGTH_SHORT).show()
+            return
+        }
 
+        val targetComp = spnTargetCompany.selectedItem?.toString() ?: ""
+
+        val order = ProdOrder(
+            id = id,
+            orderNumber = orderNum,
+            products = selectedProds,
+            quantity = qty,
+            targetCompany = targetComp,
+            startDate = startDt,
+            deliveryDateTime = deliveryDt
+        )
 
         if (currentId.isNullOrEmpty()) {
-            if (null != null) {
+            if (ProdViewModel.getById(id) != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            //ProdViewModel.save(item)
+            ProdViewModel.save(order)
         } else {
-            //ProdViewModel.update(item)
+            ProdViewModel.update(order)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -150,7 +160,7 @@ class ProdCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            //ProdViewModel.delete(id)
+            ProdViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }
