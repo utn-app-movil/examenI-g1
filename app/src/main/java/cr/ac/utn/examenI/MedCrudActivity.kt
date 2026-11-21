@@ -15,6 +15,7 @@ import cr.ac.utn.examenI.util.util
 import java.time.LocalDateTime
 import cr.ac.utn.examenI.domain.model.Med
 import cr.ac.utn.examenI.viewmodel.MedViewModel
+import android.util.Patterns
 
 class MedCrudActivity : AppCompatActivity() {
     private lateinit var txtId: EditText
@@ -86,42 +87,81 @@ class MedCrudActivity : AppCompatActivity() {
     private fun doSave() {
         val id = txtId.text.toString().trim()
         val name = txtName.text.toString().trim()
+        val firstName = txtFirstName.text.toString().trim()
+        val lastName = txtLastName.text.toString().trim()
+        val phoneStr = txtPhone.text.toString().trim()
+        val email = txtEmail.text.toString().trim()
+        val address = txtAddress.text.toString().trim()
         val bp = txtBP.text.toString().trim()
         val dateTimeStr = txtDateTime.text.toString().trim()
 
-        if (id.isEmpty() || name.isEmpty() || bp.isEmpty()) {
-            Toast.makeText(this, "Por favor complete los campos requeridos.", Toast.LENGTH_SHORT).show()
-            return
-        }
+        // Required fields
+        if (id.isEmpty() || name.isEmpty() ||
+            firstName.isEmpty() || lastName.isEmpty() ||
+            phoneStr.isEmpty() || email.isEmpty() ||
+            address.isEmpty() || bp.isEmpty() ||
+            txtWeight.text.isBlank() ||
+            txtHeight.text.isBlank() ||
+            txtOxygen.text.isBlank() ||
+            dateTimeStr.isEmpty()) {
 
-        // Validate Blood Pressure format 120/80
-        val bpRegex = Regex("""^\d{2,3}/\d{2,3}$""")
-        if (!bpRegex.matches(bp)) {
-            Toast.makeText(this, "Formato de presión arterial debe ser 120/80.", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        val dt = util.parseStringToDateTimeModern(dateTimeStr)
-
-        val phone = txtPhone.text.toString().toIntOrNull()
-        val weight = txtWeight.text.toString().toDoubleOrNull()
-        val height = txtHeight.text.toString().toDoubleOrNull()
-        val oxygen = txtOxygen.text.toString().toIntOrNull()
-
-        if (dt == null || phone == null || weight == null ||
-            height == null || oxygen == null) {
             Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
             return
         }
 
+        // Validate names
+        val nameRegex = Regex("^[\\p{L}]+(?:[ '-][\\p{L}]+)*$")
+
+        if (!nameRegex.matches(name) ||
+            !nameRegex.matches(firstName) ||
+            !nameRegex.matches(lastName)) {
+
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // Validate phone and email
+        if (!phoneStr.matches(Regex("^[0-9]{8}$")) ||
+            !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // Validate blood pressure
+        val bpRegex = Regex("""^\d{2,3}/\d{2,3}$""")
+
+        if (!bpRegex.matches(bp)) {
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // Convert values
+        val dt = util.parseStringToDateTimeModern(dateTimeStr)
+        val phone = phoneStr.toIntOrNull()
+        val weight = txtWeight.text.toString().toDoubleOrNull()
+        val height = txtHeight.text.toString().toDoubleOrNull()
+        val oxygen = txtOxygen.text.toString().toIntOrNull()
+
+        // Validate numeric values and date
+        if (dt == null || phone == null ||
+            weight == null || !weight.isFinite() || weight <= 0 ||
+            height == null || !height.isFinite() || height <= 0 ||
+            oxygen == null || oxygen !in 0..100) {
+
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // Create medical record
         val item = Med(
             id = id,
             name = name,
-            firstName = txtFirstName.text.toString().trim(),
-            lastName = txtLastName.text.toString().trim(),
+            firstName = firstName,
+            lastName = lastName,
             phone = phone,
-            email = txtEmail.text.toString().trim(),
-            address = txtAddress.text.toString().trim(),
+            email = email,
+            address = address,
             bloodPressure = bp,
             weight = weight,
             height = height,
@@ -129,6 +169,7 @@ class MedCrudActivity : AppCompatActivity() {
             checkDateTime = dt
         )
 
+        // Save or update
         if (currentId.isNullOrEmpty()) {
             if (MedViewModel.getById(id) != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
