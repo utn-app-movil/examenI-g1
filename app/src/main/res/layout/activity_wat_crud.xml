@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/wat_title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingBottom="12dp" />
+
+        <EditText android:id="@+id/txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID Inspector" />
+        <EditText android:id="@+id/txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre" />
+        <EditText android:id="@+id/txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
+        <EditText android:id="@+id/txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
+        <EditText android:id="@+id/txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="number" />
+        <EditText android:id="@+id/txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
+        <EditText android:id="@+id/txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
+
+        <EditText android:id="@+id/txtNisId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="ID NIS" />
+        <EditText android:id="@+id/txtPh" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="pH (0 - 14)" android:inputType="numberDecimal" />
+        <EditText android:id="@+id/txtTurbidity" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Turbidez (&gt;= 0)" android:inputType="numberDecimal" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Contaminantes:" android:layout_marginTop="8dp"/>
+        <CheckBox android:id="@+id/chkCloro" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Cloro" />
+        <CheckBox android:id="@+id/chkPlomo" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Plomo" />
+        <CheckBox android:id="@+id/chkBacterias" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Bacterias" />
+        <CheckBox android:id="@+id/chkNitratos" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Nitratos" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fecha Muestra (&lt;= ahora):" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/txtDateTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2024-01-15 10:00" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <Button android:id="@+id/btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
+            <Button android:id="@+id/btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
+            <Button android:id="@+id/btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

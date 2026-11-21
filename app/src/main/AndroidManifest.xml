@@ -21,6 +21,540 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+        <!-- Feature 1: Citas -->
+        <activity
+            android:name=".AppListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".AppCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".AppListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AppListActivity" />
+        </activity>
+
+        <!-- Feature 2: Vacunación -->
+        <activity
+            android:name=".VacListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".VacCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".VacListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".VacListActivity" />
+        </activity>
+
+        <!-- Feature 3: Licencia -->
+        <activity
+            android:name=".LicListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".LicCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".LicListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LicListActivity" />
+        </activity>
+
+        <!-- Feature 4: Control Enfermería -->
+        <activity
+            android:name=".MedListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".MedCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".MedListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MedListActivity" />
+        </activity>
+
+        <!-- Feature 5: Clientes -->
+        <activity
+            android:name=".CliListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".CliCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".CliListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CliListActivity" />
+        </activity>
+
+        <!-- Feature 6: Vuelos -->
+        <activity
+            android:name=".FliListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".FliCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".FliListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".FliListActivity" />
+        </activity>
+
+        <!-- Feature 7: Alquileres -->
+        <activity
+            android:name=".RentListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".RentCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".RentListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".RentListActivity" />
+        </activity>
+
+        <!-- Feature 8: Eventos -->
+        <activity
+            android:name=".EveListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".EveCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".EveListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".EveListActivity" />
+        </activity>
+
+        <!-- Feature 9: Farmacia -->
+        <activity
+            android:name=".PhaListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".PhaCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".PhaListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".PhaListActivity" />
+        </activity>
+
+        <!-- Feature 10: Reclutamiento -->
+        <activity
+            android:name=".RecruListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".RecruCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".RecruListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".RecruListActivity" />
+        </activity>
+
+        <!-- Feature 11: Subasta -->
+        <activity
+            android:name=".BidListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".BidCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".BidListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".BidListActivity" />
+        </activity>
+
+        <!-- Feature 12: Sinpe -->
+        <activity
+            android:name=".SinListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".SinCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".SinListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SinListActivity" />
+        </activity>
+
+        <!-- Feature 13: Nómina -->
+        <activity
+            android:name=".PayListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".PayCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".PayListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".PayListActivity" />
+        </activity>
+
+        <!-- Feature 14: Inventario -->
+        <activity
+            android:name=".InvListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".InvCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".InvListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".InvListActivity" />
+        </activity>
+
+        <!-- Feature 15: Naviera -->
+        <activity
+            android:name=".ShipListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".ShipCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".ShipListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ShipListActivity" />
+        </activity>
+
+        <!-- Feature 16: Biblioteca -->
+        <activity
+            android:name=".LibListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".LibCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".LibListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LibListActivity" />
+        </activity>
+
+        <!-- Feature 17: Tipo de Cambio -->
+        <activity
+            android:name=".ExchListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".ExchCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".ExchListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ExchListActivity" />
+        </activity>
+
+        <!-- Feature 18: Capacitación -->
+        <activity
+            android:name=".TrainListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".TrainCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".TrainListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".TrainListActivity" />
+        </activity>
+
+        <!-- Feature 19: Notificaciones -->
+        <activity
+            android:name=".NotifListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".NotifCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".NotifListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".NotifListActivity" />
+        </activity>
+
+        <!-- Feature 20: Dashboard -->
+        <activity
+            android:name=".DashListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".DashCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".DashListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DashListActivity" />
+        </activity>
+
+        <!-- Feature 21: Reembolso Seguro -->
+        <activity
+            android:name=".PayenListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".PayenCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".PayenListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".PayenListActivity" />
+        </activity>
+
+        <!-- Feature 22: Marketing -->
+        <activity
+            android:name=".MarkListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".MarkCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".MarkListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MarkListActivity" />
+        </activity>
+
+        <!-- Feature 23: Seguro Empresarial -->
+        <activity
+            android:name=".EnsListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".EnsCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".EnsListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".EnsListActivity" />
+        </activity>
+
+        <!-- Feature 24: Vehículo -->
+        <activity
+            android:name=".VehListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".VehCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".VehListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".VehListActivity" />
+        </activity>
+
+        <!-- Feature 25: Producción -->
+        <activity
+            android:name=".ProdListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".ProdCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".ProdListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ProdListActivity" />
+        </activity>
+
+        <!-- Feature 26: Agua -->
+        <activity
+            android:name=".WatListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".WatCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".WatListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".WatListActivity" />
+        </activity>
+
+        <!-- Feature 27: Reciclaje -->
+        <activity
+            android:name=".RecyListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".RecyCrudActivity"
+            android:exported="false"
+            android:parentActivityName=".RecyListActivity"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".RecyListActivity" />
+        </activity>
+
+        <!-- Feature 28: Plantilla -->
+        <activity
+            android:name=".TemplateListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
     </application>
 
 </manifest>
