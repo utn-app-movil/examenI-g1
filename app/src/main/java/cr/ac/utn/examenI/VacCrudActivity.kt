@@ -14,10 +14,16 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import cr.ac.utn.examenI.domain.model.Identifier
 import cr.ac.utn.examenI.util.EXTRA_ID
+import cr.ac.utn.examenI.domain.model.VacRecord
 import cr.ac.utn.examenI.util.util
+//these imports were add by Caguirret
+import androidx.activity.viewModels
+import cr.ac.utn.examenI.viewmodel.VacViewModel
 import java.time.LocalDateTime
 
 class VacCrudActivity : AppCompatActivity() {
+    //to provide access to vaccination records through the viewmodel
+    private val vacViewModel: VacViewModel by viewModels()
     private lateinit var txtId: EditText
     private lateinit var txtName: EditText
     private lateinit var txtFirstName: EditText
@@ -69,67 +75,187 @@ class VacCrudActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
     }
 
+    //Loads an existing vaccination record into the form
+    //the identifier remains read-only during editing to preserve record consistency
     private fun loadExistingData(id: String) {
-        /*val item = VacViewModel.getById(id) ?: return
-        txtId.setText(item.id)
-        txtId.isEnabled = false
-        txtName.setText(item.name)
-        txtFirstName.setText(item.firstName)
-        txtLastName.setText(item.lastName)
-        txtPhone.setText(item.phone.toString())
-        txtEmail.setText(item.email)
-        txtAddress.setText(item.address)
-        val pos = vaccines.indexOf(item.vaccineType)
-        if (pos >= 0) spnVaccineType.setSelection(pos)
-        txtLocation.setText(item.location)
-        txtDateTime.setText(util.formatDateTime(item.vaccinationDateTime))*/
+
+        val record = vacViewModel.getById(id)
+
+        if (record == null){
+            Toast.makeText(
+                this,
+                R.string.TextDataNoFound,
+                Toast.LENGTH_SHORT
+            ).show()
+            finish()
+            return
+        }
+        //Load patient information
+        txtName.setText(record.name)
+        txtFirstName.setText(record.firstName)
+        txtLastName.setText(record.lastName)
+        txtPhone.setText(record.phone.toString())
+        txtEmail.setText(record.email)
+        txtAddress.setText(record.address)
+
+        //Load vaccination information
+        val vaccinePosition = vaccines.indexOf(record.vaccineType)
+
+        if (vaccinePosition >= 0) {
+            spnVaccineType.setSelection(vaccinePosition)
+        }
+
+        txtLocation.setText(record.location)
+        txtDateTime.setText(util.formatDateTime(record.vaccinationDateTime))
     }
 
-    private fun doSave() {
+    //Validates and saves a vaccination record and prevents future vaccinations
+    private fun doSave(){
+        //validate required fields
+        val requiredFields = listOf(
+            txtId,
+            txtName,
+            txtFirstName,
+            txtLastName,
+            txtPhone,
+            txtEmail,
+            txtAddress,
+            txtLocation,
+            txtDateTime
+        )
+
+        val empyField = requiredFields.firstOrNull {
+            it.text.toString().isBlank()
+        }
+
+        if (empyField != null) {
+            empyField.error = getString(R.string.TextSaveError)
+            empyField.requestFocus()
+            return
+        }
+
+        //retrieve patient information
         val id = txtId.text.toString().trim()
         val name = txtName.text.toString().trim()
+        val firstName = txtFirstName.text.toString().trim()
+        val lastName = txtLastName.text.toString().trim()
+        val email = txtEmail.text.toString().trim()
+        val address = txtAddress.text.toString().trim()
+
+        //validate phone number
+        val phone = txtPhone.text.toString().toIntOrNull()
+
+        if (phone == null  || phone <= 0){
+            txtPhone.error = getString(R.string.TextSaveError)
+            return
+        }
+
+        //Retrieve vaccination information
+        val vaccinationType = spnVaccineType.selectedItem?.toString().orEmpty()
         val location = txtLocation.text.toString().trim()
-        val dateTimeStr = txtDateTime.text.toString().trim()
+        val dateTimeText = txtDateTime.text.toString().trim()
 
-        if (id.isEmpty() || name.isEmpty() || location.isEmpty()) {
-            Toast.makeText(this, "Por favor complete los campos requeridos.", Toast.LENGTH_SHORT).show()
+        if (vaccinationType.isBlank()){
+            Toast.makeText(
+                this,
+                R.string.TextSaveError,
+                Toast.LENGTH_SHORT
+            ).show()
             return
         }
 
-        val dt = util.parseStringToDateTimeModern(dateTimeStr)
-        if (dt == null) {
-            Toast.makeText(this, "Formato de fecha y hora inválido (yyyy-MM-dd HH:mm)", Toast.LENGTH_SHORT).show()
+        //validate vaccionation date and time
+        val vaccinationDateTime =
+            util.parseStringToDateTimeModern(dateTimeText)
+
+        if (vaccinationDateTime == null ||
+            vaccinationDateTime.isAfter(LocalDateTime.now())
+            ){
+            txtDateTime.error = getString(R.string.TextSaveError)
             return
         }
 
-        if (dt.isAfter(LocalDateTime.now())) {
-            Toast.makeText(this, "La fecha de vacunación debe ser menor o igual a la fecha actual.", Toast.LENGTH_SHORT).show()
+        //Preserve the identifier during updates
+        if (!currentId.isNullOrEmpty() && currentId != id){
+            txtId.error = getString(R.string.TextSaveError)
             return
         }
 
+        //Create the vaccination entity
+        val record = VacRecord(
+            id = id,
+            name = name,
+            firstName = firstName,
+            lastName = lastName,
+            phone = phone,
+            email = email,
+            address = address,
+            vaccineType = vaccinationType,
+            location = location,
+            vaccinationDateTime = vaccinationDateTime
+        )
 
+        //save or update the record
+        val successful = if (currentId.isNullOrEmpty()) {
+            vacViewModel.save(record)
+        }else{
+            vacViewModel.update(record)
+        }
 
-        if (currentId.isNullOrEmpty()) {
-            if (null != null) {
-                Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
-                return
+        if (!successful){
+            val messenRes = if (currentId.isNullOrEmpty()){
+                R.string.TextDuplicateData
+            }else{
+                R.string.TextDataNoFound
             }
-            //VacViewModel.save(item)
-        } else {
-            //VacViewModel.update(item)
+            Toast.makeText(this, messenRes, Toast.LENGTH_SHORT).show()
+            return
         }
 
-        Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
+        //Show success only after a succesful operation
+        Toast.makeText(
+            this,
+            R.string.TextSaveSuccess,
+            Toast.LENGTH_SHORT
+        ).show()
         finish()
     }
 
+    //Delete an existing vaccination record after confirmation
+    //and prevents delection during record creation and displays success only when record
+    //is actually removed
     private fun doDelete() {
-        val id = txtId.text.toString().trim()
-        if (id.isEmpty()) return
-        util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            //VacViewModel.delete(id)
-            Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
-            finish()
+        //Only an existing records can be deleted obviously
+        val id = currentId
+
+        if (id.isNullOrBlank()) {
+            Toast.makeText(
+                this,
+                R.string.TextDataNoFound,
+                Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
+
+        //Request confirmation before a deleting
+        util.showDialogCondition(
+            this, getString(R.string.TextDeleteQuestion)
+        ){
+            val delete = vacViewModel.delete(id)
+
+            if (delete){
+                Toast.makeText(this,
+                    R.string.TextDeleteSuccess,
+                    Toast.LENGTH_SHORT
+                ).show()
+                finish()
+            } else {
+                Toast.makeText(
+                    this,
+                    R.string.TextDeleteError,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 

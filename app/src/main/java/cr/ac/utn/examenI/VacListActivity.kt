@@ -1,6 +1,8 @@
 package cr.ac.utn.examenI
 
 import android.os.Bundle
+import androidx.activity.viewModels
+import cr.ac.utn.examenI.viewmodel.VacViewModel
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +15,7 @@ import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
 
 class VacListActivity : AppCompatActivity(), OnItemClickListener {
+    private val vacViewModel: VacViewModel by viewModels()
     private lateinit var rvList: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,8 +41,9 @@ class VacListActivity : AppCompatActivity(), OnItemClickListener {
         loadData()
     }
 
-    private fun loadData() {
-        val items = emptyList<Identifier>()
+    //Loads vaccinayion records from shared repo and displays them in the RecyclerView
+    private fun loadData(){
+        val items: List<Identifier> = vacViewModel.getAll()
         rvList.adapter = ListAdapter(items, this)
     }
 
