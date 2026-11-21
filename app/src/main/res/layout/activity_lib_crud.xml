@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lib_title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingBottom="12dp" />
+
+        <EditText android:id="@+id/txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID Usuario" />
+        <EditText android:id="@+id/txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre" />
+        <EditText android:id="@+id/txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
+        <EditText android:id="@+id/txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
+        <EditText android:id="@+id/txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="number" />
+        <EditText android:id="@+id/txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
+        <EditText android:id="@+id/txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Libros Reservados:" android:layout_marginTop="8dp"/>
+        <CheckBox android:id="@+id/chkBook1" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Don Quijote" />
+        <CheckBox android:id="@+id/chkBook2" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Cien Años de Soledad" />
+        <CheckBox android:id="@+id/chkBook3" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="El Principito" />
+
+        <EditText android:id="@+id/txtBranch" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Sede / Sucursal" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fecha Reserva (yyyy-MM-dd HH:mm):" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/txtResDate" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2025-01-10 10:00" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fecha Devolucion (&gt; reserva):" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/txtRetDate" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2025-01-17 10:00" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <Button android:id="@+id/btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
+            <Button android:id="@+id/btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
+            <Button android:id="@+id/btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
