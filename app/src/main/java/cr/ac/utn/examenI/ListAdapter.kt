@@ -21,7 +21,10 @@ class ListAdapter (private var items: List<Identifier>,
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        val item = if (position > 0) items[position - 1] else items[position]
+
+        // Corrección: antes se usaba "position - 1", lo que repetía el primer
+       // elemento y escondía el último. Cada fila debe leer su propia posición.
+        val item = items[position]
         holder.bind(item, itemClickListener)
     }
 

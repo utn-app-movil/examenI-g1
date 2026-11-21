@@ -18,6 +18,7 @@
             android:textStyle="bold"
             android:paddingBottom="12dp" />
 
+        <EditText android:id="@+id/payen_txtClaimId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Codigo de Solicitud" />
         <EditText android:id="@+id/txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID Asegurado" />
         <EditText android:id="@+id/txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre" />
         <EditText android:id="@+id/txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
