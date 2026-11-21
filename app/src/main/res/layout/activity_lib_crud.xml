@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main"
+    android:id="@+id/lib_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
@@ -18,36 +18,148 @@
             android:textStyle="bold"
             android:paddingBottom="12dp" />
 
-        <EditText android:id="@+id/txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID Usuario" />
-        <EditText android:id="@+id/txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre" />
-        <EditText android:id="@+id/txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
-        <EditText android:id="@+id/txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
-        <EditText android:id="@+id/txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="number" />
-        <EditText android:id="@+id/txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
-        <EditText android:id="@+id/txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
+        <EditText
+            android:id="@+id/lib_txtId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Student ID"
+            android:inputType="text" />
 
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Libros Reservados:" android:layout_marginTop="8dp"/>
-        <CheckBox android:id="@+id/chkBook1" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Don Quijote" />
-        <CheckBox android:id="@+id/chkBook2" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Cien Años de Soledad" />
-        <CheckBox android:id="@+id/chkBook3" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="El Principito" />
+        <EditText
+            android:id="@+id/lib_txtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:inputType="text" />
 
-        <EditText android:id="@+id/txtBranch" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Sede / Sucursal" />
+        <EditText
+            android:id="@+id/lib_txtFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="First last name"
+            android:inputType="text" />
 
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fecha Reserva (yyyy-MM-dd HH:mm):" android:layout_marginTop="8dp"/>
-        <EditText android:id="@+id/txtResDate" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2025-01-10 10:00" />
+        <EditText
+            android:id="@+id/lib_txtLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Second last name"
+            android:inputType="text" />
 
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fecha Devolucion (&gt; reserva):" android:layout_marginTop="8dp"/>
-        <EditText android:id="@+id/txtRetDate" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2025-01-17 10:00" />
+        <EditText
+            android:id="@+id/lib_txtPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone"
+            android:inputType="number"
+            android:maxLength="9" />
+
+        <EditText
+            android:id="@+id/lib_txtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/lib_txtAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Address"
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Reserved books:" />
+
+        <CheckBox
+            android:id="@+id/lib_checkBook1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Don Quixote" />
+
+        <CheckBox
+            android:id="@+id/lib_checkBook2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="One Hundred Years of Solitude" />
+
+        <CheckBox
+            android:id="@+id/lib_checkBook3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The Little Prince" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Library branch:" />
+
+        <Spinner
+            android:id="@+id/lib_spnBranch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Reservation date and time:" />
+
+        <EditText
+            android:id="@+id/lib_txtResDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="false"
+            android:hint="Tap to select"
+            android:inputType="none" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Return date and time (after the reservation):" />
+
+        <EditText
+            android:id="@+id/lib_txtRetDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="false"
+            android:hint="Tap to select"
+            android:inputType="none" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
 
-            <Button android:id="@+id/btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
-            <Button android:id="@+id/btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
-            <Button android:id="@+id/btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
+            <Button
+                android:id="@+id/lib_btnSave"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/TextSave" />
+
+            <Button
+                android:id="@+id/lib_btnDelete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/TextDelete" />
+
+            <Button
+                android:id="@+id/lib_btnCancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/TextCancel" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
