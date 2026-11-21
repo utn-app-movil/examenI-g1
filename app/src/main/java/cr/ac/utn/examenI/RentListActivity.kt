@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import cr.ac.utn.examenI.domain.model.Identifier
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
-
+import cr.ac.utn.examenI.viewmodel.RentViewModel
 class RentListActivity : AppCompatActivity(), OnItemClickListener {
     private lateinit var rvList: RecyclerView
 
@@ -25,6 +25,7 @@ class RentListActivity : AppCompatActivity(), OnItemClickListener {
             insets
         }
 
+        title = getString(R.string.rent_title)
         rvList = findViewById(R.id.rvList)
         rvList.layoutManager = LinearLayoutManager(this)
 
@@ -39,7 +40,7 @@ class RentListActivity : AppCompatActivity(), OnItemClickListener {
     }
 
     private fun loadData() {
-        val items = emptyList<Identifier>()
+        val items = RentViewModel.getAll()
         rvList.adapter = ListAdapter(items, this)
     }
 
