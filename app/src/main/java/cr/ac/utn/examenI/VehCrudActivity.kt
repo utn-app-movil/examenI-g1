@@ -80,6 +80,8 @@ class VehCrudActivity : AppCompatActivity() {
             txtChargeDate.setText(util.formatDateTime(LocalDateTime.now()))
         }
 
+        txtChargeDate.isEnabled = false
+
         findViewById<Button>(R.id.veh_btnSave).setOnClickListener { doSave() }
         findViewById<Button>(R.id.veh_btnCancel).setOnClickListener { finish() }
     }
@@ -112,7 +114,17 @@ class VehCrudActivity : AppCompatActivity() {
         val initBat = txtInitialBattery.text.toString().toDoubleOrNull() ?: 0.0
         val finalBat = txtFinalBattery.text.toString().toDoubleOrNull() ?: 0.0
 
-        if (id.isEmpty() || vehId.isEmpty()) {
+        if (id.isBlank() || vehId.isBlank() || txtName.text.toString().isBlank()
+            || txtFirstName.text.toString().isBlank()
+            || txtLastName.text.toString().isBlank()
+            || txtPhone.text.toString().isBlank()
+            || txtEmail.text.toString().isBlank()
+            || txtAddress.text.toString().isBlank()
+            || txtRangeKm.text.toString().isBlank()
+        || txtInitialBattery.text.toString().isBlank()
+        || txtFinalBattery.text.toString().isBlank()
+        || txtChargeDate.text.toString().isBlank()) {
+
             Toast.makeText(this, "Por favor complete los campos requeridos.", Toast.LENGTH_SHORT).show()
             return
         }
@@ -123,6 +135,10 @@ class VehCrudActivity : AppCompatActivity() {
         }
 
         if (initBat > 100 || finalBat > 100 || initBat < 0 || finalBat < 0) {
+            if (finalBat <= initBat) {
+                Toast.makeText(this, "La batería final debe ser mayor que la inicial.", Toast.LENGTH_SHORT).show()
+                return
+            }
             Toast.makeText(this, "El porcentaje de batería debe estar entre 0% y 100%.", Toast.LENGTH_SHORT).show()
             return
         }
