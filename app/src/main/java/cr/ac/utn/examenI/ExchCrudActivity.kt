@@ -1,10 +1,13 @@
 package cr.ac.utn.examenI
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -14,9 +17,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import cr.ac.utn.examenI.domain.model.ExchTransaction
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
+import cr.ac.utn.examenI.viewmodel.ExchViewModel
 import java.time.LocalDateTime
+import java.util.Locale
 
 class ExchCrudActivity : AppCompatActivity() {
     private lateinit var txtId: EditText
@@ -32,6 +38,7 @@ class ExchCrudActivity : AppCompatActivity() {
     private lateinit var spnBank: Spinner
     private lateinit var txtTotalAmountToPay: EditText
     private lateinit var txtDateTime: EditText
+    private lateinit var btnDelete: Button
 
     private var currentId: String? = null
     private val currencies = arrayOf("USD", "CRC")
@@ -60,6 +67,11 @@ class ExchCrudActivity : AppCompatActivity() {
         spnBank = findViewById(R.id.spnBank)
         txtTotalAmountToPay = findViewById(R.id.txtTotalAmountToPay)
         txtDateTime = findViewById(R.id.txtDateTime)
+        btnDelete = findViewById(R.id.btnDelete)
+
+        txtDateTime.isFocusable = false
+        txtDateTime.isClickable = true
+        txtDateTime.setOnClickListener { showDateTimePicker() }
 
         val adapterCurr = ArrayAdapter(this, android.R.layout.simple_spinner_item, currencies)
         adapterCurr.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -82,22 +94,58 @@ class ExchCrudActivity : AppCompatActivity() {
             loadExistingData(currentId!!)
         } else {
             txtDateTime.setText(util.formatDateTime(LocalDateTime.now()))
+            btnDelete.visibility = View.GONE
         }
 
         findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
+        btnDelete.setOnClickListener { doDelete() }
         findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
+    }
+
+    private fun showDateTimePicker() {
+        val current = util.parseStringToDateTimeModern(txtDateTime.text.toString().trim()) ?: LocalDateTime.now()
+
+        val datePicker = DatePickerDialog(
+            this,
+            { _, year, month, dayOfMonth ->
+                val timePicker = TimePickerDialog(
+                    this,
+                    { _, hourOfDay, minute ->
+                        val selected = LocalDateTime.of(year, month + 1, dayOfMonth, hourOfDay, minute)
+                        val now = LocalDateTime.now()
+                        if (selected.isAfter(now)) {
+                            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
+                        } else {
+                            txtDateTime.setText(util.formatDateTime(selected))
+                        }
+                    },
+                    current.hour,
+                    current.minute,
+                    true
+                )
+                timePicker.show()
+            },
+            current.year,
+            current.monthValue - 1,
+            current.dayOfMonth
+        )
+        datePicker.datePicker.maxDate = System.currentTimeMillis()
+        datePicker.show()
     }
 
     private fun calculateTotal() {
         val rate = txtExchangeRate.text.toString().toDoubleOrNull() ?: 0.0
         val amount = txtAmountToExchange.text.toString().toDoubleOrNull() ?: 0.0
-        val total = rate * amount
-        txtTotalAmountToPay.setText(total.toString())
+        if (rate > 0.0 && amount > 0.0) {
+            val total = rate * amount
+            txtTotalAmountToPay.setText(String.format(Locale.US, "%.2f", total))
+        } else {
+            txtTotalAmountToPay.setText("")
+        }
     }
 
     private fun loadExistingData(id: String) {
-        /*val item = ExchViewModel.getById(id) ?: return
+        val item = ExchViewModel.getById(id) ?: return
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -112,40 +160,60 @@ class ExchCrudActivity : AppCompatActivity() {
         if (posCurr >= 0) spnCurrencyType.setSelection(posCurr)
         val posBank = banks.indexOf(item.bank)
         if (posBank >= 0) spnBank.setSelection(posBank)
-        txtTotalAmountToPay.setText(item.totalAmountToPay.toString())
-        txtDateTime.setText(util.formatDateTime(item.exchangeDateTime))*/
+        txtTotalAmountToPay.setText(String.format(Locale.US, "%.2f", item.totalAmountToPay))
+        txtDateTime.setText(util.formatDateTime(item.exchangeDateTime))
     }
 
     private fun doSave() {
         val id = txtId.text.toString().trim()
         val name = txtName.text.toString().trim()
+        val firstName = txtFirstName.text.toString().trim()
+        val lastName = txtLastName.text.toString().trim()
+        val phone = txtPhone.text.toString().toIntOrNull() ?: 0
+        val email = txtEmail.text.toString().trim()
+        val address = txtAddress.text.toString().trim()
         val rate = txtExchangeRate.text.toString().toDoubleOrNull() ?: 0.0
         val amount = txtAmountToExchange.text.toString().toDoubleOrNull() ?: 0.0
+        val currency = spnCurrencyType.selectedItem?.toString() ?: "USD"
+        val bank = spnBank.selectedItem?.toString() ?: "BCR"
         val dateTimeStr = txtDateTime.text.toString().trim()
 
         if (id.isEmpty() || name.isEmpty() || rate <= 0.0 || amount <= 0.0) {
-            Toast.makeText(this, "Por favor complete los campos requeridos con valores válidos.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
             return
         }
 
         val dt = util.parseStringToDateTimeModern(dateTimeStr)
         if (dt == null || dt.isAfter(LocalDateTime.now())) {
-            Toast.makeText(this, "La fecha debe ser menor o igual a la actual.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
             return
         }
 
         val total = rate * amount
-
-
+        val transaction = ExchTransaction(
+            id = id,
+            name = name,
+            firstName = firstName,
+            lastName = lastName,
+            phone = phone,
+            email = email,
+            address = address,
+            currencyType = currency,
+            exchangeRate = rate,
+            amountToExchange = amount,
+            totalAmountToPay = total,
+            bank = bank,
+            exchangeDateTime = dt
+        )
 
         if (currentId.isNullOrEmpty()) {
-            if (null != null) {
+            val saved = ExchViewModel.save(transaction)
+            if (!saved) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            //ExchViewModel.save(item)
         } else {
-            //ExchViewModel.update(item)
+            ExchViewModel.update(transaction)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -156,7 +224,7 @@ class ExchCrudActivity : AppCompatActivity() {
         val id = txtId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            //ExchViewModel.delete(id)
+            ExchViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }
@@ -164,6 +232,9 @@ class ExchCrudActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_crud, menu)
+        if (currentId.isNullOrEmpty()) {
+            menu?.findItem(R.id.mnu_delete)?.isVisible = false
+        }
         return true
     }
 

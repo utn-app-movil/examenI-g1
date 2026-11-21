@@ -18,16 +18,16 @@
             android:textStyle="bold"
             android:paddingBottom="12dp" />
 
-        <EditText android:id="@+id/txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID" />
-        <EditText android:id="@+id/txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre" />
-        <EditText android:id="@+id/txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
-        <EditText android:id="@+id/txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
-        <EditText android:id="@+id/txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="number" />
-        <EditText android:id="@+id/txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
-        <EditText android:id="@+id/txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" />
+        <EditText android:id="@+id/txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID" android:maxLength="15" />
+        <EditText android:id="@+id/txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre" android:maxLength="30" />
+        <EditText android:id="@+id/txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" android:maxLength="30" />
+        <EditText android:id="@+id/txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" android:maxLength="30" />
+        <EditText android:id="@+id/txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="phone" android:maxLength="12" />
+        <EditText android:id="@+id/txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" android:maxLength="40" />
+        <EditText android:id="@+id/txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion" android:maxLength="80" />
 
-        <EditText android:id="@+id/txtExchangeRate" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Tipo de Cambio (ej 520.5)" android:inputType="numberDecimal" />
-        <EditText android:id="@+id/txtAmountToExchange" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Monto a Cambiar" android:inputType="numberDecimal" />
+        <EditText android:id="@+id/txtExchangeRate" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Tipo de Cambio (ej 520.5)" android:inputType="numberDecimal" android:maxLength="8" />
+        <EditText android:id="@+id/txtAmountToExchange" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Monto a Cambiar" android:inputType="numberDecimal" android:maxLength="10" />
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Moneda:" android:layout_marginTop="8dp"/>
         <Spinner android:id="@+id/spnCurrencyType" android:layout_width="match_parent" android:layout_height="wrap_content" />
@@ -35,10 +35,10 @@
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Banco:" android:layout_marginTop="8dp"/>
         <Spinner android:id="@+id/spnBank" android:layout_width="match_parent" android:layout_height="wrap_content" />
 
-        <EditText android:id="@+id/txtTotalAmountToPay" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Monto Total a Pagar" android:enabled="false" />
+        <EditText android:id="@+id/txtTotalAmountToPay" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Monto Total a Pagar" android:enabled="false" android:maxLength="15" />
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fecha y Hora (&lt;= ahora):" android:layout_marginTop="8dp"/>
-        <EditText android:id="@+id/txtDateTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2024-01-15 10:00" />
+        <EditText android:id="@+id/txtDateTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="2024-01-15 10:00" android:maxLength="16" />
 
         <LinearLayout
             android:layout_width="match_parent"
