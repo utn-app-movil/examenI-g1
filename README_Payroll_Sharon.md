@@ -1,43 +1,126 @@
-Nómina (Payroll)
+# Mi parte del examen: Payroll
 
-En este examen me tocó trabajar el escenario 13 de Nómina, en la rama `sharon`, que saqué de `development`.
+Me tocó el escenario 13 de nómina. Trabajé en la rama `sharon`, que creé desde `development`.
 
-Qué hice
+El proyecto ya traía las pantallas, entonces fui revisando lo que faltaba y corrigiendo los problemas que encontraba para que se pudiera guardar, consultar, modificar y eliminar la información de los empleados.
 
-- Creé `PayEmployee` para manejar los datos y `PayViewModel` para guardar, consultar, actualizar y eliminar usando el administrador de memoria que ya traía el proyecto.
-- Conecté el formulario de `PayCrudActivity` y el listado de `PayListActivity`.
-- Agregué las validaciones de los campos, los duplicados, el salario, el mes y el IBAN.
-- Dejé los botones y los íconos del menú como venían en el proyecto.
+## Primero probé la aplicación
 
- Errores que encontré y cómo los corregí
+Abrí el proyecto en Android Studio y lo ejecuté en mi celular Xiaomi. La aplicación se instaló correctamente y pude entrar a la opción Payroll desde el menú principal.
 
-**El listado salía vacío.** Revisé `PayListActivity` y vi que usaba `emptyList()`. Lo cambié para que cargara los registros desde `PayViewModel`.
+![Aplicación instalada en Xiaomi](evidencias/01_App_Instalada_Xiaomi.png)
 
-**Al abrir un empleado no aparecía la información.** En `PayCrudActivity`, la función `loadExistingData()` estaba comentada. Le quité los comentarios y probé de nuevo. Después sí aparecieron los datos.
+Así aparecía la pantalla de Nómina al principio.
 
-**Al eliminar decía que se había eliminado, pero el empleado seguía ahí.** La línea que llamaba a `PayViewModel.delete(id)` estaba comentada. La activé y comprobé que ahora sí se elimina.
+![Pantalla de Payroll](evidencias/02_Pantalla_Payroll.png)
 
-**Guardar y actualizar estaban incompletos.** Conecté esas operaciones con el ViewModel. También usé el debugger de Android Studio para revisar los datos antes de guardar.
+Este era el formulario que ya tenía el proyecto.
 
-Las capturas del antes, las pruebas y el debugging están en la carpeta [evidencias](evidencias/).
+![Formulario original](evidencias/03_Formulario_Original.png)
 
-## Pruebas que hice
+## Error 1: la lista aparecía vacía
 
-Probé la aplicación en mi celular Xiaomi conectado a Android Studio. La aplicación compiló, se instaló y abrió bien. Entré a Payroll y comprobé que podía guardar, ver, editar y eliminar empleados.
+Cuando entré a Nómina, la lista no mostraba los registros.
 
-También probé que no dejara guardar una identificación repetida, un mes posterior al actual ni un salario de cero. El código incluye la validación del IBAN de Costa Rica. Estas son las pruebas que tengo documentadas en las capturas; no estoy presentando como probadas otras que todavía no tienen evidencia.
+Revisando el código de `PayListActivity`, encontré que la función `loadData()` tenía `emptyList()`, por lo que siempre mostraba una lista vacía.
 
-## Archivos de mi parte
+![Problema de lista vacía](evidencias/04_Problema_Lista_Vacia_Codigo.png)
+
+Para solucionarlo, cambié esa parte y utilicé `PayViewModel.getAll()` para que cargara los registros guardados.
+
+Después compilé el proyecto para comprobar que no tuviera errores.
+
+![Compilación correcta](evidencias/05_Compilacion_Correcta.png)
+
+Una vez que terminé de conectar el guardado, los empleados ya aparecían en la lista.
+
+![Empleado en la lista](evidencias/07_Registro_Aparece_Listado.png)
+
+## Error 2: los datos no aparecían al consultar
+
+Después de guardar un empleado, noté que al seleccionarlo para ver su información, el formulario abría, pero todos los campos aparecían vacíos.
+
+![Formulario vacío](evidencias/08_Problema_Formulario_Vacio.png)
+
+Entonces revisé `PayCrudActivity` y encontré que la función `loadExistingData()` estaba comentada.
+
+![Código comentado](evidencias/09_Causa_LoadExistingData_Comentado.png)
+
+Lo que hice fue quitar los comentarios `/*` y `*/` para activar el código que ya había dejado el profesor.
+
+Volví a compilar y comprobé que no aparecieran errores.
+
+![Compilación después de corregir](evidencias/10_Build_Tras_Corregir_Carga.png)
+
+Después abrí nuevamente el empleado y esta vez sí aparecieron todos sus datos.
+
+![Datos cargados correctamente](evidencias/11_Consulta_Registro_Corregida.png)
+
+## Error 3: el botón eliminar no eliminaba
+
+Cuando probé eliminar un empleado, el sistema preguntaba si estaba seguro y después mostraba que la información había sido eliminada.
+
+El problema era que el empleado seguía apareciendo en la lista.
+
+Revisé la función `doDelete()` y encontré que la línea `PayViewModel.delete(id)` estaba comentada.
+
+![Error en eliminar](evidencias/12_Problema_Delete_Comentado.png)
+
+Para corregirlo, únicamente quité las dos barras `//` de esa línea, sin cambiar el resto de la función que había dejado el profesor.
+
+Volví a probar y ahora sí eliminaba el registro correctamente.
+
+![Registro eliminado](evidencias/13_Listado_Tras_Eliminar.png)
+
+## Guardar y modificar empleados
+
+También trabajé en la función `doSave()` para poder guardar y modificar la información de los empleados.
+
+Creé las clases `PayEmployee` y `PayViewModel` para manejar la información utilizando el administrador de memoria que ya traía el proyecto.
+
+Utilicé el debugger de Android Studio para revisar los datos que estaba recibiendo mientras se ejecutaba el guardado.
+
+![Debugging del guardado](evidencias/06_Debug_Guardado.png)
+
+Después hice las pruebas desde el celular. Pude registrar empleados, abrirlos, modificar el salario y comprobar que los cambios quedaran guardados.
+
+## Validaciones realizadas
+
+**Registros duplicados**
+
+Probé ingresar un empleado con una identificación que ya estaba registrada. El sistema mostró el mensaje de que la información ya se encontraba almacenada y no permitió guardar el duplicado.
+
+![Validación de duplicados](evidencias/14_Duplicado_Rechazado.png)
+
+**Mes de pago**
+
+Probé colocar el mes 12 cuando todavía estábamos en noviembre. El programa marcó el campo como incorrecto y no permitió guardar.
+
+![Validación del mes](evidencias/15_Mes_Futuro_Rechazado.png)
+
+**Salario**
+
+También probé colocar el salario en 0. El sistema mostró un error y no permitió guardar ese registro.
+
+![Validación del salario](evidencias/16_Salario_Cero_Rechazado.png)
+
+**Cuenta IBAN**
+
+Agregué la validación del IBAN de Costa Rica para comprobar que tenga el formato correspondiente y que cumpla con el cálculo MOD 97.
+
+Esta validación quedó implementada en el código. No agregué una imagen específica de una prueba con IBAN incorrecto 
+
+## Archivos que trabajé
+
+Los archivos que utilicé para mi parte fueron:
 
 - `PayCrudActivity.kt`
 - `PayListActivity.kt`
-- `domain/model/PayEmployee.kt`
-- `viewmodel/PayViewModel.kt`
+- `PayEmployee.kt`
+- `PayViewModel.kt`
 
-El archivo `ListAdapter.kt` tiene una corrección que hicimos con el profesor por un problema del proyecto base.
+También aparece modificado `ListAdapter.kt`, pero ese cambio fue una corrección de un error que realizamos con el profesor y que él autorizó.
 
-No modifiqué `MemoryManager`, `Person`, `Identifier`, `IRepository`, `MainActivity`, el Manifest, el menú, los strings, los temas ni `util`. Dejé los nombres y textos que ya venían en el proyecto para no tocar otras partes. Sé que el enunciado pide inglés y el prefijo `pay_`; esto queda indicado porque algunos elementos originales no siguen ese formato.
 
-## Entrega
+![Archivos modificados](evidencias/17_Archivos_Modificados.png)
 
-Mi rama es `sharon` y el Pull Request va dirigido a `development`. En las evidencias se puede ver lo que encontré, lo que corregí y las pruebas que hice.
