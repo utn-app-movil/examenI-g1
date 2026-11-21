@@ -3,6 +3,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:padding="16dp">
 
     <LinearLayout
@@ -18,25 +19,66 @@
             android:textStyle="bold"
             android:paddingBottom="12dp" />
 
-        <EditText android:id="@+id/txtId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula / ID" />
-        <EditText android:id="@+id/txtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre Contacto" />
-        <EditText android:id="@+id/txtFirstName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Primer Apellido" />
-        <EditText android:id="@+id/txtLastName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Segundo Apellido" />
-        <EditText android:id="@+id/txtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Telefono" android:inputType="number" />
-        <EditText android:id="@+id/txtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Email" android:inputType="textEmailAddress" />
-        <EditText android:id="@+id/txtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Direccion Detallada" />
+        <EditText
+            android:id="@+id/txtCorporateId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cédula Jurídica (3-101-123456 o 10 dígitos)" />
 
-        <EditText android:id="@+id/txtCompanyName" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre Empresa" />
-        <EditText android:id="@+id/txtCorporateId" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Cedula Juridica (Unica)" />
-        <EditText android:id="@+id/txtProvince" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Provincia" />
-        <EditText android:id="@+id/txtCanton" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Canton" />
-        <EditText android:id="@+id/txtDistrict" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Distrito" />
+        <EditText
+            android:id="@+id/txtCompanyName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre de la Empresa" />
 
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Servicios:" android:layout_marginTop="8dp"/>
-        <CheckBox android:id="@+id/chkConsulting" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Consultoria" />
-        <CheckBox android:id="@+id/chkSupport" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Soporte" />
-        <CheckBox android:id="@+id/chkDev" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Desarrollo" />
-        <CheckBox android:id="@+id/chkMaint" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Mantenimiento" />
+        <EditText
+            android:id="@+id/txtProvince"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Provincia" />
+
+        <EditText
+            android:id="@+id/txtCanton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cantón" />
+
+        <EditText
+            android:id="@+id/txtDistrict"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Distrito" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Servicios Contratados (al menos uno):"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp" />
+
+        <CheckBox
+            android:id="@+id/chkInternet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Internet empresarial" />
+
+        <CheckBox
+            android:id="@+id/chkTelephony"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Telefonía IP" />
+
+        <CheckBox
+            android:id="@+id/chkHosting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hosting" />
+
+        <CheckBox
+            android:id="@+id/chkSupport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Soporte técnico" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,9 +86,26 @@
             android:orientation="horizontal"
             android:layout_marginTop="16dp">
 
-            <Button android:id="@+id/btnSave" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextSave" />
-            <Button android:id="@+id/btnDelete" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextDelete" />
-            <Button android:id="@+id/btnCancel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/TextCancel" />
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/TextSave" />
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/TextDelete" />
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/TextCancel" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

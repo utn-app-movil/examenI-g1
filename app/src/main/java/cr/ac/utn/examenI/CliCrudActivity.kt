@@ -11,27 +11,30 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.Identifier
+import cr.ac.utn.examenI.domain.model.CliClient
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
+import cr.ac.utn.examenI.viewmodel.CliViewModel
 
+/**
+ * Activity for Corporate Clients CRUD operations.
+ * Implements validations:
+ * - Unique corporate legal ID.
+ * - Official Costa Rican legal ID format.
+ * - At least one contracted service selected.
+ */
 class CliCrudActivity : AppCompatActivity() {
-    private lateinit var txtId: EditText
-    private lateinit var txtName: EditText
-    private lateinit var txtFirstName: EditText
-    private lateinit var txtLastName: EditText
-    private lateinit var txtPhone: EditText
-    private lateinit var txtEmail: EditText
-    private lateinit var txtAddress: EditText
-    private lateinit var txtCompanyName: EditText
+
     private lateinit var txtCorporateId: EditText
+    private lateinit var txtCompanyName: EditText
     private lateinit var txtProvince: EditText
     private lateinit var txtCanton: EditText
     private lateinit var txtDistrict: EditText
-    private lateinit var chkConsulting: CheckBox
+
+    private lateinit var chkInternet: CheckBox
+    private lateinit var chkTelephony: CheckBox
+    private lateinit var chkHosting: CheckBox
     private lateinit var chkSupport: CheckBox
-    private lateinit var chkDev: CheckBox
-    private lateinit var chkMaint: CheckBox
 
     private var currentId: String? = null
 
@@ -45,22 +48,7 @@ class CliCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.txtId)
-        txtName = findViewById(R.id.txtName)
-        txtFirstName = findViewById(R.id.txtFirstName)
-        txtLastName = findViewById(R.id.txtLastName)
-        txtPhone = findViewById(R.id.txtPhone)
-        txtEmail = findViewById(R.id.txtEmail)
-        txtAddress = findViewById(R.id.txtAddress)
-        txtCompanyName = findViewById(R.id.txtCompanyName)
-        txtCorporateId = findViewById(R.id.txtCorporateId)
-        txtProvince = findViewById(R.id.txtProvince)
-        txtCanton = findViewById(R.id.txtCanton)
-        txtDistrict = findViewById(R.id.txtDistrict)
-        chkConsulting = findViewById(R.id.chkConsulting)
-        chkSupport = findViewById(R.id.chkSupport)
-        chkDev = findViewById(R.id.chkDev)
-        chkMaint = findViewById(R.id.chkMaint)
+        initViews()
 
         currentId = intent.getStringExtra(EXTRA_ID)
         if (!currentId.isNullOrEmpty()) {
@@ -72,54 +60,80 @@ class CliCrudActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
     }
 
+    private fun initViews() {
+        txtCorporateId = findViewById(R.id.txtCorporateId)
+        txtCompanyName = findViewById(R.id.txtCompanyName)
+        txtProvince = findViewById(R.id.txtProvince)
+        txtCanton = findViewById(R.id.txtCanton)
+        txtDistrict = findViewById(R.id.txtDistrict)
+
+        chkInternet = findViewById(R.id.chkInternet)
+        chkTelephony = findViewById(R.id.chkTelephony)
+        chkHosting = findViewById(R.id.chkHosting)
+        chkSupport = findViewById(R.id.chkSupport)
+    }
+
+    private fun getSelectedServices(): List<String> {
+        val services = mutableListOf<String>()
+        if (chkInternet.isChecked) services.add("Internet empresarial")
+        if (chkTelephony.isChecked) services.add("Telefonía IP")
+        if (chkHosting.isChecked) services.add("Hosting")
+        if (chkSupport.isChecked) services.add("Soporte técnico")
+        return services
+    }
+
     private fun loadExistingData(id: String) {
-        /*val item = CliViewModel.getById(id) ?: return
-        txtId.setText(item.id)
-        txtId.isEnabled = false
-        txtName.setText(item.name)
-        txtFirstName.setText(item.firstName)
-        txtLastName.setText(item.lastName)
-        txtPhone.setText(item.phone.toString())
-        txtEmail.setText(item.email)
-        txtAddress.setText(item.address)
+        val item = CliViewModel.getById(id) ?: return
+        txtCorporateId.setText(item.id)
+        txtCorporateId.isEnabled = false
         txtCompanyName.setText(item.companyName)
-        txtCorporateId.setText(item.corporateId)
         txtProvince.setText(item.province)
         txtCanton.setText(item.canton)
         txtDistrict.setText(item.district)
 
-        chkConsulting.isChecked = item.services.contains("Consultoría")
-        chkSupport.isChecked = item.services.contains("Soporte")
-        chkDev.isChecked = item.services.contains("Desarrollo")
-        chkMaint.isChecked = item.services.contains("Mantenimiento")*/
+        chkInternet.isChecked = item.services.contains("Internet empresarial")
+        chkTelephony.isChecked = item.services.contains("Telefonía IP")
+        chkHosting.isChecked = item.services.contains("Hosting")
+        chkSupport.isChecked = item.services.contains("Soporte técnico")
     }
 
     private fun doSave() {
-        val id = txtId.text.toString().trim()
-        val companyName = txtCompanyName.text.toString().trim()
         val corpId = txtCorporateId.text.toString().trim()
+        val companyName = txtCompanyName.text.toString().trim()
+        val province = txtProvince.text.toString().trim()
+        val canton = txtCanton.text.toString().trim()
+        val district = txtDistrict.text.toString().trim()
+        val services = getSelectedServices()
 
-        if (id.isEmpty() || companyName.isEmpty() || corpId.isEmpty()) {
-            Toast.makeText(this, "Por favor complete la identificación y datos de la empresa.", Toast.LENGTH_SHORT).show()
+        // Validation 1: Required fields
+        if (corpId.isEmpty() || companyName.isEmpty()) {
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
             return
         }
 
-        val selectedServices = mutableListOf<String>()
-        if (chkConsulting.isChecked) selectedServices.add("Consultoría")
-        if (chkSupport.isChecked) selectedServices.add("Soporte")
-        if (chkDev.isChecked) selectedServices.add("Desarrollo")
-        if (chkMaint.isChecked) selectedServices.add("Mantenimiento")
+        // Validation 2: Official format
+        if (!CliViewModel.isValidLegalId(corpId)) {
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
+            return
+        }
 
+        // Validation 3: At least one contracted service
+        if (services.isEmpty()) {
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
+            return
+        }
 
+        val client = CliClient(corpId, companyName, province, canton, district, services)
 
         if (currentId.isNullOrEmpty()) {
-            if (null != null) {
+            // Check duplicate
+            if (CliViewModel.isDuplicate(corpId)) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            //CliViewModel.save(item)
+            CliViewModel.save(client)
         } else {
-            //CliViewModel.update(item)
+            CliViewModel.update(client)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -127,10 +141,10 @@ class CliCrudActivity : AppCompatActivity() {
     }
 
     private fun doDelete() {
-        val id = txtId.text.toString().trim()
+        val id = txtCorporateId.text.toString().trim()
         if (id.isEmpty()) return
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            //CliViewModel.delete(id)
+            CliViewModel.delete(id)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }
