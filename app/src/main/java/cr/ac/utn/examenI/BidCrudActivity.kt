@@ -1,3 +1,4 @@
+
 package cr.ac.utn.examenI
 
 import android.os.Bundle
@@ -13,11 +14,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import cr.ac.utn.examenI.domain.model.Bid
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
+import cr.ac.utn.examenI.viewmodel.BidViewModel
 import java.time.LocalDateTime
 
 class BidCrudActivity : AppCompatActivity() {
+
     private lateinit var txtId: EditText
     private lateinit var txtName: EditText
     private lateinit var txtFirstName: EditText
@@ -32,15 +36,31 @@ class BidCrudActivity : AppCompatActivity() {
     private lateinit var txtDateTime: EditText
 
     private var currentId: String? = null
-    private val articleCodes = arrayOf("ART-001", "ART-002", "ART-003", "ART-004")
+
+    private val articleCodes = arrayOf(
+        "ART-001",
+        "ART-002",
+        "ART-003",
+        "ART-004"
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_bid_crud)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+
+        ViewCompat.setOnApplyWindowInsetsListener(
+            findViewById(R.id.main)
+        ) { view, insets ->
+            val systemBars = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars()
+            )
+            view.setPadding(
+                systemBars.left,
+                systemBars.top,
+                systemBars.right,
+                systemBars.bottom
+            )
             insets
         }
 
@@ -57,91 +77,174 @@ class BidCrudActivity : AppCompatActivity() {
         chkAwarded = findViewById(R.id.chkAwarded)
         txtDateTime = findViewById(R.id.txtDateTime)
 
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, articleCodes)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_item,
+            articleCodes
+        )
+        adapter.setDropDownViewResource(
+            android.R.layout.simple_spinner_dropdown_item
+        )
         spnArticleCode.adapter = adapter
 
         currentId = intent.getStringExtra(EXTRA_ID)
-        if (!currentId.isNullOrEmpty()) {
-            loadExistingData(currentId!!)
+
+        if (currentId.isNullOrEmpty()) {
+            txtDateTime.setText(
+                util.formatDateTime(LocalDateTime.now())
+            )
         } else {
-            txtDateTime.setText(util.formatDateTime(LocalDateTime.now()))
+            loadExistingData(currentId!!)
         }
 
-        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.btnSave).setOnClickListener {
+            doSave()
+        }
+
+        findViewById<Button>(R.id.btnDelete).setOnClickListener {
+            doDelete()
+        }
+
+        findViewById<Button>(R.id.btnCancel).setOnClickListener {
+            finish()
+        }
     }
 
     private fun loadExistingData(id: String) {
-        /*val item = BidViewModel.getById(id) ?: return
-        txtId.setText(item.id)
-        txtId.isEnabled = false
-        txtName.setText(item.name)
-        txtFirstName.setText(item.firstName)
-        txtLastName.setText(item.lastName)
-        txtPhone.setText(item.phone.toString())
-        txtEmail.setText(item.email)
-        txtAddress.setText(item.address)
-        val pos = articleCodes.indexOf(item.articleCode)
-        if (pos >= 0) spnArticleCode.setSelection(pos)
-        txtDescription.setText(item.description)
-        txtBidAmount.setText(item.bidAmount.toString())
-        chkAwarded.isChecked = item.awarded
-        txtDateTime.setText(util.formatDateTime(item.bidDateTime))*/
+        val bid = BidViewModel.getById(id)
+
+        if (bid == null) {
+            showMessage(R.string.TextDataNoFound)
+            finish()
+            return
+        }
+
+        txtId.setText(bid.personId)
+        txtName.setText(bid.name)
+        txtFirstName.setText(bid.firstName)
+        txtLastName.setText(bid.lastName)
+        txtPhone.setText(bid.phone.toString())
+        txtEmail.setText(bid.email)
+        txtAddress.setText(bid.address)
+
+        val position = articleCodes.indexOf(bid.articleCode)
+        if (position >= 0) {
+            spnArticleCode.setSelection(position)
+        }
+
+        txtDescription.setText(bid.description)
+        txtBidAmount.setText(bid.bidAmount.toString())
+        chkAwarded.isChecked = bid.awarded
+        txtDateTime.setText(
+            util.formatDateTime(bid.bidDateTime)
+        )
     }
 
     private fun doSave() {
-        val id = txtId.text.toString().trim()
+        val personId = txtId.text.toString().trim()
         val name = txtName.text.toString().trim()
-        val article = spnArticleCode.selectedItem?.toString() ?: ""
-        val bidAmt = txtBidAmount.text.toString().toDoubleOrNull() ?: 0.0
-        val dateTimeStr = txtDateTime.text.toString().trim()
+        val firstName = txtFirstName.text.toString().trim()
+        val lastName = txtLastName.text.toString().trim()
+        val phone = txtPhone.text.toString().toIntOrNull()
+        val email = txtEmail.text.toString().trim()
+        val address = txtAddress.text.toString().trim()
+        val articleCode = spnArticleCode.selectedItem?.toString() ?: ""
+        val description = txtDescription.text.toString().trim()
+        val bidAmount = txtBidAmount.text.toString().toDoubleOrNull()
+        val dateTimeText = txtDateTime.text.toString().trim()
 
-        if (id.isEmpty() || name.isEmpty()) {
-            Toast.makeText(this, "Por favor complete los campos requeridos.", Toast.LENGTH_SHORT).show()
+        // Validate required fields
+        if (personId.isEmpty() ||
+            name.isEmpty() ||
+            firstName.isEmpty() ||
+            lastName.isEmpty() ||
+            phone == null ||
+            phone <= 0 ||
+            email.isEmpty() ||
+            address.isEmpty() ||
+            description.isEmpty() ||
+            bidAmount == null ||
+            !bidAmount.isFinite() ||
+            bidAmount <= 0.0
+        ) {
+            showMessage(R.string.TextSaveError)
             return
         }
 
-        val dt = util.parseStringToDateTimeModern(dateTimeStr)
-        if (dt == null || dt.isAfter(LocalDateTime.now())) {
-            Toast.makeText(this, "La fecha de la oferta debe ser menor o igual a la actual.", Toast.LENGTH_SHORT).show()
+        val bidDateTime = try {
+            util.parseStringToDateTimeModern(dateTimeText)
+        } catch (e: Exception) {
+            null
+        }
+
+        if (bidDateTime == null ||
+            bidDateTime.isAfter(LocalDateTime.now())
+        ) {
+            showMessage(R.string.TextSaveError)
             return
         }
 
-        // Validate bid amount > previous bid for this article
-        val maxPrevBid = 0 /*BidViewModel.getAll()
-            .filter { it.articleCode == article && it.id != id }
-            .maxOfOrNull { it.bidAmount } ?: 0.0*/
+        val bidId = currentId ?: BidViewModel.generateId()
 
-        if (bidAmt <= maxPrevBid) {
-            Toast.makeText(this, "El monto de la oferta debe ser mayor a la oferta anterior ($$maxPrevBid).", Toast.LENGTH_SHORT).show()
-            return
-        }
+        val bid = Bid(
+            id = bidId,
+            personId = personId,
+            name = name,
+            firstName = firstName,
+            lastName = lastName,
+            phone = phone,
+            email = email,
+            address = address,
+            articleCode = articleCode,
+            description = description,
+            bidAmount = bidAmount,
+            awarded = chkAwarded.isChecked,
+            bidDateTime = bidDateTime
+        )
 
-
-        if (currentId.isNullOrEmpty()) {
-            if (null != null) {
-                Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
-                return
-            }
-            //BidViewModel.save(item)
+        val success = if (currentId == null) {
+            BidViewModel.save(bid)
         } else {
-            //BidViewModel.update(item)
+            BidViewModel.update(bid)
         }
 
-        Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
-        finish()
+        if (success) {
+            showMessage(R.string.TextSaveSuccess)
+            finish()
+        } else {
+            showMessage(R.string.TextSaveError)
+        }
     }
 
     private fun doDelete() {
-        val id = txtId.text.toString().trim()
-        if (id.isEmpty()) return
-        util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            //BidViewModel.delete(id)
-            Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
-            finish()
+        val id = currentId
+
+        if (id.isNullOrEmpty()) {
+            showMessage(R.string.TextDataNoFound)
+            return
         }
+
+        util.showDialogCondition(
+            this,
+            getString(R.string.TextDeleteQuestion)
+        ) {
+            val success = BidViewModel.delete(id)
+
+            if (success) {
+                showMessage(R.string.TextDeleteSuccess)
+                finish()
+            } else {
+                showMessage(R.string.TextDeleteError)
+            }
+        }
+    }
+
+    private fun showMessage(messageId: Int) {
+        Toast.makeText(
+            this,
+            getString(messageId),
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -151,9 +254,21 @@ class BidCrudActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.mnu_save -> { doSave(); true }
-            R.id.mnu_delete -> { doDelete(); true }
-            R.id.mnu_cancel -> { finish(); true }
+            R.id.mnu_save -> {
+                doSave()
+                true
+            }
+
+            R.id.mnu_delete -> {
+                doDelete()
+                true
+            }
+
+            R.id.mnu_cancel -> {
+                finish()
+                true
+            }
+
             else -> super.onOptionsItemSelected(item)
         }
     }
