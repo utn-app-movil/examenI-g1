@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import cr.ac.utn.examenI.domain.model.Identifier
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
+import cr.ac.utn.examenI.viewmodel.ShipViewModel
 
 class ShipListActivity : AppCompatActivity(), OnItemClickListener {
     private lateinit var rvList: RecyclerView
@@ -39,7 +40,7 @@ class ShipListActivity : AppCompatActivity(), OnItemClickListener {
     }
 
     private fun loadData() {
-        val items = emptyList<Identifier>()
+        val items: List<Identifier> = ShipViewModel.getAll()
         rvList.adapter = ListAdapter(items, this)
     }
 

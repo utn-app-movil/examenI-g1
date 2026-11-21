@@ -16,6 +16,9 @@ import cr.ac.utn.examenI.domain.model.Identifier
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
 import java.time.LocalDateTime
+import cr.ac.utn.examenI.domain.model.Person
+import cr.ac.utn.examenI.domain.model.ShipMaintenance
+import cr.ac.utn.examenI.viewmodel.ShipViewModel
 
 class ShipCrudActivity : AppCompatActivity() {
     private lateinit var txtId: EditText
@@ -80,81 +83,244 @@ class ShipCrudActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
     }
 
+
     private fun loadExistingData(id: String) {
-        /*val item = ShipViewModel.getById(id) ?: return
-        txtId.setText(item.id)
-        txtId.isEnabled = false
-        txtName.setText(item.name)
-        txtFirstName.setText(item.firstName)
-        txtLastName.setText(item.lastName)
-        txtPhone.setText(item.phone.toString())
-        txtEmail.setText(item.email)
-        txtAddress.setText(item.address)
-        txtContainerNum.setText(item.containerNum)
+
+        val item = ShipViewModel.getById(id)
+
+        if (item == null) {
+            Toast.makeText(
+                this,
+                R.string.TextSaveError,
+                Toast.LENGTH_SHORT
+            ).show()
+            finish()
+            return
+        }
+
+        txtId.setText(item.person.id)
+        txtName.setText(item.person.name)
+        txtFirstName.setText(item.person.firstName)
+        txtLastName.setText(item.person.lastName)
+        txtPhone.setText(item.person.phone.toString())
+        txtEmail.setText(item.person.email)
+        txtAddress.setText(item.person.address)
+        txtContainerNum.setText(item.id)
+        txtContainerNum.isEnabled = false
+
         val posType = containerTypes.indexOf(item.containerType)
-        if (posType >= 0) spnContainerType.setSelection(posType)
+        if (posType >= 0) {
+            spnContainerType.setSelection(posType)
+        }
+
         txtTemp.setText(item.temperature.toString())
         txtWeight.setText(item.weight.toString())
-        val posProd = products.indexOf(item.product)
-        if (posProd >= 0) spnProduct.setSelection(posProd)
-        txtDateTime.setText(util.formatDateTime(item.shipmentDateTime))*/
+
+        val posProduct = products.indexOf(item.product)
+        if (posProduct >= 0) {
+            spnProduct.setSelection(posProduct)
+        }
+        txtDateTime.setText(
+            util.formatDateTime(item.maintenanceDateTime)
+        )
     }
 
     private fun doSave() {
-        val id = txtId.text.toString().trim()
+
+        val personId = txtId.text.toString().trim()
         val name = txtName.text.toString().trim()
+        val firstName = txtFirstName.text.toString().trim()
+        val lastName = txtLastName.text.toString().trim()
+        val phoneText = txtPhone.text.toString().trim()
+        val email = txtEmail.text.toString().trim()
+        val address = txtAddress.text.toString().trim()
         val containerNum = txtContainerNum.text.toString().trim().uppercase()
-        val dateTimeStr = txtDateTime.text.toString().trim()
+        val containerType = spnContainerType.selectedItem.toString()
+        val temperatureText = txtTemp.text.toString().trim()
+        val weightText = txtWeight.text.toString().trim()
+        val product = spnProduct.selectedItem.toString()
+        val dateTimeText = txtDateTime.text.toString().trim()
 
-        if (id.isEmpty() || name.isEmpty() || containerNum.isEmpty()) {
-            Toast.makeText(this, "Por favor complete los campos requeridos.", Toast.LENGTH_SHORT).show()
+        if (personId.isEmpty() ||
+            name.isEmpty() ||
+            firstName.isEmpty() ||
+            lastName.isEmpty() ||
+            phoneText.isEmpty() ||
+            email.isEmpty() ||
+            address.isEmpty() ||
+            containerNum.isEmpty() ||
+            temperatureText.isEmpty() ||
+            weightText.isEmpty() ||
+            dateTimeText.isEmpty()
+        ) {
+            Toast.makeText(
+                this,
+                R.string.TextSaveError,
+                Toast.LENGTH_SHORT
+            ).show()
             return
         }
 
-        val alphaNumRegex = Regex("""^[A-Z0-9]+$""")
+        val alphaNumRegex = Regex("^[A-Z0-9]+$")
+
         if (!alphaNumRegex.matches(containerNum)) {
-            Toast.makeText(this, "El número de contenedor debe ser alfanumérico.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this,
+                R.string.TextSaveError,
+                Toast.LENGTH_SHORT
+            ).show()
             return
         }
 
-        // Unique container num
-        val duplicateContainer = false //ShipViewModel.getAll().any { it.containerNum == containerNum && it.id != id }
-        if (duplicateContainer) {
-            Toast.makeText(this, "El número de contenedor ya está registrado.", Toast.LENGTH_SHORT).show()
+        // Validate numeric values
+        val phone = phoneText.toIntOrNull()
+        val temperature = temperatureText.toDoubleOrNull()
+        val weight = weightText.toDoubleOrNull()
+
+        if (phone == null ||
+            phone <= 0 ||
+            temperature == null ||
+            !temperature.isFinite() ||
+            weight == null ||
+            !weight.isFinite() ||
+            weight <= 0
+        ) {
+            Toast.makeText(
+                this,
+                R.string.TextSaveError,
+                Toast.LENGTH_SHORT
+            ).show()
             return
         }
 
-        val dt = util.parseStringToDateTimeModern(dateTimeStr)
-        if (dt == null || dt.isAfter(LocalDateTime.now())) {
-            Toast.makeText(this, "La fecha debe ser menor o igual a la actual.", Toast.LENGTH_SHORT).show()
+        val maintenanceDateTime =
+            util.parseStringToDateTimeModern(dateTimeText)
+
+        if (maintenanceDateTime == null ||
+            maintenanceDateTime.isAfter(LocalDateTime.now())
+        ) {
+            Toast.makeText(
+                this,
+                R.string.TextSaveError,
+                Toast.LENGTH_SHORT
+            ).show()
             return
         }
 
+        // Validate duplicate container number
+        val existingItem = ShipViewModel.getById(containerNum)
 
+        if (existingItem != null && currentId != containerNum) {
+            Toast.makeText(
+                this,
+                R.string.TextDuplicateData,
+                Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
+
+        val person = Person(
+            id = personId,
+            name = name,
+            firstName = firstName,
+            lastName = lastName,
+            phone = phone,
+            email = email,
+            address = address
+        )
+
+        val item = ShipMaintenance(
+            id = containerNum,
+            person = person,
+            maintenanceDateTime = maintenanceDateTime,
+            containerType = containerType,
+            temperature = temperature,
+            weight = weight,
+            product = product
+        )
 
         if (currentId.isNullOrEmpty()) {
-            if (null != null) {
-                Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
+
+            ShipViewModel.save(item)
+
+            Toast.makeText(
+                this,
+                R.string.TextSaveSuccess,
+                Toast.LENGTH_SHORT
+            ).show()
+
+            finish()
+
+        } else {
+
+            if (currentId != containerNum || existingItem == null) {
+                Toast.makeText(
+                    this,
+                    R.string.TextSaveError,
+                    Toast.LENGTH_SHORT
+                ).show()
                 return
             }
-            //ShipViewModel.save(item)
-        } else {
-            //ShipViewModel.update(item)
-        }
 
-        Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
-        finish()
+            util.showDialogCondition(
+                this,
+                getString(R.string.TextSaveQuestion)
+            ) {
+                ShipViewModel.update(item)
+
+                Toast.makeText(
+                    this,
+                    R.string.TextSaveSuccess,
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                finish()
+            }
+        }
     }
 
+
+
     private fun doDelete() {
-        val id = txtId.text.toString().trim()
-        if (id.isEmpty()) return
-        util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            //ShipViewModel.delete(id)
-            Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
+
+        val containerId = currentId
+
+        if (containerId.isNullOrEmpty()) {
+            Toast.makeText(
+                this,
+                R.string.TextDeleteError,
+                Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
+
+        val item = ShipViewModel.getById(containerId)
+
+        if (item == null) {
+            Toast.makeText(
+                this,
+                R.string.TextDataNoFound,
+                Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
+
+        util.showDialogCondition(
+            this,
+            getString(R.string.TextDeleteQuestion)
+        ) {
+            ShipViewModel.delete(containerId)
+
+            Toast.makeText(
+                this,
+                R.string.TextDeleteSuccess,
+                Toast.LENGTH_SHORT
+            ).show()
+
             finish()
         }
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_crud, menu)
