@@ -121,6 +121,3 @@ Los archivos que utilicé para mi parte fueron:
 
 También aparece modificado `ListAdapter.kt`, pero ese cambio fue una corrección de un error que realizamos con el profesor y que él autorizó.
 
-
-![Archivos modificados](evidencias/17_Archivos_Modificados.png)
-
