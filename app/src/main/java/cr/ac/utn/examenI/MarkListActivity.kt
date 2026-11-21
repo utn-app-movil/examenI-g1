@@ -11,9 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import cr.ac.utn.examenI.domain.model.Identifier
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
+import cr.ac.utn.examenI.viewmodel.MarkViewModel
 
 class MarkListActivity : AppCompatActivity(), OnItemClickListener {
     private lateinit var rvList: RecyclerView
+    private val markViewModel = MarkViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,10 +27,10 @@ class MarkListActivity : AppCompatActivity(), OnItemClickListener {
             insets
         }
 
-        rvList = findViewById(R.id.rvList)
+        rvList = findViewById(R.id.mark_rvList)
         rvList.layoutManager = LinearLayoutManager(this)
 
-        findViewById<Button>(R.id.btnAdd).setOnClickListener {
+        findViewById<Button>(R.id.mark_btnAdd).setOnClickListener {
             util.openActivity(this, MarkCrudActivity::class.java)
         }
     }
@@ -39,7 +41,7 @@ class MarkListActivity : AppCompatActivity(), OnItemClickListener {
     }
 
     private fun loadData() {
-        val items = emptyList<Identifier>()
+        val items = markViewModel.getAll()
         rvList.adapter = ListAdapter(items, this)
     }
 
