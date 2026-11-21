@@ -11,9 +11,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cr.ac.utn.examenI.domain.model.Identifier
+import cr.ac.utn.examenI.domain.model.TrainCourse
+import cr.ac.utn.examenI.domain.model.TrainRegistration
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
+import cr.ac.utn.examenI.viewmodel.TrainViewModel
+import java.time.LocalDate
 import java.time.LocalDateTime
 
 class TrainCrudActivity : AppCompatActivity() {
@@ -29,8 +32,10 @@ class TrainCrudActivity : AppCompatActivity() {
     private lateinit var chkGit: CheckBox
     private lateinit var chkScrum: CheckBox
     private lateinit var txtDateTime: EditText
+    private lateinit var btnDelete: Button
 
     private var currentId: String? = null
+    private var isEditMode: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,18 +47,24 @@ class TrainCrudActivity : AppCompatActivity() {
             insets
         }
 
-        txtId = findViewById(R.id.txtId)
-        txtName = findViewById(R.id.txtName)
-        txtFirstName = findViewById(R.id.txtFirstName)
-        txtLastName = findViewById(R.id.txtLastName)
-        txtPhone = findViewById(R.id.txtPhone)
-        txtEmail = findViewById(R.id.txtEmail)
-        txtAddress = findViewById(R.id.txtAddress)
-        chkKotlin = findViewById(R.id.chkKotlin)
-        chkAndroid = findViewById(R.id.chkAndroid)
-        chkGit = findViewById(R.id.chkGit)
-        chkScrum = findViewById(R.id.chkScrum)
-        txtDateTime = findViewById(R.id.txtDateTime)
+        txtId = findViewById(R.id.train_txtId)
+        txtName = findViewById(R.id.train_txtName)
+        txtFirstName = findViewById(R.id.train_txtFirstName)
+        txtLastName = findViewById(R.id.train_txtLastName)
+        txtPhone = findViewById(R.id.train_txtPhone)
+        txtEmail = findViewById(R.id.train_txtEmail)
+        txtAddress = findViewById(R.id.train_txtAddress)
+        chkKotlin = findViewById(R.id.train_chkKotlin)
+        chkAndroid = findViewById(R.id.train_chkAndroid)
+        chkGit = findViewById(R.id.train_chkGit)
+        chkScrum = findViewById(R.id.train_chkScrum)
+        txtDateTime = findViewById(R.id.train_txtDateTime)
+        btnDelete = findViewById(R.id.train_btnDelete)
+
+        chkKotlin.text = TrainCourse.KOTLIN.displayName
+        chkAndroid.text = TrainCourse.ANDROID_STUDIO.displayName
+        chkGit.text = TrainCourse.GIT.displayName
+        chkScrum.text = TrainCourse.SCRUM.displayName
 
         currentId = intent.getStringExtra(EXTRA_ID)
         if (!currentId.isNullOrEmpty()) {
@@ -61,14 +72,20 @@ class TrainCrudActivity : AppCompatActivity() {
         } else {
             txtDateTime.setText(util.formatDateTime(LocalDateTime.now().plusDays(1)))
         }
+        btnDelete.isEnabled = isEditMode
 
-        findViewById<Button>(R.id.btnSave).setOnClickListener { doSave() }
-        findViewById<Button>(R.id.btnDelete).setOnClickListener { doDelete() }
-        findViewById<Button>(R.id.btnCancel).setOnClickListener { finish() }
+        findViewById<Button>(R.id.train_btnSave).setOnClickListener { onSaveClick() }
+        btnDelete.setOnClickListener { doDelete() }
+        findViewById<Button>(R.id.train_btnCancel).setOnClickListener { finish() }
     }
 
     private fun loadExistingData(id: String) {
-        /*val item = TrainViewModel.getById(id) ?: return
+        val item = TrainViewModel.getById(id)
+        if (item == null) {
+            Toast.makeText(this, getString(R.string.TextDataNoFound), Toast.LENGTH_SHORT).show()
+            return
+        }
+        isEditMode = true
         txtId.setText(item.id)
         txtId.isEnabled = false
         txtName.setText(item.name)
@@ -77,45 +94,85 @@ class TrainCrudActivity : AppCompatActivity() {
         txtPhone.setText(item.phone.toString())
         txtEmail.setText(item.email)
         txtAddress.setText(item.address)
-        chkKotlin.isChecked = item.courses.contains("Kotlin")
-        chkAndroid.isChecked = item.courses.contains("Android Studio")
-        chkGit.isChecked = item.courses.contains("Git")
-        chkScrum.isChecked = item.courses.contains("Scrum")
-        txtDateTime.setText(util.formatDateTime(item.trainingDateTime))*/
+        chkKotlin.isChecked = item.courses.contains(TrainCourse.KOTLIN)
+        chkAndroid.isChecked = item.courses.contains(TrainCourse.ANDROID_STUDIO)
+        chkGit.isChecked = item.courses.contains(TrainCourse.GIT)
+        chkScrum.isChecked = item.courses.contains(TrainCourse.SCRUM)
+        txtDateTime.setText(util.formatDateTime(item.trainingDateTime))
+    }
+
+    private fun getSelectedCourses(): List<TrainCourse> {
+        val selectedCourses = mutableListOf<TrainCourse>()
+        if (chkKotlin.isChecked) selectedCourses.add(TrainCourse.KOTLIN)
+        if (chkAndroid.isChecked) selectedCourses.add(TrainCourse.ANDROID_STUDIO)
+        if (chkGit.isChecked) selectedCourses.add(TrainCourse.GIT)
+        if (chkScrum.isChecked) selectedCourses.add(TrainCourse.SCRUM)
+        return selectedCourses
+    }
+
+    private fun isValidData(): Boolean {
+        return txtId.text.toString().trim().isNotEmpty()
+                && txtName.text.toString().trim().isNotEmpty()
+                && txtFirstName.text.toString().trim().isNotEmpty()
+                && txtLastName.text.toString().trim().isNotEmpty()
+                && txtPhone.text.toString().trim().isNotEmpty()
+                && txtEmail.text.toString().trim().isNotEmpty()
+                && txtAddress.text.toString().trim().isNotEmpty()
+                && txtDateTime.text.toString().trim().isNotEmpty()
+    }
+
+    private fun onSaveClick() {
+        if (isEditMode) {
+            util.showDialogCondition(this, getString(R.string.TextSaveQuestion)) { doSave() }
+        } else {
+            doSave()
+        }
     }
 
     private fun doSave() {
-        val id = txtId.text.toString().trim()
-        val name = txtName.text.toString().trim()
-        val dateTimeStr = txtDateTime.text.toString().trim()
-
-        if (id.isEmpty() || name.isEmpty()) {
-            Toast.makeText(this, "Por favor complete los campos requeridos.", Toast.LENGTH_SHORT).show()
+        if (!isValidData()) {
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
             return
         }
 
-        val dt = util.parseStringToDateTimeModern(dateTimeStr)
-        if (dt == null || dt.isBefore(LocalDateTime.now().minusMinutes(5))) {
-            Toast.makeText(this, "La fecha de capacitación debe ser mayor o igual a la actual.", Toast.LENGTH_SHORT).show()
+        val phone = txtPhone.text.toString().trim().toIntOrNull()
+        if (phone == null) {
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
             return
         }
 
-        val selectedCourses = mutableListOf<String>()
-        if (chkKotlin.isChecked) selectedCourses.add("Kotlin")
-        if (chkAndroid.isChecked) selectedCourses.add("Android Studio")
-        if (chkGit.isChecked) selectedCourses.add("Git")
-        if (chkScrum.isChecked) selectedCourses.add("Scrum")
+        val selectedCourses = getSelectedCourses()
+        if (selectedCourses.isEmpty()) {
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
+            return
+        }
 
+        val trainingDateTime = util.parseStringToDateTimeModern(txtDateTime.text.toString().trim())
+        if (trainingDateTime == null || trainingDateTime.toLocalDate().isBefore(LocalDate.now())) {
+            Toast.makeText(this, getString(R.string.TextSaveError), Toast.LENGTH_SHORT).show()
+            return
+        }
 
+        val item = TrainRegistration(
+            txtId.text.toString().trim(),
+            txtName.text.toString().trim(),
+            txtFirstName.text.toString().trim(),
+            txtLastName.text.toString().trim(),
+            phone,
+            txtEmail.text.toString().trim(),
+            txtAddress.text.toString().trim(),
+            selectedCourses,
+            trainingDateTime
+        )
 
-        if (currentId.isNullOrEmpty()) {
-            if (null != null) {
+        if (!isEditMode) {
+            if (TrainViewModel.getById(item.id) != null) {
                 Toast.makeText(this, getString(R.string.TextDuplicateData), Toast.LENGTH_SHORT).show()
                 return
             }
-            //TrainViewModel.save(item)
+            TrainViewModel.save(item)
         } else {
-            //TrainViewModel.update(item)
+            TrainViewModel.update(item)
         }
 
         Toast.makeText(this, getString(R.string.TextSaveSuccess), Toast.LENGTH_SHORT).show()
@@ -123,10 +180,12 @@ class TrainCrudActivity : AppCompatActivity() {
     }
 
     private fun doDelete() {
-        val id = txtId.text.toString().trim()
-        if (id.isEmpty()) return
+        if (!isEditMode || currentId.isNullOrEmpty()) {
+            Toast.makeText(this, getString(R.string.TextDataNoFound), Toast.LENGTH_SHORT).show()
+            return
+        }
         util.showDialogCondition(this, getString(R.string.TextDeleteQuestion)) {
-            //TrainViewModel.delete(id)
+            TrainViewModel.delete(currentId!!)
             Toast.makeText(this, getString(R.string.TextDeleteSuccess), Toast.LENGTH_SHORT).show()
             finish()
         }
@@ -137,9 +196,14 @@ class TrainCrudActivity : AppCompatActivity() {
         return true
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        menu?.findItem(R.id.mnu_delete)?.isVisible = isEditMode
+        return super.onPrepareOptionsMenu(menu)
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.mnu_save -> { doSave(); true }
+            R.id.mnu_save -> { onSaveClick(); true }
             R.id.mnu_delete -> { doDelete(); true }
             R.id.mnu_cancel -> { finish(); true }
             else -> super.onOptionsItemSelected(item)

@@ -11,6 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import cr.ac.utn.examenI.domain.model.Identifier
 import cr.ac.utn.examenI.util.EXTRA_ID
 import cr.ac.utn.examenI.util.util
+import cr.ac.utn.examenI.viewmodel.TrainViewModel
+
+
+
 
 class TrainListActivity : AppCompatActivity(), OnItemClickListener {
     private lateinit var rvList: RecyclerView
@@ -25,10 +29,10 @@ class TrainListActivity : AppCompatActivity(), OnItemClickListener {
             insets
         }
 
-        rvList = findViewById(R.id.rvList)
+        rvList = findViewById(R.id.train_rvList)
         rvList.layoutManager = LinearLayoutManager(this)
 
-        findViewById<Button>(R.id.btnAdd).setOnClickListener {
+        findViewById<Button>(R.id.train_btnAdd).setOnClickListener {
             util.openActivity(this, TrainCrudActivity::class.java)
         }
     }
@@ -39,7 +43,7 @@ class TrainListActivity : AppCompatActivity(), OnItemClickListener {
     }
 
     private fun loadData() {
-        val items = emptyList<Identifier>()
+        val items = TrainViewModel.getAll()
         rvList.adapter = ListAdapter(items, this)
     }
 
